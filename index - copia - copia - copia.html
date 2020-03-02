@@ -1,0 +1,100 @@
+<!doctype   html >
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
+
+         <style>
+          #full {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            margin: 10px;
+            float: right;
+            position: absolute;
+            border-radius: 20%;
+            right: 0px;
+            transition: 0.5s;
+            -webkit-transition: 0.5s;
+            z-index: 5;
+          }
+          #fullwiev {
+            padding: 15px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            border: none;
+            color: #fff;
+            background-color: #000;
+            cursor: pointer;
+            border-radius: 20%;
+            transition: 0.5s;
+            -webkit-transition: 0.5s;
+            display: inherit;
+            outline: 0;
+            text-decoration: none;
+          }
+          #fullwiev:hover { color: #1e90ff;}
+          
+          .fa-expand{font-size: 20px;}
+          /*esconder el boton en pantalla completa */
+          
+            #contenedor:requestFullscreen >  #full #fullwiev {display: none;}
+            #contenedor:-moz-full-screen > #full #fullwiev {display: none;} /* Firefox */
+            #contenedor:-webkit-full-screen > #full #fullwiev {display: none;} /* Chrome, Safari & Opera */
+            #contenedor:-msRequestFullscreen > #full #fullwiev {display: none;} /* IE/Edge */
+           
+                   </style>
+         <style> 
+         body{ background-color: white; margin: 0px auto;} 
+         container{
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(1.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+img{ height: 100%;}
+         </style>
+
+    </head>
+    <body id="contenedor">
+      <div id="full">
+        <button id="fullwiev" onclick="lock('landscape')">
+          <i class="fa fa-expand"></i>
+        </button>
+      </div>
+      <container>
+      
+      </container>
+      
+      <!-- <a href="panel2.html"> link </a> -->
+    </body><script>
+      function fullScreen() {
+      // Kind of painful, but this is how it works for now
+      if (document.documentElement.requestFullscreen) {
+       document.getElementById("contenedor").requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) {
+        document.getElementById("contenedor").mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.getElementById("contenedor").webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) {
+        document.getElementById("contenedor").msRequestFullscreen();
+      }
+    }
+    function lock(orientation) {
+      fullScreen();
+      screen.orientation.lock(orientation);
+    }
+    </script>
+</html>
