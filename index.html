@@ -70,7 +70,7 @@
     margin: 0px auto;
     margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.93);
-    font-size: 1.5vw;
+   
     padding: 1%;
     margin-bottom: 10px;}
       .inner_ui_container{position: absolute;     top: 0;
@@ -81,10 +81,13 @@
  
     
     }
+    .text_container span{  font-size: 1.5vw; }
+    .text_container p{  font-size: 1.5vw; }
 
-
-    @media only screen and (max-width: 800px) {
-      .text_container{  font-size: 2.5vw;    border-radius: 6px; }
+    @media only screen and (max-width: 900px) {
+      .text_container{ border-radius: 6px;    padding:2%;}
+      .text_container p{  font-size: 2.5vw;    }
+      .text_container span{ font-size: 2.5vw;  }
 }
 
 
@@ -102,9 +105,11 @@
            <div  class="black_bar" >
              
              <div class="text_container"> 
-              <span>bunny:</span> <p style="    padding: 0;
+              <span style="
+              color: #d84051;
+          ">bunny:</span> <p style="    padding: 0;
               margin: 1%;
-              color: #d4d4d4;"> texto de el personaje  </p>
+              color: #d4d4d4;"> texto de el personaje    <a target="_self"  href="panel2.html"> link </a> </p>
                
               </div>
             </div> 
