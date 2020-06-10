@@ -1,0 +1,94 @@
+<!doctype   html >
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
+    <link rel="stylesheet" href="fullwiev_btn.css"> 
+    <style>
+      body{
+        margin: 0px auto;
+  
+
+      }
+      #full-container{
+        height: 100vh;
+        width: 100%;
+        background-color: black;
+      }
+      #parte-superior{
+        background-color: white;
+        width: 100%;
+        height: 60%;
+        position: relative;
+        background-image: url(fondo.png);
+        background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+      }
+      #parte-inferior{
+        background-color: #02021a;
+        width: 100%;
+        height: 40%;
+      }
+
+      #barra-superior{
+        background-color:  #02021a;
+        width: 100%;
+        height: 20%;
+       
+      }
+      #personaje-container{
+        /* background-color: #6d6d8ab0; */
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+      }
+      #personaje{
+        /* background-color: #7474cc;
+    width: 20%; */
+    height: 100%;
+      }
+    </style>
+  </head>
+    <body>
+      <section id="full-container">
+        <div id="parte-superior">
+          <div id="personaje-container"> 
+            <div  id="personaje">
+              <img src="red.png" style="
+    height: 100%;
+    width: auto;
+">
+            </div>
+          </div>
+          <div id="barra-superior" ></div>
+        </div>
+        <div id="parte-inferior"></div>
+
+      </section>
+    </body>
+    <script>
+      function fullScreen() {
+        // Kind of painful, but this is how it works for now
+        if (document.documentElement.requestFullscreen) {
+        document.getElementById("contenedor").requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+          document.getElementById("contenedor").mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.getElementById("contenedor").webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+          document.getElementById("contenedor").msRequestFullscreen();
+        }
+      }
+      function lock(orientation) {
+        fullScreen();
+        screen.orientation.lock(orientation);
+      }
+    </script>
+</html>
