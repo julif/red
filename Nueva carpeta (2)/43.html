@@ -121,7 +121,7 @@
   
 
       }
-      #personaje{
+      #personajes{
         /* background-color: #7474cc;
     width: 20%; */
     height: 100%;
@@ -133,17 +133,33 @@
     /* margin-top: 2px;transition: 0.5s;
     -webkit-transition: 0.5s; */
 
-    -webkit-transition: all 2s;
+    /* -webkit-transition: all 2s;
     -moz-transition: all 2s;
     -ms-transition: all 2s;
     -o-transition: all 2s;
-    transition: all 2s;
+    transition: all 2s; */
+
+    
 
 
       }
-      #personaje img{
+      #personajes{
         /* transition: 0.5s;
     -webkit-transition: 0.5s; */
+    animation: slidein 0.9s forwards;
+    justify-content: space-around;
+
+      }
+      .personaje{
+        /* display: contents; */
+        height: inherit;
+        /* background-color: blue; */
+        animation: slidein 0.5s forwards;
+       
+        
+      }
+      .personaje img{  
+        animation-delay: 0.30s;
 
       }
 
@@ -177,7 +193,7 @@
     
       @media only screen and (max-width: 800px) {
         #titulo{font-size: 3.6vw;    height: 35%;}
-        #texto{ font-size: 2.5vw;}
+        #texto{ font-size: 2.5vw; min-height: 30%;}
 }
 
 
@@ -195,14 +211,15 @@
 
 
 
-
       @keyframes slidein {
   from {
-    height: 0px;
+    height: 100%;
+    width: 0px;
     transform: scale(0);
     opacity: 0;
   }
   to {
+    width: auto; /*This will change for each element */
     transform: scale(1);
     opacity: 1;
   }
@@ -251,11 +268,9 @@
           <div id="parte-superior">
             <div id="barra-superior" ></div>
             <div id="personaje-container"> 
-              <div  id="personaje">
-                <img  class="animate__animated animate__fadeInRight" src="red.png" style="
-      height: 100%;
-      width: auto;
-  ">
+              <div  id="personajes">
+                <div class="personaje"><img  class="animate__animated animate__fadeInRight" src="red.png" style="height: 100%;width: auto;"></div>
+                
               </div>
             </div>
           </div>
@@ -280,11 +295,14 @@
     <script>
       function myFunction() {
         //  document.getElementById("personaje").innerHTML = "  <img  class=\"animate__animated animate__fadeInRight\" src=\"red3.png\" style=\"height: 100%;width: auto;\">";
-         document.getElementById("personaje").innerHTML = "  <img   src=\"red3.png\" style=\"height: 100%;width: auto;\">";
+
+         //document.getElementById("personaje").innerHTML = "  <img   src=\"red3.png\" style=\"height: 100%;width: auto;\">";
+
+
          //document.getElementById("personaje").innerHTML += "  <img   src=\"red.png\" style=\"height: 100%;width: auto;\">";
-        //  let newElem = `<img   src=\"red.png\" style=\"height: 100%;width: auto;\">`;
-        //  let elements = document.getElementById("personaje");
-        // elements.insertAdjacentHTML("afterbegin", newElem);
+          let newElem = `  <div class="personaje"><img  class="animate__animated animate__fadeInRight" src="red3.png" style="height: 100%;width: auto;"></div>`; 
+         let elements = document.getElementById("personajes");
+       elements.insertAdjacentHTML("beforeend", newElem);
 
         document.getElementById("texto").innerHTML = "  <p class=\"animate__animated animate__fadeInDown\"> texto de la parte inferior 2 </p>";
       }
