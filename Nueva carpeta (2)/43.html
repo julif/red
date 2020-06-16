@@ -32,6 +32,9 @@
         background-color: #02021a; */
         background-color:  var(--main-bg-color);
 
+
+        
+
        
         overflow: hidden;
         display: flex;
@@ -147,7 +150,7 @@
         /* transition: 0.5s;
     -webkit-transition: 0.5s; */
     animation: slidein 0.9s forwards;
-    justify-content: space-around;
+   
 
       }
       .personaje{
@@ -306,6 +309,32 @@
 
         document.getElementById("texto").innerHTML = "  <p class=\"animate__animated animate__fadeInDown\"> texto de la parte inferior 2 </p>";
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      function maquinadeescribir(){
+
+text = str.slice(0,++e);
+if (text === str) return;
+document.getElementById('maquinadeescribir').innerHTML = text;
+var char = text.slice(-1);
+if( char === '<' ) isTag = true;
+if( char === '>' ) isTag = false;
+if (isTag) return maquinadeescribir();
+ setTimeout(maquinadeescribir, 50);} 
+
+ 
       </script>
   
     <script>

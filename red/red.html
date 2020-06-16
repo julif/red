@@ -1,0 +1,366 @@
+<!doctype  html >
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
+    <style> 
+      @font-face {
+        font-family: "Kiddo Handwriting";
+        src: url(KiddoHandwriting.ttf) format("truetype");
+      }
+      :root {
+        --main-bg-color: #191525;
+      }
+
+      body{ 
+        background-color: black; 
+        margin: 0px auto;
+         font-family: "Kiddo Handwriting"; 
+        } 
+      container{
+        height: 100vh;
+        width: 100%;
+        /* background-color: black;
+        background-color: #02021a; */
+        background-color:  var(--main-bg-color);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      aspect_ratio{    
+        background-color: black; 
+        width: 100%;/* height: 0; */
+        /* padding-top: 56.25%;    padding-top: 47.25%; */
+
+        /* padding-top: 56.25%; */padding-top: 56.25%; /* 16:9 Aspect Ratio */
+
+        width: 100vw;
+        /* height: 56.25vw; */
+        max-height: 100vh;
+        max-width: 177.78vh;
+        margin: auto;
+        /* position: absolute; */
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;    
+        position: relative;
+      }
+      #full-container{
+        width: 100%;
+    background-color: #fffbfb;
+    /* height: 100%; */
+    height: 100vh;
+    display: block;
+    position: absolute;
+    top: 0;
+      }
+      #parte-superior{
+        background-color: white;
+        width: 100%;
+        height: 60%;
+        position: relative;
+        
+        background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+      }
+      #parte-inferior{
+        background-color: #02021a;
+        background-color:  var(--main-bg-color);
+        width: 100%;
+        height: 40%;
+        /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    color: #8d87a5;
+    /* font-family: "Kiddo Handwriting"; */
+    /* font-family: cursive; */
+    /* font-size: x-large; */
+    position: relative;
+
+
+
+    letter-spacing: 2.5px;
+    font-kerning: none;
+    font-weight: 600;
+
+
+
+
+    overflow: hidden;
+      }
+
+    
+    #fondo{
+      background-image: url(img/fondo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    }
+    #barra-superior{
+        background-color:  #02021a;
+        background-color:  var(--main-bg-color);
+        width: 100%;
+        height: 20%;
+       
+      }
+      #personaje-container{
+        /* background-color: #6d6d8ab0; */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;   margin-top: 2px;
+    
+  
+
+      }
+      #personajes{ 
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+
+
+        /* justify-content: space-around; */
+    min-width: 70%;
+
+
+        /* background-color: #6d6d8ab0;
+    width: 100%;
+    height: 100%; */
+        }
+        .personaje {
+  /* background-color: #0000ff1f; */
+  margin: 25px;
+  animation: slidein 0.5s forwards;
+  /* width: 50px;
+  height: 200px; */
+
+
+  height: 100%;
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+
+
+
+  
+}
+#titulo{
+    /* background-color: #ff000069; */
+    width: 100%;
+    height: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vw;
+  
+}
+#texto{
+  /* background-color: #8990c769; */
+    width: 100%;
+    min-height: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    max-width: 90%;
+    /* background-color: red; */
+    text-align: center;
+    margin: 0px auto;
+}
+#texto p{margin: 0px;}
+
+@media only screen and (max-width: 800px) {
+        #titulo{font-size: 3.6vw;    height: 35%;}
+        #texto{ font-size: 2.5vw; min-height: 30%;}
+}
+
+
+
+
+
+/* #personaje{animation-delay: 0.50s;} */
+#texto p{animation-delay: 0.70s;}
+
+
+
+
+
+
+
+
+
+
+.personaje img{animation-delay: 0.30s;}
+@keyframes slidein {
+  from {
+    width: 0px;
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    /* width: 150px; This will change for each element */
+    /* width: fit-content; */
+    /* width: 100%; */
+    width: var(--h);            /*This will change for each element */
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body id="contenedor">
+    <container>
+      <aspect_ratio>
+        <div id="full-container">
+          <div id="parte-superior">
+            <div id="fondo">
+              <div id="barra-superior" ></div>
+              <div id="personaje-container">
+                <!-- <div id="personajes"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
+                <div id="personaje-container"> 
+   
+                  <div id="personajes">  <div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red.png" style="height: 100%;width: auto;"></div> </div>
+                  <script> let dynamicHeight = document.getElementById("personaje-container").clientWidth /4.0;   $( ".personaje" ).css( "--h", dynamicHeight+"px" ); </script>
+                 
+            
+                </div>
+              </div>
+              
+      
+            </div>
+          </div>
+          <div id="parte-inferior">
+            <!-- <div class="personaje"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
+            <div id="titulo"> <p style="     color: #b42636;margin: 0px;" id="nombre_div" > - Red -</p></div>
+        <!-- <p id="texto" class="animate__animated animate__fadeInDown" >* Bunny camina por el bosque Hablando en voz ezageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p> -->
+        <div id="texto" >
+          <p id="dialogo" class="animate__animated animate__fadeInDown" >* Bunny camina por el bosque Hablando en voz ezageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p>
+        </div>
+        <button id="button" style="position: absolute;bottom: 0px;" >Siguiente</button>
+          </div>
+    
+   
+        
+        
+      </div>
+      </aspect_ratio>
+    </container> 
+  </body>
+  <script>
+  var i= 0;
+  document.getElementById("button").addEventListener("click", next);
+  function next() { 
+
+    let dynamicHeight = document.getElementById("personaje-container").clientWidth /4.0;
+    let personajes = document.getElementById("personajes");
+
+  console.log(dynamicHeight);
+
+    switch (i) {
+      case 0:
+        //document.getElementById("personajes").innerHTML = "<img src=\"img/red3.png\"  style=\" height: 150px; width: auto;\" >"
+        //let newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red3.png" style="height: 100%;width: auto;"></div>`;    
+       // document.getElementById("personajes").innerHTML = "<img src=\"img/red3.png\"  style=\" height: 150px; width: auto;\" >"
+        newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red3.png" style="height: 100%;width: auto;"></div>`;    
+        nombre="- Bunny -";
+        dialogo = "ohh!! Espero que nada inesperado se cruze en mi camino por que tengo que llevarle esta canasta con comida a mi abuela.";
+        personajes.insertAdjacentHTML("beforeend", newPersonaje);
+        i++;  
+      break;
+      case 1:
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInLeft"   src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red.png" style="height: 100%;width: auto;"></div>`;    
+     // document.getElementById("personajes").innerHTML = "<img src=\"img/red2.png\"  style=\" height: 150px; width: auto;\" >"
+        nombre="- Narrador -";
+        dialogo = "* De repente una niebla empieza a rodearla y se oye una voz *";
+        personajes.insertAdjacentHTML("afterbegin", newPersonaje);
+        i++;  
+      break;
+      case 2: 
+      //document.getElementById("personajes").innerHTML = "<img src=\"img/red.png\"  style=\" height: 150px; width: auto;\" >"
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px;' ><img class="animate__animated animate__fadeInLeft"   src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red.png" style="height: 100%;width: auto;"></div>`;    
+        nombre="- Lobo -";
+        dialogo = "pequeña flor perdida en el bosque, ¿cual es la prisa?";
+        personajes.innerHTML=newPersonaje;
+       // $("personaje").css("animation", "none");
+       // $( ".personaje" ).css( "animation", "none!important" );
+        i++;  
+      break;
+      case 3:
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red3.png" style="height: 100%;width: auto;"></div>`; 
+      personajes.innerHTML=newPersonaje;
+        nombre="- Lobo -";  
+        dialogo = "tengo mucha hambre pequeña, ¿no vas a ofrecerme nada de lo que traes en  esa canasta? Donde quedaron los modales de antaño.";
+        i++;  
+      break;
+      case 4:
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red.png" style="height: 100%;width: auto;"></div>`; 
+      personajes.innerHTML=newPersonaje;
+        nombre="- Bunny -";
+        dialogo = "oh! Disculpe pero no creo traer nada de su gusto.";
+        i++;  
+      break;
+      case 5:
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red3.png" style="height: 100%;width: auto;"></div>`; 
+      personajes.innerHTML=newPersonaje;
+        nombre="- Lobo -";
+        dialogo = "ooohhhh pero claro que traes algo de mi gusto, puedo oler hogazas de pan, puedo oler algunas manzanas y puedo oler...";
+        i++;  
+      break;
+      case  6:
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red.png" style="height: 100%;width: auto;"></div>`; 
+      personajes.innerHTML=newPersonaje;
+        nombre="- Lobo -";
+        dialogo = "y puedo oler una trampa a kilometros de distancia";
+    }
+    switch (nombre) {
+      case "- Bunny -": document.getElementById("nombre_div").style.color= '#b42636';
+      break;
+      case "- Narrador -":document.getElementById("nombre_div").style.color= '#413a56';
+      break;
+      case "- Lobo -":document.getElementById("nombre_div").style.color= '#483a73';
+    }
+   
+     document.getElementById("nombre_div").innerHTML= nombre;
+
+
+     dialogo= "<p id=\"dialogo\" class=\"animate__animated animate__fadeInDown\" >"+ dialogo +"</p>";
+     document.getElementById("texto").innerHTML= dialogo;
+
+
+
+
+
+ 
+  
+  
+  
+
+
+  }
+  </script>
+</html>
