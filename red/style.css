@@ -1,0 +1,247 @@
+@font-face {
+    font-family: "Kiddo Handwriting";
+    src: url(KiddoHandwriting.ttf) format("truetype");
+  }
+  :root {
+    --main-bg-color: #191525;
+  }
+
+  body{ 
+    background-color: black; 
+    margin: 0px auto;
+     font-family: "Kiddo Handwriting"; 
+    } 
+  container{
+    height: 100vh;
+    width: 100%;
+    /* background-color: black;
+    background-color: #02021a; */
+    background-color:  var(--main-bg-color);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  aspect_ratio{    
+    background-color: black; 
+    width: 100%;/* height: 0; */
+    /* padding-top: 56.25%;    padding-top: 47.25%; */
+
+    /* padding-top: 56.25%; */padding-top: 56.25%; /* 16:9 Aspect Ratio */
+
+    width: 100vw;
+    /* height: 56.25vw; */
+    max-height: 100vh;
+    max-width: 177.78vh;
+    margin: auto;
+    /* position: absolute; */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    position: relative;
+  }
+  #full-container{
+    width: 100%;
+background-color: #fffbfb;
+/* height: 100%; */
+height: 100vh;
+display: block;
+position: absolute;
+top: 0;
+  }
+  #fullwiev { background-color:  var(--main-bg-color)!important;}
+  .fa-expand {font-size: 30px!important;}
+  #parte-superior{
+    background-color: white;
+    width: 100%;
+    height: 60%;
+    position: relative;
+    
+    background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+  }
+  #parte-inferior{
+    background-color: #02021a;
+    background-color:  var(--main-bg-color);
+    width: 100%;
+    height: 40%;
+    /* display: flex;
+justify-content: center;
+align-items: center; */
+
+color: #8d87a5;
+/* font-family: "Kiddo Handwriting"; */
+/* font-family: cursive; */
+/* font-size: x-large; */
+position: relative;
+
+
+
+letter-spacing: 2.5px;
+font-kerning: none;
+font-weight: 600;
+
+
+
+
+overflow: hidden;
+  }
+
+
+#fondo{
+  background-image: url(img/fondo.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+width: 100%;
+height: 100%;
+}
+#barra-superior{
+    background-color:  #02021a;
+    background-color:  var(--main-bg-color);
+    width: 100%;
+    height: 20%;
+   
+  }
+  #personaje-container{
+    /* background-color: #6d6d8ab0; */
+width: 100%;
+height: 100%;
+position: absolute;
+bottom: 0;
+display: flex;
+justify-content: center;   margin-top: 2px;
+
+
+
+  }
+  #personajes{ 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+
+
+    /* justify-content: space-around; */
+min-width: 70%;
+
+
+    /* background-color: #6d6d8ab0;
+width: 100%;
+height: 100%; */
+    }
+    .personaje {
+/* background-color: #0000ff1f; */
+/* margin: 25px; */
+margin: 2%;
+animation: slidein 0.5s forwards;
+width: var(--h);
+/* width: 50px;
+height: 200px; */
+
+
+height: 100%;
+/* width: auto; */
+
+display: flex;
+justify-content: center;
+
+
+
+
+}
+#titulo{
+/* background-color: #ff000069; */
+width: 100%;
+height: 22%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 2.5vw;
+
+}
+#texto{
+/* background-color: #8990c769; */
+width: 100%;
+min-height: 55%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.5vw;
+max-width: 90%;
+/* background-color: red; */
+text-align: center;
+margin: 0px auto;
+}
+#texto p{margin: 0px;}
+
+
+
+
+
+#button{    position: absolute;
+    bottom: 0px;
+    right: 0;
+    font-family: "Kiddo Handwriting";
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 8px;
+    margin: 1%;
+    font-size: 1.5vw;
+    letter-spacing: 2.5px;
+    font-kerning: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+/* #button:focus{ background-color: red;} */
+@media only screen and (max-width: 800px) {
+    #titulo{font-size: 3.6vw;    height: 35%;}
+    #texto{ font-size: 2.5vw; min-height: 30%;}
+    #button{ font-size: 2.5vw;}
+}
+
+
+
+
+
+/* #personaje{animation-delay: 0.50s;} */
+#texto p{animation-delay: 0.70s;}
+
+
+
+
+
+
+
+
+
+
+.personaje img{animation-delay: 0.30s;}
+@keyframes slidein {
+from {
+width: 0px;
+transform: scale(0);
+opacity: 0;
+}
+to {
+/* width: 150px; This will change for each element */
+/* width: fit-content; */
+/* width: 100%; */
+width: var(--h);            /*This will change for each element */
+transform: scale(1);
+opacity: 1;
+}
+}
+
+
+
+
+
+
+
