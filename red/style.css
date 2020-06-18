@@ -46,7 +46,7 @@
   }
   #full-container{
     width: 100%;
-background-color: #fffbfb;
+    background-color:  var(--main-bg-color);
 /* height: 100%; */
 height: 100vh;
 display: block;
@@ -56,7 +56,7 @@ top: 0;
   #fullwiev { background-color:  var(--main-bg-color)!important;}
   .fa-expand {font-size: 30px!important;}
   #parte-superior{
-    background-color: white;
+
     width: 100%;
     height: 60%;
     position: relative;
@@ -94,19 +94,38 @@ overflow: hidden;
   }
 
 
-#fondo{
-  background-image: url(img/fondo.png);
+#fondo{ 
+  
+  background-color:  var(--main-bg-color);
+
+  /* background-image: url(img/fondo.png); */
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 width: 100%;
 height: 100%;
+
+
+position: absolute;
+bottom: 0;
+}
+#fondo_img{
+  background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+width: 100%;
+height: 100%;
+
 }
 #barra-superior{
     background-color:  #02021a;
     background-color:  var(--main-bg-color);
     width: 100%;
     height: 20%;
+
+
+    z-index: 0;
+    position: absolute;
    
   }
   #personaje-container{
@@ -163,7 +182,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 font-size: 2.5vw;
-
+/* transition: all 0.5s ease 0s; */
+transition: 0.5s;
+-webkit-transition: 0.5s;
 }
 #texto{
 /* background-color: #8990c769; */
@@ -198,11 +219,12 @@ margin: 0px auto;
     font-kerning: none;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.5s ease 0s;
 }
-/* #button:focus{ background-color: red;} */
+#button:focus{ outline: none;}
 @media only screen and (max-width: 800px) {
     #titulo{font-size: 3.6vw;    height: 35%;}
-    #texto{ font-size: 2.5vw; min-height: 30%;}
+    #texto{ font-size: 2.5vw; min-height: 20%;}
     #button{ font-size: 2.5vw;}
 }
 
