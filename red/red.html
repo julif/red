@@ -28,7 +28,7 @@
                 <!-- <div id="personajes"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
                 <div id="personaje-container"> 
    
-                  <div id="personajes">  <div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="img/animatic.png" style="height: 100%;width: auto;"></div> </div>
+                  <div id="personajes">  <div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeIn"   src="img/animatic.png" style="height: 100%;width: auto;"></div> </div>
                   <script> let dynamicHeight = document.getElementById("personaje-container").clientWidth /4.0;   $( ".personaje" ).css( "--h", dynamicHeight+"px" ); </script>
                  
             
@@ -87,7 +87,7 @@
         i++;  
       break;
       case 1:
-      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInLeft"   src="img/animatic.png" style="height: 100%;width: auto;"></div>`;    
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeIn"   src="img/animatic.png" style="height: 100%;width: auto;"></div>`;    
      // document.getElementById("personajes").innerHTML = "<img src=\"img/red2.png\"  style=\" height: 150px; width: auto;\" >"
         nombre="- Narrador -";
         dialogo = "* De repente una niebla empieza a rodearla y se oye una voz *";
