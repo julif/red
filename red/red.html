@@ -29,11 +29,14 @@
 <div id="precarga_img_splash" class="preloader" style="margin-left: 15000px; position: fixed;">
   <img   src="img/red.png" width="150px">
   <img src="img/red3.png" width="150px"> 
+  <img src="img/red4.png" width="150px"> 
+  <img src="img/red5.png" width="150px"> 
   <img src="img/animatic.png" width="150px">
   <img src="img/animatic2.png" width="150px"> 
   <img src="img/lobo.png" width="150px"> 
   <img src="img/lobo2.png" width="150px"> 
   <img src="img/fondo.png" width="150px"> 
+  <img src="img/fondo2.png" width="150px"> 
 </div>
 
 
@@ -148,7 +151,7 @@
         nombre="- Lobo -";
         dialogo = "pequeña flor perdida en el bosque, ¿cual es la prisa?";
         //document.getElementById("fondo").style.backgroundImage = "url('img/fondo.png')";
-        document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo.png);" ></div>';
+        document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo2.png);" ></div>';
         personajes.innerHTML=newPersonaje;
        // $("personaje").css("animation", "none");
        // $( ".personaje" ).css( "animation", "none!important" );
@@ -162,7 +165,7 @@
         i++;  
       break;
       case 4:
-      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/red3.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/red5.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
         nombre="- Bunny -";
         dialogo = "oh! Disculpe pero no creo traer nada de su gusto.";
