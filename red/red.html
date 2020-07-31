@@ -72,9 +72,9 @@
             <div id="titulo"> <p style="    margin: 0px;" id="nombre_div" > </p></div>
         <!-- <p id="texto" class="animate__animated animate__fadeInDown" >* Bunny camina por el bosque Hablando en voz ezageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p> -->
         <div id="texto" >
-          <p id="dialogo"  style="color: #4e4861;" class="animate__animated animate__fadeInDown" >* Bunny camina por el bosque Hablando en voz exageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p>
+          <p id="dialogo"  style="color: #4e4861;" class="animate__animated animate__fadeInDown" >* bunny camina por el bosque hablando en voz exageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p>
         </div>
-        <button id="button" style="position: absolute;bottom: 0px;right: 0;" >Siguiente</button>
+        <button id="button" style="position: absolute;bottom: 0px;right: 0;" >siguiente</button>
           </div>
     
    
@@ -121,8 +121,8 @@
        // document.getElementById("personajes").innerHTML = "<img src=\"img/red3.png\"  style=\" height: 150px; width: auto;\" >"
         newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="img/red.png" style="height: 100%;width: auto;"></div>`;   
         //newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px;' ><img class="animate__animated animate__fadeInLeft"   src="img/lobo3.png" style="height: 100%;width: auto;"></div>`;   
-        nombre="- Bunny -";
-        dialogo = "ohh!! Espero que nada inesperado se cruze en mi camino por que tengo que llevarle esta canasta con comida a mi abuela.";
+        nombre="- bunny -";
+        dialogo = "ohh!! espero que nada inesperado se cruze en mi camino por que tengo que llevarle esta canasta con comida a mi abuela.";
         personajes.innerHTML=newPersonaje;
         //personajes.insertAdjacentHTML("beforeend", newPersonaje);
 
@@ -137,8 +137,8 @@
       case 1:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeIn"   src="img/animatic.png" style="height: 100%;width: auto;"></div>`;    
      // document.getElementById("personajes").innerHTML = "<img src=\"img/red2.png\"  style=\" height: 150px; width: auto;\" >"
-        nombre="- Narrador -";
-        dialogo = "* De repente una niebla empieza a rodearla y se oye una voz *";
+        nombre="- narrador -";
+        dialogo = "* de repente una niebla empieza a rodearla y se oye una voz *";
         //personajes.insertAdjacentHTML("afterbegin", newPersonaje);
         personajes.innerHTML=newPersonaje;
         //document.getElementById("fondo").style.backgroundImage = null;
@@ -148,8 +148,8 @@
       case 2: 
       //document.getElementById("personajes").innerHTML = "<img src=\"img/red.png\"  style=\" height: 150px; width: auto;\" >"
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px;' ><img class="animate__animated animate__fadeInRight"   src="img/lobo3.png" style="height: 100%;width: auto;"></div>`;    
-        nombre="- Lobo -";
-        dialogo = "pequeña flor perdida en el bosque, ¿cual es la prisa?";
+        nombre="- lobo -";
+        dialogo = "Pequeña flor perdida en el bosque, ¿cual es la prisa?";
         //document.getElementById("fondo").style.backgroundImage = "url('img/fondo.png')";
         document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo2.png);" ></div>';
         personajes.innerHTML=newPersonaje;
@@ -160,28 +160,28 @@
       case 3:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="img/lobo3.png" style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
-        nombre="- Lobo -";  
-        dialogo = "tengo mucha hambre pequeña, ¿no vas a ofrecerme nada de lo que traes en  esa canasta? Donde quedaron los modales de antaño.";
+        nombre="- lobo -";  
+        dialogo = "tengo mucha hambre pequeña, ¿no vas a ofrecerme nada de lo que traes en  esa canasta? donde quedaron los modales de antaño? ";
         i++;  
       break;
       case 4:
-      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/red5.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/red.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
-        nombre="- Bunny -";
-        dialogo = "oh! Disculpe pero no creo traer nada de su gusto.";
+        nombre="- bunny -";
+        dialogo = "oh! disculpe pero no creo traer nada de su gusto.";
         i++;  
       break;
       case 5:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/lobo3.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
-        nombre="- Lobo -";
+        nombre="- lobo -";
         dialogo = "ooohhhh pero claro que traes algo de mi gusto, puedo oler hogazas de pan, puedo oler algunas manzanas y puedo oler...";
         i++;  
       break;
       case  6:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="img/lobo3.png" style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
-        nombre="- Lobo -";
+        nombre="- lobo -";
         dialogo = "y puedo oler una trampa a kilometros de distancia";
         document.getElementById("button").style.display= 'none';
     }
@@ -190,12 +190,12 @@
     document.getElementById("texto").innerHTML= dialogo;
 
     switch (nombre) {
-      case "- Bunny -": 
+      case "- bunny -": 
       document.getElementById("nombre_div").style.color= '#b42636';
-      document.getElementById("dialogo").style.color= '#8d87a5';
+      document.getElementById("dialogo").style.color= '#dad6e8!important';
      
       break;
-      case "- Narrador -":
+      case "- narrador -":
       document.getElementById("nombre_div").style.color= '#413a56';
       document.getElementById("dialogo").style.color= '#4e4861';
 
@@ -206,9 +206,9 @@
       document.getElementById("dialogo").style.color= '#413a56!important';
 
       break;
-      case "- Lobo -":
+      case "- lobo -":
       document.getElementById("nombre_div").style.color= '#3c3354';
-      document.getElementById("dialogo").style.color= ' #8d87a5!important';
+      document.getElementById("dialogo").style.color= ' #dad6e8!important';
     }
    
      document.getElementById("nombre_div").innerHTML= nombre;

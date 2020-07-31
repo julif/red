@@ -1,15 +1,22 @@
-@font-face {
+/* @font-face {
     font-family: "Kiddo Handwriting";
     src: url(KiddoHandwriting.ttf) format("truetype");
+  } */
+  @font-face {
+    font-family: "julif Handwriting";
+    src: url(Julif_handwriten.ttf) format("truetype");
   }
   :root {
     --main-bg-color: #191525;
+    --main-bg-color: #0b0a10;
   }
 
   body{ 
     background-color: black; 
     margin: 0px auto;
-     font-family: "Kiddo Handwriting"; 
+ 
+      /* font-family: "Kiddo Handwriting"; */
+    font-family:"julif Handwriting";
     } 
 
 
@@ -101,7 +108,7 @@ background-size: cover;
 justify-content: center;
 align-items: center; */
 
-color: #8d87a5;
+color: #d2d0dc;
 /* font-family: "Kiddo Handwriting"; */
 /* font-family: cursive; */
 /* font-size: x-large; */
@@ -109,9 +116,10 @@ position: relative;
 
 
 
-letter-spacing: 2.5px;
+/* letter-spacing: 2.5px; */
+letter-spacing: 2.0px;
 font-kerning: none;
-font-weight: 600;
+/* font-weight: 600; */
 
 
 
@@ -133,6 +141,7 @@ height: 100%;
 
 
 position: absolute;
+background-position: bottom;
 bottom: 0;
 }
 #fondo_img{
@@ -141,6 +150,7 @@ background-repeat: no-repeat;
 background-size: cover;
 width: 100%;
 height: 100%;
+/* background-position: bottom; */
 
 }
 #barra-superior{
@@ -211,15 +221,18 @@ font-size: 2.5vw;
 /* transition: all 0.5s ease 0s; */
 transition: 0.5s;
 -webkit-transition: 0.5s;
+font-weight: 600;
+letter-spacing: 2.2px;
 }
 #texto{
 /* background-color: #8990c769; */
 width: 100%;
-min-height: 55%;
+min-height: 40%;
 display: flex;
 justify-content: center;
 align-items: center;
-font-size: 1.5vw;
+/* font-size: 1.5vw; */
+font-size: 2.2vw;
 max-width: 90%;
 /* background-color: red; */
 text-align: center;
@@ -234,7 +247,8 @@ margin: 0px auto;
 #button{    position: absolute;
     bottom: 0px;
     right: 0;
-    font-family: "Kiddo Handwriting";
+    /* font-family: "Kiddo Handwriting"; */
+    font-family:"julif Handwriting";
     background-color: transparent;
     color: white;
     border: 2px solid white;
@@ -249,8 +263,8 @@ margin: 0px auto;
 }
 #button:focus{ outline: none;}
 @media only screen and (max-width: 800px) {
-    #titulo{font-size: 3.6vw;    height: 35%;}
-    #texto{ font-size: 2.5vw; min-height: 20%;}
+    #titulo{font-size: 3.8vw;    height: 35%;}
+    #texto{ font-size: 3.0vw; min-height: 20%;} 
     #button{ font-size: 2.5vw;}
 }
 
