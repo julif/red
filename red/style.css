@@ -259,9 +259,11 @@ margin: 0px auto;
     font-kerning: none;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.5s ease 0s;
+    /* transition: all 0.5s ease 0s; */
 }
 #button:focus{ outline: none;}
+#button:active{ outline: none; background-color: white!important;
+  color: black!important;}
 @media only screen and (max-width: 800px) {
     #titulo{font-size: 3.8vw;    height: 35%;}
     #texto{ font-size: 3.0vw; min-height: 20%;} 
@@ -269,16 +271,22 @@ margin: 0px auto;
 }
 
 
+@media (orientation: portrait) {
+  #full-container{ height: 100%; }
+  #button{ position: fixed!important; font-size: 3vw; }
+  #titulo {font-size: 5vw;  }
+  #texto {font-size: 4vw; }
 
+}
 
 
 /* #personaje{animation-delay: 0.50s;} */
+
+
+
+
+
 #texto p{animation-delay: 0.70s;}
-
-
-
-
-
 
 
 
