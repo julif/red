@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
+    <!-- Production version -->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
 
     <link rel="shortcut icon" href="img/favicon/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
@@ -34,6 +36,11 @@
   </head>
   <body id="contenedor">
     <div id="full">
+      <div id="tooltip"  role="tooltip">
+        <span >  se recomienda pantalla completa </span>
+     
+        <div id="arrow" data-popper-arrow></div>
+      </div>
       <button id="fullwiev" onclick="lock('landscape')">
         <i class="fa fa-expand"></i>
       </button>
@@ -56,7 +63,7 @@
   <img src="img/animatic.png" width="150px">
   <img src="img/animatic2.png" width="150px"> 
   <img src="img/lobo.png" width="150px"> 
-  <img src="img/lobo2.png" width="150px"> 
+  <img src="img/lobo3.png" width="150px"> 
   <img src="img/fondo.png" width="150px"> 
   <img src="img/fondo2.png" width="150px"> 
 </div>
@@ -96,6 +103,7 @@
         <div id="texto" >
           <p id="dialogo"  style="color: #4e4861;" class="animate__animated animate__fadeInDown" >* bunny camina por el bosque hablando en voz exageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p>
         </div>
+       
         <button id="button" style="position: absolute;bottom: 0px;right: 0;" >siguiente</button>
           </div>
     
@@ -304,5 +312,42 @@
       screen.orientation.lock(orientation);
     }
   </script>
-  <script>   </script>
+
+<script>
+  // const button = document.querySelector('#button');
+  
+  const button = document.querySelector('#fullwiev');
+  const tooltip = document.querySelector('#tooltip');
+
+  // Pass the button, the tooltip, and some options, and Popper will do the
+  // magic positioning for you:
+/*   Popper.createPopper(button, tooltip, {
+    placement: 'right',
+  }); */
+  Popper.createPopper(button, tooltip, {
+    placement: 'left',
+  modifiers: [
+    {
+      name: 'offset',
+     
+      options: {
+        offset: [0, 10],
+      },
+    },
+  ],
+});
+</script>
+
+  <script> 
+   setTimeout(myFunction2, 3000)
+   setTimeout(myFunction3, 9000)
+   function myFunction2() {
+      document.getElementById("tooltip").style.opacity = 100;
+  
+     }
+
+     function myFunction3() {
+      document.getElementById("tooltip").style.opacity = 0;
+     }
+    </script>
 </html>

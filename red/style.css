@@ -315,3 +315,66 @@ opacity: 1;
 
 
 
+#tooltip {
+ 
+  color: #0b0a10;
+
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+
+
+
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+    pointer-events: none;
+ 
+    z-index: 1;
+    background: rgb(255, 255, 255);
+    padding: 5px 10px;
+    border-radius: 4px;
+
+
+    display: flex;
+    opacity: 0;
+    transition: all 0.5s ease 0s;
+}
+#tooltip span{ 
+  width: 130px; 
+  text-align: center;
+}
+#arrow,
+#arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  z-index: -1;
+}
+
+#arrow::before {
+  content: '';
+  transform: rotate(45deg);
+  background: white;
+}
+
+
+#tooltip[data-popper-placement^='top'] > #arrow {
+  bottom: -4px;
+}
+
+#tooltip[data-popper-placement^='bottom'] > #arrow {
+  top: -4px;
+}
+
+#tooltip[data-popper-placement^='left'] > #arrow {
+  right: -4px;
+}
+
+#tooltip[data-popper-placement^='right'] > #arrow {
+  left: -4px;
+}
+
+#contenedor:-webkit-full-screen > #full #tooltip {
+    display: none;
+}
