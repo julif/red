@@ -332,6 +332,7 @@ opacity: 1;
  
     z-index: 1;
     background: rgb(255, 255, 255);
+     background: #ffc522;
     padding: 5px 10px;
     border-radius: 4px;
 
@@ -356,6 +357,8 @@ opacity: 1;
   content: '';
   transform: rotate(45deg);
   background: white;
+ background: #ffc522;
+  
 }
 
 
