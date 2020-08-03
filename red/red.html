@@ -363,4 +363,24 @@
       document.getElementById("tooltip").style.opacity = 0;
      }
     </script>
+
+
+<script>
+
+(function($) {
+    $.fn.hasScrollBar = function() {
+        return this.get(0).scrollHeight > this.height();
+    }
+})(jQuery);
+
+
+$(function(){
+    alert('content 1: ' + $('#full-container').hasScrollBar());
+    alert('content 2: ' + $('#contenedor').hasScrollBar());
+});
+
+</script>
 </html>
+
+
+
