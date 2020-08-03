@@ -277,7 +277,7 @@ margin: 0px auto;
     height: 100%;
     background-color: red;
     /* width: 150px; */
-    height: 100vh;
+    height: 90vh;
     transition: min-height 500ms ease;
 
 
