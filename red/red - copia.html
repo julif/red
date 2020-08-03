@@ -35,95 +35,84 @@
     <link rel="stylesheet" href="fullwiev_btn.css"> 
   </head>
   <body id="contenedor">
-  
-    <landscape id="landscape" >
-
-      <div id="full">
-        <div id="tooltip"  role="tooltip">
-          <span >  se recomienda pantalla completa </span>
-       
-          <div id="arrow" data-popper-arrow></div>
-        </div>
-        <button id="fullwiev" onclick="lock('landscape')">
-          <i class="fa fa-expand"></i>
-        </button>
-      </div>
-  <!--  splash ------------------------------------------------------------------------------  -->
-  <section id="splash" style="display: none;">
-    <!-- <div class="loader">Loading...</div>  -->
-    <img src="img/julif.svg"   >
-      <!-- <div class="version"></div> -->
-      <div class="preloader">
-        <!-- <img  id="precarga_img_splash-art" src="img/splash-art-backgorund.png"    width="100px">
-        <img  id="precarga_img_splash-art_logo" src="img/logo.png"    width="100px"> -->
-      </div>
-  </section><!-- splash -->
-  <div id="precarga_img_splash" class="preloader" style="margin-left: 15000px; position: fixed;">
-    <img   src="img/red.png" width="150px">
-    <img src="img/red3.png" width="150px"> 
-    <img src="img/red4.png" width="150px"> 
-    <img src="img/red5.png" width="150px"> 
-    <img src="img/animatic.png" width="150px">
-    <img src="img/animatic2.png" width="150px"> 
-    <img src="img/lobo.png" width="150px"> 
-    <img src="img/lobo3.png" width="150px"> 
-    <img src="img/fondo.png" width="150px"> 
-    <img src="img/fondo2.png" width="150px"> 
-  </div>
-  
-  
-      <container  >
-  
-  
-  
-  
-        <aspect_ratio>
-          <div id="full-container">
-            <div id="parte-superior">
-              <div id="fondo"  >
-                <div id="fondo_img" class="animate__animated animate__fadeIn"></div>
-              </div>
-                <div id="barra-superior" ></div>
-                <div id="personaje-container">
-                  <!-- <div id="personajes"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
-                  <div id="personaje-container"> 
+    <div id="full">
+      <div id="tooltip"  role="tooltip">
+        <span >  se recomienda pantalla completa </span>
      
-                    <div id="personajes">  <div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeIn"   src="img/animatic2.png" style="height: 100%;width: auto;"></div> </div>
-                    <script> let dynamicHeight = document.getElementById("personaje-container").clientWidth /4.0;   $( ".personaje" ).css( "--h", dynamicHeight+"px" ); </script>
-                   
-              
-                  </div>
+        <div id="arrow" data-popper-arrow></div>
+      </div>
+      <button id="fullwiev" onclick="lock('landscape')">
+        <i class="fa fa-expand"></i>
+      </button>
+    </div>
+<!--  splash ------------------------------------------------------------------------------  -->
+<section id="splash" style="display: none;">
+  <!-- <div class="loader">Loading...</div>  -->
+  <img src="img/julif.svg"   >
+    <!-- <div class="version"></div> -->
+    <div class="preloader">
+      <!-- <img  id="precarga_img_splash-art" src="img/splash-art-backgorund.png"    width="100px">
+      <img  id="precarga_img_splash-art_logo" src="img/logo.png"    width="100px"> -->
+    </div>
+</section><!-- splash -->
+<div id="precarga_img_splash" class="preloader" style="margin-left: 15000px; position: fixed;">
+  <img   src="img/red.png" width="150px">
+  <img src="img/red3.png" width="150px"> 
+  <img src="img/red4.png" width="150px"> 
+  <img src="img/red5.png" width="150px"> 
+  <img src="img/animatic.png" width="150px">
+  <img src="img/animatic2.png" width="150px"> 
+  <img src="img/lobo.png" width="150px"> 
+  <img src="img/lobo3.png" width="150px"> 
+  <img src="img/fondo.png" width="150px"> 
+  <img src="img/fondo2.png" width="150px"> 
+</div>
+
+
+    <container  >
+
+
+
+
+      <aspect_ratio>
+        <div id="full-container">
+          <div id="parte-superior">
+            <div id="fondo"  >
+              <div id="fondo_img" class="animate__animated animate__fadeIn"></div>
+            </div>
+              <div id="barra-superior" ></div>
+              <div id="personaje-container">
+                <!-- <div id="personajes"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
+                <div id="personaje-container"> 
+   
+                  <div id="personajes">  <div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeIn"   src="img/animatic2.png" style="height: 100%;width: auto;"></div> </div>
+                  <script> let dynamicHeight = document.getElementById("personaje-container").clientWidth /4.0;   $( ".personaje" ).css( "--h", dynamicHeight+"px" ); </script>
+                 
+            
                 </div>
-                
-        
+              </div>
               
-            </div>
-            <div id="parte-inferior">
-              <!-- <div class="personaje"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
-              <div style=" width: 100%; height: 5%;"></div>
-              <div id="titulo"> <p style="    margin: 0px;" id="nombre_div" > </p></div>
-          <!-- <p id="texto" class="animate__animated animate__fadeInDown" >* Bunny camina por el bosque Hablando en voz ezageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p> -->
-          <div id="texto" >
-            <p id="dialogo"  style="color: #4e4861;" class="animate__animated animate__fadeInDown" >* bunny camina por el bosque hablando en voz exageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p>
-          </div>
-         
-          <button id="button" style="position: absolute;bottom: 0px;right: 0;" >siguiente</button>
-            </div>
       
-     
-          
-          
+            
+          </div>
+          <div id="parte-inferior">
+            <!-- <div class="personaje"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
+            <div style=" width: 100%; height: 5%;"></div>
+            <div id="titulo"> <p style="    margin: 0px;" id="nombre_div" > </p></div>
+        <!-- <p id="texto" class="animate__animated animate__fadeInDown" >* Bunny camina por el bosque Hablando en voz ezageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p> -->
+        <div id="texto" >
+          <p id="dialogo"  style="color: #4e4861;" class="animate__animated animate__fadeInDown" >* bunny camina por el bosque hablando en voz exageradamente alta y finguiendo que no nota que algo la esta siguiendo. *</p>
         </div>
-        </aspect_ratio>
-      </container> 
-
-
-    </landscape>
-    <portrait  id="portrait">   
-
-      <img src="img/rotate2.gif">
-    </portrait >
-
+       
+        <button id="button" style="position: absolute;bottom: 0px;right: 0;" >siguiente</button>
+          </div>
+    
+   
+        
+        
+      </div>
+      </aspect_ratio>
+    </container> 
   </body>
   <script>
 
