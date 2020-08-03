@@ -41,6 +41,7 @@
     </portrait >
 <landscape id="landscape">
 
+
       <div id="full">
         <div id="tooltip"  role="tooltip">
           <span >  se recomienda pantalla completa </span>
@@ -75,9 +76,17 @@
     <img src="img/fondo.png" width="150px"> 
     <img src="img/fondo2.png" width="150px"> 
   </div>
+  <div id="landing"> 
+    <div style="text-align: center;">
+      <h1> landing </h1>
+      <button onclick="myFunction()">Click me</button>
+      
+    </div>
+   
+
+  </div>
   
-  
-      <container >
+      <container  id="container" style="display: none;">
   
   
 
@@ -132,7 +141,10 @@
 
 
 
-
+function myFunction() {
+  document.getElementById("landing").style.display = "none";
+  document.getElementById("container").style.display = "flex";
+}
 
 
 
