@@ -367,9 +367,20 @@
 
 <script>
 
-if(navigator.userAgent.match(/Android/i)){
-    window.scrollTo(0,1);
- }
+(function($) {
+    $.fn.hasScrollBar = function() {
+        return this.get(0).scrollHeight > this.height();
+    }
+})(jQuery);
+
+
+$(function(){
+  var cosas= $('html').hasScrollBar();
+    alert('content 1: ' +  cosas);
+  
+    // alert('content 2: ' + $('#contenedor').hasScrollBar());
+});
+
 </script>
 </html>
 
