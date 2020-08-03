@@ -281,10 +281,10 @@ margin: 0px auto;
    }
 
 @media (orientation: portrait) {
-  #full-container{ height: 100%; }
+  /* #full-container{ height: 100%; }
   #button{ position: fixed!important; font-size: 3vw; }
   #titulo {font-size: 5vw;  }
-  #texto {font-size: 4vw; }
+  #texto {font-size: 4vw; } */
 
   #landscape{ display: none;}
   #portrait{ display: flex;}
@@ -395,6 +395,6 @@ opacity: 1;
   left: -4px;
 }
 
-#contenedor:-webkit-full-screen > #full #tooltip {
+#contenedor:-webkit-full-screen >  #landscape #full #tooltip {
     display: none;
 }

@@ -33,8 +33,8 @@
 .fa-expand{font-size: 20px;}
 /*esconder el boton en pantalla completa */
   
-#contenedor:requestFullscreen >  #full #fullwiev {display: none;}
-#contenedor:-moz-full-screen > #full #fullwiev {display: none;} /* Firefox */
-#contenedor:-webkit-full-screen > #full #fullwiev {display: none;} /* Chrome, Safari & Opera */
-#contenedor:-msRequestFullscreen > #full #fullwiev {display: none;} /* IE/Edge */
+#contenedor:requestFullscreen >  #landscape #full #fullwiev {display: none;}
+#contenedor:-moz-full-screen > #landscape #full #fullwiev {display: none;} /* Firefox */
+#contenedor:-webkit-full-screen > #landscape #full #fullwiev {display: none;} /* Chrome, Safari & Opera */
+#contenedor:-msRequestFullscreen > #landscape #full #fullwiev {display: none;} /* IE/Edge */
    
