@@ -277,7 +277,8 @@ margin: 0px auto;
     height: 100%;
     background-color: black;
     /* width: 150px; */
-    /* height: 90vh; */
+    height: 100vh;
+    transition: min-height 500ms ease;
 
 
    }
