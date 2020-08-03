@@ -277,10 +277,9 @@ margin: 0px auto;
     height: 100%;
     /* background-color: red; */
     /* width: 150px; */
-    height: 100vh;
+    height: 95vh;
 
 
-    height: calc(100%);
    }
 
 @media (orientation: portrait) {
