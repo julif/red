@@ -294,6 +294,9 @@ margin: 0px auto;
 
   #landscape{ display: none;}
   #portrait{ display: flex;}
+  html, body {
+    height: 100%;
+   }
 
 }
 @media (orientation:landscape) {
