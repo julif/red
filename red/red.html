@@ -58,7 +58,7 @@
   <section  id="pre_loader" >
     <div id="preloader" ></div>
     <div style="
-    text-align: center;
+    text-align: center;   
 ">
     <div id="porcentaje_contenedor"><div id="barra"></div>  <div id="porcentaje"></div></div>
     <div id="terminado" style="
@@ -68,7 +68,8 @@
   </section>
   <!--  landing ------------------------------------------------------------------------------  -->
   <div id="landing" style="display: none;"> 
-    <div style="text-align: center;">
+    <div style="text-align: center; background-color: #000000ba;
+    padding: 32px;">
       <h1  style="font-size: 65px;    margin: 0px;margin-bottom: 20px;"> landing </h1>
       <button onclick="myFunction()">Click me</button>
       
@@ -185,7 +186,9 @@ function precargar_imagenes(item, index){
     console.log("//carga completada//"); 
     console.log(" ");
     // document.getElementById("terminado").innerHTML = "//carga completada//";
-    document.getElementById("terminado").innerHTML = '<button onclick="go_to_landing()">Click me</button>';
+    //document.getElementById("terminado").innerHTML = '<button onclick="go_to_landing()">Click me</button>';
+    document.getElementById("landing").style.display = "flex";
+    document.getElementById("pre_loader").style.display = "none";
   }
 })// load function
 }//precargar_imagenes
@@ -200,14 +203,14 @@ function precargar_imagenes(item, index){
 
 
 
-
+/* 
 
  function go_to_landing(){
 
   document.getElementById("landing").style.display = "flex";
   document.getElementById("pre_loader").style.display = "none";
 
- }
+ } */
 
 
 
