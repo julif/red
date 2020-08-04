@@ -55,19 +55,28 @@
 
  
   <!--  splash ------------------------------------------------------------------------------  -->
-  <section  id="pre_loader" >
-    <div id="preloader" ></div>
-    <div style="
-    text-align: center;
-">
-    <div id="porcentaje_contenedor"><div id="barra"></div>  <div id="porcentaje"></div></div>
-    <div id="terminado" style="
-    margin-top: 20px;
-"></div>
-    </div>
-  </section>
-  <!--  landing ------------------------------------------------------------------------------  -->
-  <div id="landing" style="display: none;"> 
+  <section id="splash" style="display: none;">
+    <!-- <div class="loader">Loading...</div>  -->
+    <img src="img/julif.svg"   >
+      <!-- <div class="version"></div> -->
+      <div class="preloader">
+        <!-- <img  id="precarga_img_splash-art" src="img/splash-art-backgorund.png"    width="100px">
+        <img  id="precarga_img_splash-art_logo" src="img/logo.png"    width="100px"> -->
+      </div>
+  </section><!-- splash -->
+  <div id="precarga_img_splash" class="preloader" style="margin-left: 15000px; position: fixed;">
+    <img   src="img/red.png" width="150px">
+    <img src="img/red3.png" width="150px"> 
+    <img src="img/red4.png" width="150px"> 
+    <img src="img/red5.png" width="150px"> 
+    <img src="img/animatic.png" width="150px">
+    <img src="img/animatic2.png" width="150px"> 
+    <img src="img/lobo.png" width="150px"> 
+    <img src="img/lobo3.png" width="150px"> 
+    <img src="img/fondo.png" width="150px"> 
+    <img src="img/fondo2.png" width="150px"> 
+  </div>
+  <div id="landing"> 
     <div style="text-align: center;">
       <h1  style="font-size: 65px;    margin: 0px;margin-bottom: 20px;"> landing </h1>
       <button onclick="myFunction()">Click me</button>
@@ -128,97 +137,6 @@
 
   </body>
   <script>
-
-
-var imagenes_a_cargar = [
-   "red.png", 
-   "animatic.png",
-   "animatic2.png",
-   "lobo3.png",
-   "fondo.png",
-   "fondo2.png"
-  ];
-  precarga( imagenes_a_cargar );
-
-porcentaje =  "0%" ;
-document.getElementById("porcentaje").innerHTML = porcentaje;
-document.getElementById("barra").style.width = porcentaje;
-
-var imagenes_cargadas = 0;
-var numero_total;
-
-function precarga( item ){ 
-  // ------------- limpiar los datos para re-utilizacion -----------------
-  porcentaje = "0%";
-  document.getElementById("preloader").innerHTML = " ";
-  imagenes_cargadas = 0;
-  numero_total =  item.length;
-
-
-  item.forEach(mostrar_imagenes_en_preloader);
-  
-  function mostrar_imagenes_en_preloader(item, index){
-    document.getElementById("preloader").innerHTML +=    '<img  id="preloaded_element_'+ index +'" src="img/'+ item +'" >' ;
-    }
-
-  var imagenes_en_preloader = $('#preloader').children('img').map(function(){
-  return $(this).attr('id');
-}).get()
-imagenes_en_preloader.forEach(precargar_imagenes);
-
-
-
-function precargar_imagenes(item, index){
-  item ="#"+ item;
-  $(item).on('load', function() {
-    imagenes_cargadas++;
-    console.log(   "cargada imagen: "+ imagenes_cargadas +" de "+ numero_total );
-    // ------------- calcular y mostrar el porcentaje -----------------
-    porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
-    porcentaje = porcentaje.toFixed() //convertir en numero entero
-    porcentaje =  porcentaje + "%" ;
-    document.getElementById("porcentaje").innerHTML = porcentaje;
-    document.getElementById("barra").style.width = porcentaje;
-    // ------------- terminado -----------------
-    if( imagenes_cargadas == numero_total){
-    console.log(" ");
-    console.log("//carga completada//"); 
-    console.log(" ");
-    // document.getElementById("terminado").innerHTML = "//carga completada//";
-    document.getElementById("terminado").innerHTML = '<button onclick="go_to_landing()">Click me</button>';
-  }
-})// load function
-}//precargar_imagenes
-
-
-
-
- }
-
-
-
-
-
-
-
-
- function go_to_landing(){
-
-  document.getElementById("landing").style.display = "flex";
-  document.getElementById("pre_loader").style.display = "none";
-
- }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

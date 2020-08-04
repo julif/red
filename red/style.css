@@ -39,11 +39,53 @@
     height: 40%;
     width: auto;
 }
-preloader {
+#pre_loader{   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 100vh;
+  width: 100vw;}
+#preloader {
   margin-left: 15000px;
-  position: fixed;
-  /* font-family: Franklin Gothic Demi; */
+  position: fixed; 
+  color: white;
+
+
 }
+#preloader img{
+  width: auto;
+  height: 150px;
+}
+
+
+#porcentaje_contenedor {
+  background-color: black;
+  color: white;
+  width: 400px;
+  height: 20px;
+  display: flex;
+  position: relative;
+  /* justify-content: space-around; */
+}
+#barra{
+background-color: red;
+display: block;
+  width: 0%;
+  height: 100%;
+  /* transition: width 0.5s; */
+}
+#porcentaje{
+color: white;
+  top: 0px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+
   container{
     height: 100vh;
     width: 100%;
@@ -245,6 +287,8 @@ margin: 0px auto;
   /* height: -webkit-fill-available; */
   height: 100vh;
   width: 100vw;
+  background-image: url(img/fondo2.png);
+  background-size: cover;
   /* opacity: -10%; */
   position: absolute;
   display: flex;
