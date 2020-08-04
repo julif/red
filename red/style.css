@@ -328,7 +328,8 @@ margin: 0px auto;
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: black;background-color: #e04747;
+
     /* width: 150px; */
     height: 90vh;
     transition: min-height 500ms ease;
