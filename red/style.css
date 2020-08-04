@@ -44,7 +44,9 @@
   align-items: center;
   color: white;
   height: 100vh;
-  width: 100vw;}
+  width: 100vw;
+  background-color: var(--main-bg-color);
+}
 #preloader {
   margin-left: 15000px;
   position: fixed; 
@@ -329,6 +331,7 @@ margin: 0px auto;
     width: 100%;
     height: 100%;
     background-color: black;
+    background-color: var(--main-bg-color);
     /* background-color: #e04747; */
 
     /* width: 150px; */
