@@ -293,34 +293,45 @@ function myFunction() {
         document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo.png);" ></div>';
         i++;  
       break;
-      case 3: 
+      case 3:
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeIn"   src="img/animatic.png" style="height: 100%;width: auto;"></div>`;    
+     // document.getElementById("personajes").innerHTML = "<img src=\"img/red2.png\"  style=\" height: 150px; width: auto;\" >"
+        nombre="- narrador -";
+        dialogo = "* de repente una niebla empieza a rodearla y se oye una voz *";
+        //personajes.insertAdjacentHTML("afterbegin", newPersonaje);
+        personajes.innerHTML=newPersonaje;
+        //document.getElementById("fondo").style.backgroundImage = null;
+        document.getElementById("fondo").innerHTML='';
+        i++;  
+      break;
+      case 4: 
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px;' ><img class="animate__animated animate__fadeInRight"   src="img/lobo3.png" style="height: 100%;width: auto;"></div>`;    
         nombre="- lobo -";
         dialogo = "Pequeña conejita perdida en el bosque, ¿cual es la prisa?";
         document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo2.png);" ></div>';
         i++;  
       break;
-      case 4:
+      case 5:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="img/lobo3.png" style="height: 100%;width: auto;"></div>`; 
         nombre="- lobo -";  
         dialogo = "tengo mucha hambre pequeña, ¿no vas a ofrecerme nada de lo que traes en  esa canasta? donde quedaron los modales de antaño? ";
         i++;  
       break;
-      case 5:
+      case 6:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/red.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
         nombre="- bunny -";
         dialogo = "oh! disculpe pero no creo traer nada de su gusto.";
         i++;  
       break;
-      case 6:
+      case 7:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/lobo3.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
         nombre="- lobo -";
         dialogo = "ooohhhh pero claro que traes algo de mi gusto, puedo oler hogazas de pan, puedo oler algunas manzanas y puedo oler...";
         i++;  
       break;
-      case  7:
+      case  8:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="img/lobo3.png" style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
         nombre="- lobo -";
