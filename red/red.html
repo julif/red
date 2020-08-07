@@ -98,6 +98,7 @@
                 <div id="fondo_img" class="animate__animated animate__fadeIn"></div>
               </div>
                 <div id="barra-superior" ></div>
+                <div id="fondo_superior"></div>
               
                   <!-- <div id="personajes"><img src="img/red.png" style="height: 150px;width: auto;"></div> -->
                   <div id="personaje-container"> 
@@ -309,6 +310,9 @@ function myFunction() {
         nombre="- lobo -";
         dialogo = "Pequeña conejita perdida en el bosque, ¿cual es la prisa?";
         document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo2.png);" ></div>';
+        document.getElementById("fondo_superior").classList.add("animate__animated"); 
+        document.getElementById("fondo_superior").classList.add("animate__fadeIn"); 
+        document.getElementById("fondo_superior").style.backgroundImage = "url('img/fondo_superior.png')";
         i++;  
       break;
       case 5:

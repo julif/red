@@ -126,6 +126,7 @@ color: white;
   #full-container{
     width: 100%;
     background-color:  var(--main-bg-color);
+    overflow: hidden;
 /* height: 100%; */
 height: 100vh;
 display: block;
@@ -221,6 +222,16 @@ justify-content: center;   margin-top: 2px;
 
 
 
+  }
+  #fondo_superior{
+    /* background-color: red; */
+    /* background-image: url(img/fondo_superior.png); */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-position: bottom;
+    background-size: contain;
+    z-index: 1;
   }
   #personajes{ 
     display: flex; 
