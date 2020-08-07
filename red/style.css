@@ -230,7 +230,7 @@ justify-content: center;   margin-top: 2px;
     width: 100%;
     position: absolute;
     background-position: bottom;
-    background-size: contain;
+    background-size: cover;
     z-index: 1;
   }
   #personajes{ 
