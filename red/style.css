@@ -306,7 +306,8 @@ margin: 0px auto;
   /* height: -webkit-fill-available; */
   height: 100vh;
   width: 100vw;
-  background-image: url(img/fondo2.png);
+  /* background-image: url(img/fondo2.png); */
+  background-color: #00000033;
   background-size: cover;
   /* opacity: -10%; */
   position: absolute;
