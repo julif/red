@@ -1,5 +1,7 @@
 
-
+<p align="center">
+<img  src="https://julif.github.io/red/red/img/roja.png">
+</p>
 
 
 # nuevo sistema de comic interactivo
