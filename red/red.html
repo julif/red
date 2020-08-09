@@ -61,7 +61,7 @@
     <div style="
     text-align: center;   
 ">
-<div> <img style="width: 200px;" src="img/roja2.png" > </div>
+<div> <!-- <img style="width: 200px;" src="img/roja2.png" > -->   <h1 id="preloader_roja_titulo">R<span>O</span>JA</h1> </div>
     <div id="porcentaje_contenedor"><div id="barra"></div>  <div id="porcentaje"></div></div>
     <div id="terminado" style="
     margin-top: 20px;
@@ -79,10 +79,25 @@
     background-image: url(img/fondo2.png);
     background-size: cover;
     filter: blur(3px);
+
+    overflow: hidden;
 ">  </div>
     <div style="text-align: center; /* background-color: #000000ba; */
     padding: 32px;">
-      <div> <img  id="roja_title_img" src="img/roja2.png" > </div> 
+      <div> <!-- <img  id="roja_title_img" src="img/roja2.png" >  -->  
+      
+
+        <h1 id="roja_titulo">R<span>O</span>JA</h1>
+      
+      
+<!-- <h1 style="font-family: 'Zooma';
+font-size: 100px;
+margin: 15px;
+font-weight: 100;">R<span style="
+COLOR: #e43939;
+">E</span>D</h1> -->
+      
+      </div> 
       <style>
         #roja_title_img{ width: 80%;}
         @media only screen and (max-width: 800px) {
@@ -292,7 +307,8 @@ function myFunction() {
 
     switch (i) {
       case 0:
-        newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/roja2.png" style="height: 60%;width: auto;"></div>`;   
+        newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><h1 style=" color:white;font-family: 'Zooma';font-size: 25vh;    margin: 3vh;
+    font-weight: 100;">ROJA</h1></div>`;   
         nombre="- narrador -";
         dialogo = "consejo: se pueden usar la barra espaciadora y la flecha derecha en lugar de el boton 'siguiente'.";
         i++;  
