@@ -4,11 +4,11 @@
 </p>
 
 
-# nuevo sistema de comic interactivo
+# Roja - novela visual interactiva online
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-un prototipo de visor de comics en 1920 x 1080 con rutas multiples.
+una novela visual interactiva echa completamente en html y jquery.
 
 ## Author
 
