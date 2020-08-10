@@ -369,8 +369,33 @@ margin: 0px auto;
     font-family: monospace;
     letter-spacing: -1px;
 }
+.version2{    
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  font-size: 15px;
+  font-family: monospace;
+  letter-spacing: -1px;
+}
+.version2 img{
+  height: 40px;
+}
 @media only screen and (max-width: 800px) {
   .version { padding: 10px;}
+  .version2 {
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    padding: 10px;
+    /* font-size: 15px; */
+    font-family: monospace;
+    letter-spacing: -1px;
+}
+.version2 img{
+  height: 30px;
+}
   .redes {margin-left: 15px; }
   .redes g{ display: none;}
   #redes_mainmenu{
