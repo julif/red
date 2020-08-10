@@ -7,8 +7,8 @@
     src: url(Julif_handwriten.ttf) format("truetype");
   }
   @font-face {
-    font-family: "Thorn Blade";
-    src: url(Thorn_Blade.ttf) format("truetype");
+    font-family: "icomoon";
+    src: url(icomoon.ttf) format("truetype");
   }
   @font-face {
     font-family: "Zooma";
@@ -367,6 +367,7 @@ margin: 0px auto;
     padding: 30px;
     font-size: 15px;
     font-family: monospace;
+    letter-spacing: -1px;
 }
 @media only screen and (max-width: 800px) {
   .version { padding: 10px;}

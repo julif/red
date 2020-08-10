@@ -33,11 +33,13 @@
     <!-- css -->
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="fullwiev_btn.css"> 
+    <link rel="stylesheet" href="icomoon.css"> 
   </head>
   <body id="contenedor">
     <portrait  id="portrait">   
 
-      <img src="img/rotate2.gif">
+      <!-- <img src="img/rotate2.gif"> -->
+      <img class="animate__animated animate__rotateIn" style="transform: rotate(20deg);" src="img/dffr.png">
     </portrait >
 <landscape id="landscape">
 
@@ -109,8 +111,8 @@ COLOR: #e43939;
     </div>
 
      <div id="redes_mainmenu"> 
-       <div class="redes" ><a href="https://www.google.com/"> <i class="fab fa-facebook-square"></i>  <g>Julif </g> </a> </div>
-       <div class="redes" ><a href="https://www.google.com/"> <i class="fab fa-instagram"></i><g>@_julif_</g></a></div>
+       <!-- <div class="redes" ><a href="https://www.google.com/"> <i class="fab fa-facebook-square"></i>  <g>Julif </g> </a> </div> -->
+       <div class="redes" ><a href="https://ko-fi.com/juli22f"> <i class="icon-ko-fi1"></i><g> ko-fi </g></a></div>
      </div> 
      <div class="version"> v 1.0.3 </div>
    
@@ -327,6 +329,9 @@ function myFunction() {
         nombre="- bunny -";
         dialogo = "ohh!! espero que nada inesperado se cruze en mi camino por que tengo que llevarle esta canasta con comida a mi abuela.";
         document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo.png);" ></div>';
+        document.getElementById("fondo_superior").classList.add("animate__animated"); 
+        document.getElementById("fondo_superior").classList.add("animate__fadeIn"); 
+        document.getElementById("fondo_superior").style.backgroundImage = "url('img/fondo_superior2.png')";
         i++;  
       break;
       case 3:
@@ -334,6 +339,7 @@ function myFunction() {
      // document.getElementById("personajes").innerHTML = "<img src=\"img/red2.png\"  style=\" height: 150px; width: auto;\" >"
         nombre="- narrador -";
         dialogo = "* de repente una niebla empieza a rodearla y se oye una voz *";
+        document.getElementById("fondo_superior").style.backgroundImage = "url(' ')";
         //personajes.insertAdjacentHTML("afterbegin", newPersonaje);
         personajes.innerHTML=newPersonaje;
         //document.getElementById("fondo").style.backgroundImage = null;
