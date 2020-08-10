@@ -145,7 +145,10 @@ display: block;
 position: absolute;
 top: 0;
   }
-  #fullwiev { background-color:  var(--main-bg-color)!important;}
+  #fullwiev { 
+    /* background-color:  var(--main-bg-color)!important; */
+    background-color: #0b0a1000!important;
+  }
   .fa-expand {font-size: 30px!important;}
   #parte-superior{
 
@@ -533,6 +536,12 @@ opacity: 1;
     display: flex;
     opacity: 0;
     transition: all 0.5s ease 0s;
+
+
+
+    -webkit-box-shadow: 2px 9px 31px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 9px 31px -1px rgba(0,0,0,0.75);
+box-shadow: 2px 9px 31px -1px rgba(0,0,0,0.75);
 }
 #tooltip span{ 
   width: 130px; 
