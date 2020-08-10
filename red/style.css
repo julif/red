@@ -630,6 +630,12 @@ box-shadow: 2px 9px 31px -1px rgba(0,0,0,0.75);
   font-size: 200px;
   margin: 20px;
   font-weight: 100;
+  margin-bottom: 0px!important;
+ }
+ #sub_title{
+  margin-top: 8px;
+  font-size: 18px;
+  font-size: 24px;
  }
  #roja_titulo span{
    color: #e43939;
@@ -640,5 +646,10 @@ box-shadow: 2px 9px 31px -1px rgba(0,0,0,0.75);
     font-size: 100px;
     margin: 15px;
     font-weight: 100;
+   }
+   #sub_title{
+    
+    font-size: 15px;
+   
    }
 }

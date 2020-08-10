@@ -30,7 +30,13 @@
     outline: 0;
     text-decoration: none;
 }
-#fullwiev:hover { color: #1e90ff;}
+#fullwiev:hover {
+     color: #1e90ff; 
+     color: #e43939; 
+
+  
+
+}
   
 .fa-expand{font-size: 20px;}
 /*esconder el boton en pantalla completa */
