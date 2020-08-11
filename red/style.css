@@ -33,6 +33,11 @@
 
 
 
+    .inactive{
+      filter: brightness(0.5);
+    margin-top: 25px;
+    }
+
     #splash {
       /* background-color: #28334a; */
       background-color: black!important;

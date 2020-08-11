@@ -317,6 +317,8 @@ function myFunction() {
     font-weight: 100;">ROJA</h1></div>`;   
         nombre="- narrador -";
         dialogo = "consejo: se pueden usar la barra espaciadora y la flecha derecha en lugar de el boton 'siguiente'.";
+
+        personajes.innerHTML=newPersonaje;
         i++;  
       break;
       case 1:
@@ -324,6 +326,8 @@ function myFunction() {
         nombre="- narrador -";
         dialogo = "* bunny camina por el bosque hablando en voz exageradamente alta y finguiendo que no nota que algo la esta siguiendo. *";
         document.getElementById("fondo").innerHTML='';
+
+        personajes.innerHTML=newPersonaje;
         i++;  
       break;
       case 2:
@@ -336,6 +340,9 @@ function myFunction() {
         document.getElementById("fondo_superior").classList.add("animate__animated"); 
         document.getElementById("fondo_superior").classList.add("animate__fadeIn"); 
         document.getElementById("fondo_superior").style.backgroundImage = "url('img/fondo_superior2.png')";
+
+        personajes.innerHTML=newPersonaje;
+
         i++;  
       break;
       case 3:
@@ -358,36 +365,70 @@ function myFunction() {
         document.getElementById("fondo_superior").classList.add("animate__animated"); 
         document.getElementById("fondo_superior").classList.add("animate__fadeIn"); 
         document.getElementById("fondo_superior").style.backgroundImage = "url('img/fondo_superior.png')";
+        personajes.innerHTML=newPersonaje;
+
         i++;  
       break;
       case 5:
       newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="img/lobo3.png" style="height: 100%;width: auto;"></div>`; 
         nombre="- lobo -";  
         dialogo = "tengo mucha hambre pequeña, ¿no vas a ofrecerme nada de lo que traes en  esa canasta? donde quedaron los modales de antaño? ";
+        // personajes.insertAdjacentHTML("beforeend", newPersonaje);
+        personajes.innerHTML=newPersonaje;
         i++;  
       break;
       case 6:
-      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/red.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
-      personajes.innerHTML=newPersonaje;
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/red402.png"  class="animate__animated animate__fadeInLeft"  style="height: 100%;width: auto;"></div>`; 
+      
         nombre="- bunny -";
         dialogo = "oh! disculpe pero no creo traer nada de su gusto.";
+
+        personajes.insertAdjacentHTML("afterbegin", newPersonaje);
+        // document.getElementsByClassName("personaje")[1].style.marginTop= "25px";
+        document.getElementsByClassName("personaje")[1].style.filter = "brightness(70%)";
+        // document.getElementsByClassName("personaje")[1].style.filter= "brightness(0.5);";
         i++;  
       break;
       case 7:
-      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/lobo3.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
+      /* newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img    src="img/lobo3.png"  class="animate__animated animate__fadeInRight"  style="height: 100%;width: auto;"></div>`; 
       personajes.innerHTML=newPersonaje;
         nombre="- lobo -";
         dialogo = "ooohhhh pero claro que traes algo de mi gusto, puedo oler hogazas de pan, puedo oler algunas manzanas y puedo oler...";
+        i++;   */
+
+
+       //document.getElementById("personajes").innerHTML = "<img src=\"img/red3.png\"  style=\" height: 150px; width: auto;\" >"
+        //let newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="https://julif.github.io/red/Nueva%20carpeta%20(2)/red3.png" style="height: 100%;width: auto;"></div>`;    
+       // document.getElementById("personajes").innerHTML = "<img src=\"img/red3.png\"  style=\" height: 150px; width: auto;\" >"
+      //  newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="img/lobo3.png" style="height: 100%;width: auto;"></div>`;    
+        nombre="- lobo -";
+        dialogo = "ooohhhh pero claro que traes algo de mi gusto, puedo oler hogazas de pan, puedo oler algunas manzanas y puedo oler...";
+        document.getElementsByClassName("personaje")[0].style.filter = "brightness(70%)";
+        document.getElementsByClassName("personaje")[1].style.filter = "brightness(100%)";
+        
+          // personajes.innerHTML=newPersonaje;
+
+        // document.getElementById("fondo").style.backgroundImage = "url('img/fondo2.png')";
         i++;  
+
+
       break;
       case  8:
-      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px; animation: none' ><img    src="img/lobo3.png" style="height: 100%;width: auto;"></div>`; 
+      newPersonaje = `<div class='personaje' style='--h: ${dynamicHeight}px' ><img class="animate__animated animate__fadeInRight"   src="img/lobo3.png" style="height: 100%;width: auto;"></div>`;   
+      
+      nombre="- lobo -";
+      dialogo = "una trampa a kilometros de distancia!.";
+      // document.getElementById("fondo").innerHTML= ' <div id="fondo_img" class="animate__animated animate__fadeIn" style=" background-image: url(img/fondo.png);" ></div>';
+      // document.getElementById("fondo_superior").classList.add("animate__animated"); 
+      // document.getElementById("fondo_superior").classList.add("animate__fadeIn"); 
+      // document.getElementById("fondo_superior").style.backgroundImage = "url('img/fondo_superior2.png')";
+
       personajes.innerHTML=newPersonaje;
-        nombre="- lobo -";
-        dialogo = "y puedo oler una trampa a kilometros de distancia";
+
+      i++;  
         document.getElementById("button").style.display= 'none';
     }
-    personajes.innerHTML=newPersonaje;
+    // personajes.innerHTML=newPersonaje;
     dialogo= "<p id=\"dialogo\" class=\"animate__animated animate__fadeInDown\" >"+ dialogo +"</p>";
     document.getElementById("texto").innerHTML= dialogo;
 
