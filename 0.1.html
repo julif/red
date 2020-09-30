@@ -1,26 +1,20 @@
-<!doctype   html >
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <style> 
-      body{ background-color: white; margin: 0px auto;} 
-      container{
-        height: 100vh;
-        width: 100%;
-        background-color: black;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      img{ height: 100%;}
-    </style>
-  </head>
-  <body>
-    <container>
-      <img src="1.png">
-    </container>
-     <!-- <a href="panel2.html"> link </a> -->
-  </body>
+<body>
+
+<iframe id="myFrame" src="https://julif.github.io/" style="height:380px;width:100%"></iframe>
+
+<p>Click the "Tryit" button to hide the first H1 element in the iframe (another document).</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+  var iframe = document.getElementById("myFrame");
+  var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+  elmnt.style.display = "none";
+}
+</script>
+
+</body>
 </html>
