@@ -1,84 +1,142 @@
-<!doctype   html >
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
-         <style>
-#full {
-  background-color: black;
-  color: white;
-  font-family: sans-serif;
-  margin: 10px;
-  float: right;
-  position: absolute;
-  border-radius: 20%;
-  right: 0px;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  z-index: 5;
-}
-#fullwiev {
-  padding: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-top: 13px;
-  padding-bottom: 13px;
-  border: none;
-  color: #fff;
-  background-color: #000;
-  cursor: pointer;
-  border-radius: 20%;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  display: inherit;
-  outline: 0;
-  text-decoration: none;
-}
-#fullwiev:hover { color: #1e90ff;}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   
+    <style>
+      body{
+       margin: 0px auto;
+      }
+      #principal{
+        display: flex;
+    width: 100%;
+    height: 100%;
+      }
+      img{
+        /* background-color: red; */
+        /* position: absolute; */
+      }
+    container{
+      display: block;
+      /* background-color: red; */
+      background-color: #677589;
+    height: 100%;
+    /* width: 900px; */
+    width: 45%;
+    position: relative;
+    }
+    @media (max-width: 990px){  container{width: 65%;}   }
+    .dress_up_part{
+      display: block;
+      /* background-color: #677589; */
+    height: 100%;
+    width: 100%;
+    background-image: -moz-element();
+    /* background-image: url(img/base.png); */
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    }
+    </style>
+  </head>
+<body >
+  <div  id="principal">
+    <container> 
+      <div id="cola" class="dress_up_part"></div>
+      <div id="base" class="dress_up_part"></div>
+      <div id="pantalones" class="dress_up_part"></div>
+      <div id="vestido" class="dress_up_part"></div>
+      <div id="brazo" class="dress_up_part"></div>
+      <div id="orejas" class="dress_up_part"></div>
+      <div id="adorno" class="dress_up_part"></div>
+      <div id="mascara" class="dress_up_part"></div>
+    </container>
+    <div>
 
-.fa-expand{font-size: 20px;}
-/*esconder el boton en pantalla completa */
-
-  #contenedor:requestFullscreen >  #full #fullwiev {display: none;}
-  #contenedor:-moz-full-screen > #full #fullwiev {display: none;} /* Firefox */
-  #contenedor:-webkit-full-screen > #full #fullwiev {display: none;} /* Chrome, Safari & Opera */
-  #contenedor:-msRequestFullscreen > #full #fullwiev {display: none;} /* IE/Edge */
- 
-         </style>
-         <style> body{ background-color: white;} </style>
-
-    </head>
-    <body id="contenedor">
-      <div id="full">
-        <button id="fullwiev" onclick="lock('landscape')">
-          <i class="fa fa-expand"></i>
-        </button>
+     <!-- mascara -->
+      <div>
+        <button onclick="cambiar( 'mascara','none')"> sin mascara</button>
+        <button onclick="cambiar( 'mascara','mascara_1')" > mascara 1</button>
+        <button onclick="cambiar( 'mascara','mascara_2')"> mascara 2</button>
+        <button onclick="cambiar( 'mascara','mascara_3')"> mascara 2 con brillo</button>
       </div>
+       <!-- cola -->
+      <div>
+        <button onclick="cambiar( 'cola','none')"> sin cola</button>
+        <button onclick="cambiar( 'cola','cola')"> cola</button>
+      </div>
+       <!-- pantalones -->
+       <div>
+        <button onclick="cambiar( 'pantalones','none')"> shorts </button>
+        <button onclick="cambiar( 'pantalones','pantalones')"> pantalones </button>
+      </div>
+       <!-- vestido -->
+       <div>
+        <button onclick="cambiar( 'vestido','none')"> sin vestido </button>
+        <button onclick="cambiar( 'vestido','vestido')">  vestido </button>
+      </div>
+       <!-- brazo -->
+       <div>
+        <button onclick="cambiar( 'brazo','none')"> sin brazo </button>
+        <button onclick="cambiar( 'brazo','brazo')">  brazo </button>
+      </div>
+       <!-- orejas -->
+       <div>
+        <button onclick="cambiar( 'orejas','none')"> sin orejas </button>
+        <button onclick="cambiar( 'orejas','orejas')">  orejas </button>
+      </div>
+       <!-- adorno -->
+       <div>
+        <button onclick="cambiar( 'adorno','none')"> sin adorno </button>
+        <button onclick="cambiar( 'adorno','adorno')">  adorno </button>
+      </div>
+    </div>
+   
 
-      <p> panel 1 </p>
-      <a href="panel2.html"> link </a>
+  </div>
 
-    </body>
-  
 <script>
-  function fullScreen() {
-  // Kind of painful, but this is how it works for now
-  if (document.documentElement.requestFullscreen) {
-   document.getElementById("contenedor").requestFullscreen();
-  } else if (document.documentElement.mozRequestFullScreen) {
-    document.getElementById("contenedor").mozRequestFullScreen();
-  } else if (document.documentElement.webkitRequestFullscreen) {
-    document.getElementById("contenedor").webkitRequestFullscreen();
-  } else if (document.documentElement.msRequestFullscreen) {
-    document.getElementById("contenedor").msRequestFullscreen();
+  document.getElementById("base").style.backgroundImage ="url('img/base.png')";
+  // document.getElementById("mascara").style.backgroundImage = "url('img/mascara_2.png')";
+
+  function cambiar(a,b) {
+ 
+   if (b == 'none') {
+
+    document.getElementById(a).style.backgroundImage = "none";
+   } else {
+    
+    document.getElementById(a).style.backgroundImage ="url('img/"+ b +".png')";
+   }
+    
+   
   }
-}
-function lock(orientation) {
-  fullScreen();
-  screen.orientation.lock(orientation);
-}
+
+
+/*   function sin_mascara() {
+    document.getElementById("mascara").style.backgroundImage = "none";
+  }
+  function mascara_1() {
+    document.getElementById("mascara").style.backgroundImage ="url('img/mascara_1.png')";
+  }
+  function mascara_2() {
+    document.getElementById("mascara").style.backgroundImage ="url('img/mascara_2.png')";
+  }
+  function mascara_3() {
+    document.getElementById("mascara").style.backgroundImage ="url('img/mascara_3.png')";
+  } */
 </script>
+    <!-- <img src="img/cola.png"> 
+    <img src="img/base.png"> 
+    <img src="img/pantalones.png">
+    <img src="img/vestido.png">
+    <img src="img/brazo.png">
+    <img src="img/orejas.png">
+    <img src="img/adorno.png"> 
+    <img src="img/mascara_2.png"> -->
+
+ </body>
 </html>
+
+
+
