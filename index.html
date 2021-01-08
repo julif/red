@@ -1,128 +1,286 @@
-<!doctype   html >
+<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
-    <link rel="stylesheet" href="fullwiev_btn.css"> 
-    <style>
-      @font-face {
-        font-family: "Kiddo Handwriting";
-        src: url(KiddoHandwriting.ttf) format("truetype");
-      }
-      body{ 
-        background-color: white; 
-        margin: 0px auto;
-      } 
-      container{
-        height: 100vh;
-        width: 100%;
-        background-color: black;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-image: url(1.png);
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
-      img{ height: 100%;}
-      aspect_ratio{    
-        /* background-color: #ff000066; */
-        width: 100%;/* height: 0; */
-        padding-top: 56.25%;
-        /* padding-top: 56.25%; */
-        width: 100vw;
-        /* height: 56.25vw; */
-        max-height: 100vh;
-        max-width: 177.78vh;
-        margin: auto;
-        /* position: absolute; */
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;    
-        position: relative;
-      }
-      .black_bar{
-        position: absolute;
-        /* background-image: url(0.png); */
-        /* background-image: url(0.png), url(0.png); */
-        background-position: bottom;
-        background-repeat-x: repeat;
-        background-repeat-y: no-repeat;
-        background-size: contain;
-        bottom: 0;
-        color: white;
-        /* background-color: rgba(0, 0, 0, 0.7); */
-        width: 100%;
-        /* height: 10%; */
-        /* font-size: 2vw; */
-        font-family: "Kiddo Handwriting";
-      }
-      .text_container{     
-        border-radius: 15px;   
-        max-width: 90%;
-        margin: 0px auto;
-        margin-top: 10px;
-        background-color: rgba(0, 0, 0, 0.93);
-        padding: 1%;
-        margin-bottom: 10px;
-      }
-      .inner_ui_container{
-        position: absolute;     top: 0;
-        /* background-color: #0000008f; */
-        height: 100%;width: 100%;
-        max-height: 100vh;
-      }
-      .text_container span{  font-size: 1.5vw; }
-      .text_container p{  font-size: 1.5vw; }
-      @media only screen and (max-width: 900px) {
-        .text_container{ border-radius: 6px;    padding:2%;}
-        .text_container p{  font-size: 2.5vw;    }
-        .text_container span{ font-size: 2.5vw;  }
-      }
-    </style>
-  </head>
-    <body id="contenedor">
-      <div id="full">
-        <button id="fullwiev" onclick="lock('landscape')">
-          <i class="fa fa-expand"></i>
-        </button>
-      </div>
-      <container>
-      <aspect_ratio>
-        <div  class="inner_ui_container">
-           <div  class="black_bar" >
-             <div class="text_container"> 
-                <span style="color: #d84051;">bunny:</span> 
-                <p style="    padding: 0;margin: 1%; color: #d4d4d4;"> 
-                  texto de el personaje <a target="_self"  href="panel2.html"> link </a> 
-                </p>
-              </div>
-            </div> 
-          </div>
-      </aspect_ratio>
-      </container>
-    </body>
-    <script>
-      function fullScreen() {
-        // Kind of painful, but this is how it works for now
-        if (document.documentElement.requestFullscreen) {
-        document.getElementById("contenedor").requestFullscreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
-          document.getElementById("contenedor").mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullscreen) {
-          document.getElementById("contenedor").webkitRequestFullscreen();
-        } else if (document.documentElement.msRequestFullscreen) {
-          document.getElementById("contenedor").msRequestFullscreen();
+<head>
+  <title>Webapp</title>
+  <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta charset="utf-8"/>
+  <link rel="manifest" href="manifest.json">
+  <!--  font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <!--  animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="web-app ">
+  <meta name="apple-mobile-web-app-title" content="web-app ">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="img/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="img/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="img/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="img/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="img/mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="img/mstile-310x310.png" />
+
+<script type="text/javascript">
+  
+  if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('sw.js').then(function(registration) {
+    console.log('ServiceWorker registration successful with scope:',  registration.scope);
+  }).catch(function(error) {
+    console.log('ServiceWorker registration failed:', errror);
+  });
+}
+</script>
+<style>
+  body{
+  font-family: "proxima-nova",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+   margin: 0px auto;
+   background-color: #0b0a10;
+  }
+  p{ color:white; }
+
+
+
+
+  #ad2hs-prompt-container{
+    background-color: white;
+    color: black;
+    /* text-align: center; */
+    width: 600px;
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* position: absolute; */
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+
+   
+     /* display: none;  */
+    /* display: none; */
+   
+  animation-duration: 0.7s; /* don't forget to set a duration! */
+
+
+}
+#ad2hs-prompt-container-content{ display: flex; position: relative;}
+#ad2hs-close{ 
+  position: absolute; 
+  top: -5px;
+  right: 5px; 
+
+
+  cursor: pointer; 
+  /* background-color: red; */
+ 
+}
+
+
+#ad2hs-prompt-container-content p{ 
+  margin: 0px;
+  margin-bottom: 3px;
+} 
+/* #ad2hs-logo-container{background-color: red;} */
+#ad2hs-name-description-container{ margin-left: 15px; }
+#ad2hs-prompt-container-footer{text-align: right;}
+#ad2hs-button{
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 800px) {
+  #ad2hs-prompt-container {
+    width: 100%;
+    width: 96%;
+    width: -webkit-fill-available;
+    bottom: 0px;
+    right: 0px;
+  }
+  #ad2hs-close {
+    top: 0px;
+    right: 5px;
+  }
+}
+
+
+
+
+
+
+
+@media (orientation: portrait){
+  #portrait {
+    display: flex;
+  }
+  #landscape {
+    display: none;
+  }
+}
+
+@media (orientation: landscape){
+  #portrait {
+    display: none;
+  }
+  #landscape {
+    display: inherit;
+  }
+}
+
+
+
+
+
+section {
+    background-color: #605690;
+    background-color: var(--main-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100%;
+    /* width: 100vw; */
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+}
+
+#splash {
+    /* background-color: #28334a; */
+    background-color: black!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 4;
+    height: 100vh;
+    margin: auto;
+}
+
+
+#splash img {
+    height: 40%;
+    width: auto;
+}
+
+
+#portrait img {
+    width: 250px;
+    height: auto;
+    animation-name: portrait_image_rotation;
+    animation-duration: 1.0s;
+    transform: rotate(90deg);
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes portrait_image_rotation {
+  0%   {transform: rotate(90deg);}
+  100% {transform: rotate(0deg);}
+}
+
+
+
+</style>
+</head>
+<body>
+  <portrait id="portrait"> 
+    <section> 
+    <img src="img/portrait_roja.png"> 
+    </section> 
+  </portrait>
+  <landscape id="landscape"> 
+
+
+    <section id="splash" class="hidden" style="z-index: 3;/* display: none; */">
+      <!-- <div class="loader">Loading...</div>  -->
+      <img src="julif.svg">
+    </section>
+
+    
+  </landscape>
+
+
+ <div id="ad2hs-prompt-container"  class="animate__slideInUp">
+  <div id="ad2hs-prompt-container-content"> 
+    <div id="ad2hs-logo-container"> <img src="img/apple-touch-icon-60x60.png"> </div> 
+    <div id="ad2hs-name-description-container"> 
+      <div id="ad2hs-close"> <i  style="color: #b7b6b6" class="fas fa-times"></i> </div>
+      <b><p style="color: black;font-size: 20px;"> Webapp </p></b>
+      <p style="color: #b7b6b6;font-size: 15px;"> Julif.github.com </p>
+    </div> 
+  </div> 
+   <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button">Add to home screen</button> </div> 
+</div> 
+
+</body> 
+
+<script>
+let deferredPrompt;
+
+const ad2hs_prompt_container = document.querySelector('#ad2hs-prompt-container');
+const ad2hs_close_btn = document.querySelector('#ad2hs-close');
+const ad2hs_btn = document.querySelector('#ad2hs-button');
+
+ad2hs_prompt_container.style.display = 'none';
+</script>
+<script>
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();// Prevent Chrome 67 and earlier from automatically showing the prompt
+  deferredPrompt = e;// Stash the event so it can be triggered later.
+  // Update UI to notify the user they can add to home screen
+
+
+  setTimeout(function(){  ad2hs_prompt_container.style.display = 'block'; }, 3000);
+
+
+
+  ad2hs_btn.addEventListener('click', (e) => {
+    ad2hs_prompt_container.style.display = 'none';  // hide our user interface that shows our A2HS button
+    deferredPrompt.prompt(); // Show the prompt
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+          ad2hs_prompt_container.style.display = 'none';
+        } else {
+          console.log('User dismissed the A2HS prompt');
+          ad2hs_prompt_container.style.display = 'none';
         }
-      }
-      function lock(orientation) {
-        fullScreen();
-        screen.orientation.lock(orientation);
-      }
-    </script>
+        deferredPrompt = null;
+      });
+  }); 
+
+
+//cerrar
+  ad2hs_close_btn.addEventListener('click', (e) => {
+   
+   ad2hs_prompt_container.style.display = 'none';
+    
+   });
+
+
+
+});
+</script>
 </html>
