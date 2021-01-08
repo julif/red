@@ -204,9 +204,86 @@ section {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#full {
+    background-color: transparent;
+    color: white;
+    font-family: sans-serif;
+    margin: 10px;
+    float: right;
+    position: absolute;
+    border-radius: 20%;
+    right: 0px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    z-index: 5;
+  }
+  #fullwiev {
+    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border: none;
+    color: #fff;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 20%;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    display: inherit;
+    outline: 0;
+    text-decoration: none;
+  }
+/* #fullwiev:hover { color: #1e90ff;} */
+#fullwiev:hover { color: black;}
+  
+/* .fa-expand{font-size: 20px;} */
+.fa-expand {
+    font-size: 30px!important;
+}
+/*esconder el boton en pantalla completa */
+  
+#contenedor:requestFullscreen >  #full #fullwiev {display: none;}
+#contenedor:-moz-full-screen > #full #fullwiev {display: none;} /* Firefox */
+#contenedor:-webkit-full-screen > #full #fullwiev {display: none;} /* Chrome, Safari & Opera */
+#contenedor:-msRequestFullscreen > #full #fullwiev {display: none;} /* IE/Edge */
+
+
+
+
+
+
+
+
+
+
 </style>
 </head>
-<body>
+<body id="contenedor">
+  <div id="full">
+    <button id="fullwiev" onclick="lock('landscape')">
+      <i class="fa fa-expand"></i>
+    </button>
+  </div>
   <portrait id="portrait"> 
     <section> 
     <img src="img/portrait_roja.png"> 
@@ -285,5 +362,24 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 
 });
+</script>  <script>
+  function fullScreen() {
+    // Kind of painful, but this is how it works for now
+    if (document.documentElement.requestFullscreen) {
+    document.getElementById("contenedor").requestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.getElementById("contenedor").mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.getElementById("contenedor").webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.getElementById("contenedor").msRequestFullscreen();
+    }
+  }
+  function lock(orientation) {
+    fullScreen();
+    screen.orientation.lock(orientation);
+  }
 </script>
+
+
 </html>
