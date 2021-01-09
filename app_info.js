@@ -1,2 +1,3 @@
-const title = " Hola mundo 2 ";
-const version = " 0.1 ";
+const app_name = " Deckbuilder ";
+const app_web = " https://julif.github.io/red ";
+const app_version = " 0.1 ";
