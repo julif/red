@@ -34,8 +34,7 @@
   <meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="img/mstile-310x310.png" />
 
-  <script type="text/javascript" src="app_info.js"></script>
-  <script> document.title = title; </script>  
+ 
   
 <script type="text/javascript">
   
@@ -91,7 +90,14 @@
     <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button">Add to home screen</button> </div>
   </div> 
 </body> 
-<script type="text/javascript" src="js/ad2hs_prompt.js"></script>
+<script type="text/javascript" src="js/ad2hs_prompt.js"></script>ad2hs-name-description-containerconst 
 <script type="text/javascript" src="js/fullscreen.js"></script>
+<script type="text/javascript" src="app_info.js"></script>
+<script> 
+document.title = title;
+
+var ccc = document.querySelector('#ad2hs-prompt-container p:first');
+ccc.innerHTML = "New text!";
+ </script>  
 <script>/* extra js */</script>  
 </html>

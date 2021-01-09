@@ -5,7 +5,6 @@ Author: Julif
 :root {
   --main-bg-color:#0b0a10;
 }
-
 body{
   font-family: "proxima-nova",sans-serif;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
@@ -14,9 +13,7 @@ body{
    
   }
 p{ color:white; }
-
 section {
-
   background-color: var(--main-bg-color);
   display: flex;
   justify-content: center;
@@ -28,9 +25,6 @@ section {
   width: 100%;
   overflow: hidden;
 }
-
-
-
 #splash img {
   height: 40%;
   width: auto;
