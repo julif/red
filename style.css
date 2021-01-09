@@ -1,0 +1,32 @@
+/*   
+Name: julif.github.io
+Author: Julif
+*/
+body{
+  font-family: "proxima-nova",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    margin: 0px auto;
+    background-color: #0b0a10;
+  }
+p{ color:white; }
+
+section {
+
+  background-color: var(--main-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  height: 100%;
+  /* width: 100vw; */
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+
+#splash img {
+  height: 40%;
+  width: auto;
+}

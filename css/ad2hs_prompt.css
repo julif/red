@@ -1,0 +1,47 @@
+#ad2hs-prompt-container{
+  background-color: white;
+  color: black;
+  width: 600px;
+  font-size: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 5000000000;
+  animation-duration: 0.7s; 
+}
+#ad2hs-prompt-container-content{ display: flex; position: relative;}
+#ad2hs-close{ 
+  position: absolute; 
+  top: -5px;
+  right: 5px; 
+  cursor: pointer; 
+}
+#ad2hs-prompt-container-content p{ 
+  margin: 0px;
+  margin-bottom: 3px;
+} 
+#ad2hs-name-description-container{ margin-left: 15px; }
+#ad2hs-prompt-container-footer{text-align: right;}
+#ad2hs-button{
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 800px) {
+  #ad2hs-prompt-container {
+    width: 100%;
+    width: 96%;
+    width: -webkit-fill-available;
+    bottom: 0px;
+    right: 0px;
+  }
+  #ad2hs-close {
+    top: 0px;
+    right: 5px;
+  }
+}

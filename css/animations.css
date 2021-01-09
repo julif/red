@@ -1,0 +1,4 @@
+@keyframes portrait_image_rotation {
+  0%   {transform: rotate(90deg);}
+  100% {transform: rotate(0deg);}
+}
