@@ -33,21 +33,15 @@
   <meta name="msapplication-square150x150logo" content="img/mstile-150x150.png" />
   <meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="img/mstile-310x310.png" />
-
- 
-  
-<script type="text/javascript">
-  
-  if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('sw.js').then(function(registration) {
-    console.log('ServiceWorker registration successful with scope:',  registration.scope);
-  }).catch(function(error) {
-    console.log('ServiceWorker registration failed:', errror);
-  });
-}
-
-
-</script>
+  <script type="text/javascript">
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('sw.js').then(function(registration) {
+        console.log('ServiceWorker registration successful with scope:',  registration.scope);
+      }).catch(function(error) {
+        console.log('ServiceWorker registration failed:', errror);
+      });
+    }
+  </script>
   <!--  font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!--  animate.css -->
@@ -90,15 +84,16 @@
     <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button">Add to home screen</button> </div>
   </div> 
 </body> 
-<script type="text/javascript" src="js/ad2hs_prompt.js"></script>ad2hs-name-description-containerconst 
+<script type="text/javascript" src="js/ad2hs_prompt.js"></script>
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="app_info.js"></script>
 <script> 
-document.title = app_name;
-document.querySelector('#ad2hs_app_name').innerHTML =  app_name;
-document.querySelector('#ad2hs_web_name').innerHTML =  app_web;
+  document.title = app_name;
+  document.querySelector('#ad2hs_app_name').innerHTML =  app_name;
+  document.querySelector('#ad2hs_web_name').innerHTML =  app_web;
 
-
- </script>  
+  $('meta[name=application-name]').attr('content',  app_name );
+  
+</script>  
 <script>/* extra js */</script>  
 </html>
