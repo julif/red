@@ -1,6 +1,7 @@
 {
   "name": " Progresive webapp",
   "short_name": "webapp",
+  "description": "PWA de prueba, creada por Julif.",
   "theme_color": "#020b12",
   "background_color": "#020b12",
   "display": "fullscreen",

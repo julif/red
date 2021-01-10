@@ -34,10 +34,12 @@ section {
   width: 100%;
   overflow: hidden;
 }
+/* ----------------------- splash ----------------------- */
 #splash img {
   height: 40%;
   width: auto;
 }
+/* ----------------------- splash-art ----------------------- */
 #splash_art {
 background-image: url(img/splash-art-backgorund.png);
 background-size: cover;
