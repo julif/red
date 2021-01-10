@@ -13,6 +13,15 @@ body{
    
   }
 p{ color:white; }
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+.preloader {
+  margin-left: 15000px;
+  position: fixed;
+}
 section {
   background-color: var(--main-bg-color);
   display: flex;
@@ -28,4 +37,11 @@ section {
 #splash img {
   height: 40%;
   width: auto;
+}
+#splash_art {
+background-image: url(img/splash-art-backgorund.png);
+background-size: cover;
+background-position: center;
+justify-content: center;
+align-items: center;
 }

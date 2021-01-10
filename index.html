@@ -66,9 +66,16 @@
     </section> 
   </portrait>
   <landscape id="landscape"> 
-    <section id="splash" class="hidden" style="z-index: 3;/* display: none; */">
+    <section id="splash">
       <!-- <div class="loader">Loading...</div>  -->
       <img src="julif.svg">
+       <!-- precargar imagen de splash_art -->
+      <div class="preloader">
+        <img id="precarga_img_splash-art" src="img/splash-art-backgorund.png" width="100px">
+      </div>
+    </section>
+    <section id="splash_art"  style="display: none;">
+    <p> Seccion 2 : "Splash art"</p>
     </section>
   </landscape>
   <!--  ad2hs prompt  -->
@@ -85,15 +92,16 @@
   </div> 
 </body> 
 <script type="text/javascript" src="js/ad2hs_prompt.js"></script>
+<script type="text/javascript" src="js/fade_div.js"></script>
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="app_info.js"></script>
 <script> 
   document.title = app_name;
   document.querySelector('#ad2hs_app_name').innerHTML =  app_name;
   document.querySelector('#ad2hs_web_name').innerHTML =  app_web;
-
-  $('meta[name=application-name]').attr('content',  app_name );
-  
+  // $('meta[name=application-name]').attr('content',  app_name );
 </script>  
-<script>/* extra js */</script>  
+<script>/* extra js */
+setTimeout(function(){  fadediv(splash,splash_art);  }, 5000);
+</script>  
 </html>
