@@ -1,0 +1,351 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="devlog.css">
+    <link href="Tranquil_Heart.css" type="text/css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+<body id>
+  <main id="content" class="main-content" role="main">
+    <h1 style="    text-align: center;"> proyecto deckbuilder </h1>
+    <p> un juego para navegadores echo totalmente con javascript inspirado en "Slay the spire".</p>
+    <h3> roadmap </h3>
+    <checkbox>
+<!--       <label class="container">pagina principal, blog y devblog.
+        <input type="checkbox"  checked> 
+        <span class="checkmark"></span>
+      </label> -->
+      <label class="container"> v 2 0.1 - mostrar cartas <input type="checkbox" checked ><span class="checkmark"></span></label>
+      <label class="container"> v 2 0.2 - cartas responsive <input type="checkbox" checked  ><span class="checkmark"></span></label>
+      <label class="container"> v 2 0.3 - zoom en modal <input type="checkbox" checked  ><span class="checkmark"></span></label>
+      <label class="container"> v 2 0.4 - drag <input type="checkbox" ><span class="checkmark"></span></label>
+
+    </checkbox>
+    <h3> fixes por hacer </h3>
+    <ul>
+      <li> agregar un pre-cargador para poder quitar el temporizador a la hora de mostrar las cartas </li>
+      <li> crear una manera de asignar id a las cartas al entrar al mazo para quitar el codigo que le asigna su index. </li>
+    </ul>
+    <!-- nav -->
+    <nav class="under_banner_menu">
+      <ul id="under_banner_menu_ul"></ul>
+    </nav>
+    <!-- Entradas -->
+    <h2  id="version0"  style="    border-bottom: solid 2px #eff0f1;"> Comentarios Iniciales </h2>
+    <p> 26/10/2020 </p>
+    <p> Esta es la segunda version de este proyecto que planeo terminar, voy a usar todo lo aprendido en la vez anterior como por ejemplo a crear mi propio plugin jquery para administrar el dragg y drop (lo cual me permite personalizar mucho mas su funcionamiento).</p>
+<h2  id="version201"  style="    border-bottom: solid 2px #eff0f1;"> v 2 0.1 - mostrar cartas </h2>
+<p> 26/10/2020 </p>
+<p> lo primero que tengo que hacer es crear un array de objetos que van a representar a las cartas </p>
+<pre class="prettyprint lang-js">
+var cartas = [
+  { 
+    nombre: 'carta 1'  ,
+    id: 'carta_001' ,
+    imagen_src:'img/1.jpg'
+  },
+  { 
+    nombre: 'carta 2',
+    id: 'carta_002', 
+    imagen_src:'img/2.jpg'
+  }
+]; 
+</pre>
+<p> y para mostrarlas de una manera baica podemos usar esto: </p>
+<pre class="prettyprint lang-js">
+cartas.forEach(mostar_cartas);
+
+function mostar_cartas(item, index) {
+  document.getElementById(&quot;cartas&quot;).innerHTML +=  &quot;&lt;carta&gt;&lt;h2&gt;&quot; + item.nombre + &quot;&lt;/h2&gt;&lt;/carta&gt;&quot;;
+}
+</pre>
+<p> ahora podria darle algo de estilo a la carta </p>
+<pre class="prettyprint lang-css">
+carta{
+  display: block;
+  background-color: #677589;
+  width: 112px;
+  height: 200px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+</pre>
+<p> y ya para que no esten sueltas voy a darle estilo al contenedor</p>
+<pre class="prettyprint lang-css">
+#cartas{
+  height: 200px;
+  display: inline-flex;
+  min-width: 100%;
+  justify-content: center;
+  background-color: #3b4048;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+</pre>
+<p> ahora voy a agregar el atributo coste en la cartas y a repreentarlo junto con el nombre dentro de las cartas</p>
+<pre class="prettyprint lang-js">
+  cartas.forEach(mostar_cartas);<br/><br/>function mostar_cartas(item, index) {<br/>  document.getElementById(&quot;cartas&quot;).innerHTML +=  &quot;&lt;carta&gt;&lt;div class='carta_coste'&gt; &quot; + item.coste + &quot;&lt;/div&gt;&lt;div class='carta_nombre'&gt; &quot; + item.nombre + &quot;&lt;/div&gt;&lt;/carta&gt;&quot;;<br/>}
+</pre>
+<p> y para terminar con lo basico cada una tiene que tener una imagen de fondo</p>
+<p> solo tengo que cambiarle el estilo a las cartas al mostrarlas dento de la funcion mostrar_cartas.</p>
+<pre class="prettyprint lang-js">
+style='background-image: url(" + item.imagen_src + ");'
+</pre>
+<h2  id="version202"  style="    border-bottom: solid 2px #eff0f1;"> v 2 0.2 - cartas responsive </h2>
+<p> 27/10/2020 </p>
+<p> Anteriormente a habia intentado este proyecto, me entretiene superar los distintos problemas que se me van presentando de maneras ingeniosas, y esta no es la expecion.</p>
+<p> Necesito poder mostrar cartas con sus respectivos valores y nombres, pero tambien necesito que cada una de estas cartas mantenga una relaciond de aspecto de 16:9.</p>
+<p>Intente usar un plugin o la opcion de padding-top de wschool, incluso intente usar una imagen como contendor de la carta aprovechando el echo de que si la imagen tiene la proporcion correcta es ya auotmaticamente responsive. De echo esa es una de las grandes diferencias entre la version anterior de el deckbuider y esta.</p>
+<p>La primera version de el deckbulider usaba imagenes para representar a la cartas, y funcionaba pero me limitaba bastante en el sentido de que ningun dato de la carta podia mostrar un feedback si cambiaba.</p>
+
+<p>Despues de todos estos intentos ya empezaba a perder la esperanza cuando se me ocurrio que podia usar la altura y anchura de una imagen como base.</p>
+<p>La idea es simple, tengo una imagen oculta dentro de un contenedor con la misma clase de las cartas de verdad, y al cambiar el contenedor se llama a una funcion que busca la altura y anchura de esa imagen y se las aplica a las cartas.</p>
+<div style="height: 300px;width: 100%;text-align: center;    margin-bottom: 10px;margin-top: 10px;">
+  <img style="height: 100%;" src="devblog_img/carta_size_base.png">
+</div>
+<pre class="prettyprint lang-js">
+   imgSize();
+  
+  function imgSize(){
+    var myImg = document.querySelector("#carta_layout");
+    var currWidth = myImg.clientWidth;
+    var currHeight = myImg.clientHeight;
+  
+    $('.carta_en_mano').each(function(){
+      $(this).css("width",  currWidth+"px");
+      $(this).css("height", currHeight+"px" );
+    });
+
+  }
+</pre>
+<p> un pequeño detalle es que al parecer al probarlo online si la imagen de prueba esta cargando la altura de las cartas pasa a ser 0, eso se soluciona facil con un pre-cargador que iba a agregar de todas formas.</p>
+<h2  id="version203"  style="    border-bottom: solid 2px #eff0f1;"> v 2 0.3 - zoom en modal </h2>
+<p> 27/10/2020 </p>
+<p> Otro de los motivos por los cuales estoy rehaciendo este proyecto es que en la version anterior no encontraba una manera de hacerle zoom a una carta en el caso de que el usuario quisiera ver los detalles de esta.</p>
+<p> por eso en esta version se me ocurrio llamar a una funcion que muetra un modal al hacer click en las cartas.</p>
+<pre class="prettyprint lang-js">
+$( ".carta_en_mano" ).on('click', function (evt){
+  document.getElementById("modal").style.display= "block"; //muestra el modal
+  var cardID = this.getAttribute("card_id");  //toma el id de la carta desde su atributo
+  
+  // toma los datos de la carta por su id
+  var results = cartas.filter(function (nickname) { return nickname.id == cardID; }); 
+  var firstObj = (results.length > 0) ? results[0] : null;
+  console.log(" nombre: "+firstObj.nombre);
+  console.log(" id: "+firstObj.id);
+  console.log(" coste: "+firstObj.coste);
+  console.log(" imagen_src: "+firstObj.imagen_src);
+
+  // muestra los datos en el modal
+  document.getElementById(&quot;carta_en_modal&quot;).innerHTML+= &quot;&lt;img src='&quot;+ firstObj.imagen_src + &quot;' &gt;&quot;;<br/>
+  document.getElementById(&quot;carta_en_modal&quot;).innerHTML+= &quot;&lt;div id='carta_en_modal_detalles' &gt;&lt;div&gt; &lt;h1&gt; &quot;+ firstObj.nombre + &quot; &lt;/h1&gt; &lt;p&gt; coste: &quot;+ firstObj.coste + &quot;  &lt;/p&gt; &lt;p class='detalles' &gt; detalles &lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&quot;;
+});
+//oculta el modal y borra los datos
+$( "#btn_modal_close_container" ).on('click', function (evt){
+  document.getElementById("modal").style.display= "none";
+  document.getElementById("carta_en_modal").innerHTML="";
+});
+</pre>
+<h2  id="version204"  style="    border-bottom: solid 2px #eff0f1;"> v 2 0.4 - drag and drop </h2>
+<p> 29/10/2020 </p>
+<p> Existen de maneras de hacer el dragg and drop. la primera es html5 y la otra jquery ui</p>
+<h3> jquery UI</h3>
+<p> para usar jquery UI, lo primero que hay que hacer es llamarlo </p>
+<pre class="prettyprint lang-js">
+&lt;script src=&quot;https://code.jquery.com/ui/1.12.1/jquery-ui.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+<p> despues tengo que agregar este codigo que convierte a toda las cartas en mano en elemento draggable y las clona al moverlas </p>
+<pre class="prettyprint lang-js">
+  $(".carta_en_mano").draggable({
+    appendTo: "body",
+    cursor: "move",
+    helper: "clone",
+    revert: true,
+    revertDuration: 0
+  });
+</pre>
+<p> bien, ahora necesito que al mover una carta se vuelva invisible, pero para eso necesita tener un id. Eventualmente voy a agregarle un ID a todas las cartas al entrar al mazo, pero po ahora tengo que hacer esto</p>
+<p> dentro de el codigo que muestra las carta voy a agregar una funcion que devuelva el numero de el index +1 y ese se va a volver el identificador especifico de la carta.</p>
+<p> despues le agrego el atributo id  y listo</p>
+<p> ahora puedo hacer invisible la carta al draggearla y ademas puedo pasar las 2 id  y cualquier otro dato que necesite pasar.</p>
+<pre class="prettyprint lang-js">
+  var datos;
+//dragg
+$( "body" ).on( ".carta_en_mano dragstart", 
+  function( event, ui ) {
+    document.getElementById(event.target.id).style.opacity=" 0";
+    datos =  event.target.id;                                       
+  } 
+);
+//drop
+$( "body" ).on( ".carta_en_mano dragstop", 
+  function( event, ui ) {
+    document.getElementById(event.target.id).style.opacity="1";
+    ui.helper.remove(); 
+  } 
+)
+</pre>
+<p> ahora necesito un lugar donde dropear las cartas.</p>
+<p> cree un div con el id zona </p>
+<pre class="prettyprint lang-js">
+$("#zona").droppable({
+  drop: function(event, ui) {
+    alert(datos);
+    document.getElementById(datos).style.display="none";
+  },
+}); 
+</pre>
+<p> el problema es que loss datos que paso son limitados, deberia agregar mas.</p>
+<p> en dragstart cambio datos por esto:</p>
+<pre class="prettyprint lang-js">
+  datos_id =  event.target.id;  //ID unica
+  datos_card_id = event.target.getAttribute('card_id');  //ID de la carta
+</pre>
+<p> Lo bueno de tener la card_id es que puedo llamar el mismo codigo que en el modal para asi tener todos los datos</p>
+<pre class="prettyprint lang-js">
+// toma los datos de la carta por su id
+var results = cartas.filter(function (nickname) { return nickname.id == datos_card_id; }); 
+var firstObj = (results.length > 0) ? results[0] : null;
+console.log(" nombre: "+firstObj.nombre);
+console.log(" id: "+firstObj.id);
+console.log(" coste: "+firstObj.coste);
+console.log(" imagen_src: "+firstObj.imagen_src);
+</pre>
+<p> esto me da todos los datos de la carta. pero quizas mas tarde tenga que agregar otros datos para cambios a la carta especifica.</p>
+<p>ahora, por una cuetion estetica nesecito que la zona de drop cambie de color al estar encima. Por suerte Jquery UI le agrega clases a las zonas dropeables en hover, en este caso .ui-droppable-hover</p>
+<h2  id="version2041"  style="    border-bottom: solid 2px #eff0f1;"> v 2 0.4.1 -multiples zonas de drop </h2>
+<p> 29/10/2020 </p>
+<p> la zona #zona por el momento sirve como zona general, que seria para cartas que afectan a todo el campo, pero ahora tengo que crear una zona de enemigo. eventualmente las zonas que voy a crear son: </p>
+<ul>
+  <li> zona de todos los personajes </li>
+  <li> zona de todos los personajes enemigos </li>
+  <li> zona de todos los personajes aliado </li>
+  <li> zona de aliado especifico </li>
+  <li> zona de enemigo especifico </li>
+</ul>
+<p> probe simplemente con crear una copia de el codigo de zona y reemplazarlo por #enemigo pero se activan ambos. </p>
+<p> la solucion fue agregar accept: ".all", y accept: ".enemys", en las dropzones, lo unico que tengo que hacer es agregar una propiedad nueva en las cartas llamada drop_class</p>
+<h2  id="version2042"  style="    border-bottom: solid 2px #eff0f1;"> v 2 0.4.2 - dragg and drop mobile </h2>
+<p> 10/11/2020 </p>
+<p> Lamentablemente el dragg and drop no funciona en telefonos, para eso hay que agregar codigo extra.</p>
+<p> para empezar vamos a ver si puedo activar un alert al empezar a draggear.</p>
+<pre class="prettyprint lang-js">
+$('.carta_en_mano').on('touchstart', function (event) {
+  event.preventDefault();
+  alert("hola");
+});
+</pre>
+<p> bien, funciona perfecto. Ahora podemos usar la misma funcion que en el dragg and drop normal y tomar el id de la carta y el id especifico.</p>
+<pre class="prettyprint lang-js">
+$('.carta_en_mano').on('touchstart', function (event) {
+  event.preventDefault();
+  datos_id =  event.target.id;  
+  datos_card_id = event.target.getAttribute('card_id');    
+  alert( datos_id );
+});
+</pre>
+<p> el problema ahora es que el dragg y el click son la misma cosa, asi que necesito una manera de medir la duracion de el dragg.</p>
+<p> para eso voy a usar un timer que mida si el dragg duro mas de un segundo y de ser asi llama la funcion dragg</p>
+<pre class="prettyprint lang-js">
+var timer;
+var touchDuration = 150;
+var long_touch = false;
+$('.carta_en_mano').on('touchstart', function (event) {
+  event.preventDefault();
+  long_touch = false;
+  datos_id =  event.target.id;  
+  datos_card_id = event.target.getAttribute('card_id');    
+  timer = setTimeout(function () {
+    long_touch = true;
+  }, touchDuration);
+});
+$('.carta_en_mano').on('touchend', function (event) {
+  if (timer) { clearTimeout(timer);}
+  if(  long_touch == false ){ alert(" click  ");}
+  if(  long_touch == true ){alert(" dragg  "); }
+});   
+</pre>
+<p> Bien, ahora puedo hacer que el click llame a la misma funcion que llama el click normal.</p>
+<p> Por ahora todo funciona bien, pero necesito que halla feedback al draggear.Para eso voy a usar un div llamado auxiliar, el cual se superpone al draggear. </p>
+<p> Ahora necesito que el alert de drop solo se ejecute si estan en el div all, para eso voy a usar la funcion get_target. que revisa el id de el elemento en el qe queda el dedo al terminar el drag </p>
+<pre class="prettyprint lang-js">
+var changedTouch = event.changedTouches[0];
+var elem = document.elementsFromPoint(changedTouch.clientX, changedTouch.clientY)
+// get_target(elem[2]); zona (todos)
+//  get_target(elem[1]);  enemigos / aliados
+//  get_target(elem[0]);  enemigo o aliado especifico
+get_target(elem[2]);
+function get_target(element){ 
+
+//console.log(element.className);
+console.log(element.id);
+
+}; //get_target
+</pre>
+si a esto le agregamos un simple if, podemos hacer que la funcion solo se ejecute si la carta esta en el div all.
+<pre class="prettyprint lang-js">
+if (element.id == "zona") {
+  alert("dragg");
+} 
+</pre>
+<p>Bien, ahora quiero que cuando la carta esten sobre el div all cambie el color de fondo de este, esto es dificil de lograr con  elementsFromPoint por que el index cambia.</p>
+<p> La solucion que encontre funciona bastante bien. tomo el id de cada elemento sobre el que estoy pasando el dedo con la funcion get_elements_id y los agrego al array new_array, despues  uso new_array.some(check_zone) para ver si alguno de los id concuerda con el de la zona de todos, y de ser el caso llama a la funcion.</p>
+<pre class="prettyprint lang-js">
+var changedTouch = event.changedTouches[0];
+var elem = document.elementsFromPoint(changedTouch.clientX, changedTouch.clientY);
+var new_array= new Array();
+
+elem.forEach(get_elementss_id);
+function get_elementss_id(item, index) {new_array.push(item.id );}
+function check_zone(item) { return item == "zona"; }
+      
+var zone_true = new_array.some(check_zone);
+//console.log ( zone_true );
+if (zone_true == true) {
+  $('#zona').css("background-color", "#ffd998");
+} else {
+  $('#zona').css("background-color", "#d1d8e2");
+}
+</pre>
+<p> Lo unico que me falta para que la version mobile alcanze a la normal es que se distinga entre los tipos de cartas para llamar a la funcion respectiva sobre el div respectivo. </p>
+
+<p> ahora me falta</p>
+<ul> 
+  <li>crear contenedores de tamaño en porcentaje</li>
+  <li> hacer dragg y drop para celualres </li>
+  <li> hacer boss stage</li>
+  <li> meter todo en un div hd</li>
+  <li> crear la opciond de novela visual.</li>
+  <li> mergear las funciones de click y click mobile </li>
+
+</ul>
+
+
+<!-- fin de Entradas -->
+</main>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script type="text/javascript">
+
+$('h2').each(function(){
+  document.getElementById("under_banner_menu_ul").innerHTML += "<a id='"+ this.id +"link' href='#' ><li>  " + this.innerHTML +"</li></a> "; 
+});
+
+function goToByScroll(id){
+    // Reove "link" from the ID
+  id = id.replace("link", "");
+    // Scroll
+  $('html,body').animate({
+      scrollTop: $("#"+id).offset().top},
+      'slow');
+}
+
+$(".under_banner_menu > ul >  a").click(function(e) { 
+    // Prevent a page reload when a link is pressed
+  e.preventDefault(); 
+    // Call the scroll function
+  goToByScroll($(this).attr("id"));           
+});
+</script>
+</body>
+</html>
