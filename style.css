@@ -46,7 +46,9 @@ background-size: cover;
 background-position: center;
 justify-content: center;
 align-items: center;
-
+display: flex;
+align-items: center;
+justify-content: center;
  /* background-position: center;
     background-size: contain;
     background-repeat: no-repeat; */
