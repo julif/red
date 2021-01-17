@@ -134,6 +134,22 @@ width: 65%;
   // $('meta[name=application-name]').attr('content',  app_name );
 </script>  
 <script>/* extra js */
-setTimeout(function(){  fadediv(splash,splash_art);  }, 5000);
+setTimeout(function(){  fadediv(splash,splash_art);  }, 4000);
+
+
+
+
+
+
+// esconder el boton fullwiev si la pantalla ya esta en maximisada
+if (window.matchMedia('(display-mode: fullscreen)').matches) {  
+    // do things here  
+    // set a variable to be used when calling something  
+    // e.g. call Google Analytics to track standalone use 
+    document.getElementById("full").style.display= "none";
+    //  iniciar_splash();
+
+} 
+
 </script>  
 </html>
