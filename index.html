@@ -81,7 +81,7 @@
 
     <!-- <img src="img/logo.png" style="width: 25%;height: auto;position: absolute;bottom: 5%;left: 5%;"> -->
     <div style="text-align: center;">
-      <img src="img/logo.png" style="width: 45%;height: auto;">
+      <img src="img/logo2.png" style="width: 45%;height: auto;">
 <div style="    
 /* background-color: red; */
 width: 100%;
@@ -122,6 +122,11 @@ width: 65%;
     </div> 
     <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button">Add to home screen</button> </div>
   </div> 
+  <p id="version" style="position: absolute;
+  z-index: 1000000;
+  right: 20px;
+  color: #bbbbbb;
+  bottom: 1px;"> v 0.1 </p>
 </body> 
 <script type="text/javascript" src="js/ad2hs_prompt.js"></script>
 <script type="text/javascript" src="js/fade_div.js"></script>
@@ -131,6 +136,7 @@ width: 65%;
   document.title = app_name;
   document.querySelector('#ad2hs_app_name').innerHTML =  app_name;
   document.querySelector('#ad2hs_web_name').innerHTML =  app_web;
+  document.querySelector('#version').innerHTML =  app_version;
   // $('meta[name=application-name]').attr('content',  app_name );
 </script>  
 <script>/* extra js */
