@@ -4,7 +4,11 @@
   <title>Webapp</title>
   <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta charset="utf-8"/>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json">  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
 
   <!-- <meta name="application-name" content="web-app "> -->
   <!-- <meta name="mobile-web-app-capable" content="yes">
@@ -70,8 +74,8 @@
       <!-- <div class="loader">Loading...</div>  -->
       <img src="julif.svg">
        <!-- precargar imagen de splash_art -->
-      <div class="preloader">
-        <img id="precarga_img_splash-art" src="img/splash-art-backgorund.png" width="100px">
+      <div  id="precarga_img_splash-art" class="preloader">
+        <!-- <img  src="img/splash-art-backgorund.png" width="100px"> -->
       </div>
     </section>
     <section id="splash_art"  style="display: none;">
@@ -81,7 +85,7 @@
 
     <!-- <img src="img/logo.png" style="width: 25%;height: auto;position: absolute;bottom: 5%;left: 5%;"> -->
     <div style="text-align: center;">
-      <img src="img/logo5.png" style="width: 45%;height: auto;">
+      <img src="img/logo4.png" style="width: 45%;height: auto;">
 <div style="    
 /* background-color: red; */
 width: 100%;
@@ -97,11 +101,11 @@ height: 50px;">
     width: 300px;
     overflow: hidden;
 ">
-<div style="
+<div id="preloader_bar" style="
 background-color: #f7b12a;
 background-color: white;
 height: 150px;
-width: 65%;
+width: 65%; 
 "></div>
 </div>
 
@@ -110,6 +114,7 @@ width: 65%;
 </div>
     </div>
     </section>
+    <section id="main_menu"  style="display: none;"> main menu </section>
   </landscape>
   <!--  ad2hs prompt  -->
   <div id="ad2hs-prompt-container"  class="animate__slideInUp">
@@ -143,7 +148,7 @@ width: 65%;
   // $('meta[name=application-name]').attr('content',  app_name );
 </script>  
 <script>/* extra js */
-setTimeout(function(){  fadediv(splash,splash_art);  }, 4000);
+// setTimeout(function(){  fadediv(splash,splash_art);  }, 4000);
 
 
 
@@ -159,6 +164,73 @@ if (window.matchMedia('(display-mode: fullscreen)').matches) {
     //  iniciar_splash();
 
 } 
+
+
+
+
+
+
+
+
+
+
+var imagenes_cargadas = 0;
+var numero_total;
+var imagenes_a_cargar = [
+     "splash-art-backgorund.png", 
+     "logo4.png"
+  ];
+
+
+ precarga( imagenes_a_cargar );
+
+ function precarga(item){ 
+
+  numero_total =  item.length;
+  // setTimeout(function(){  fadediv(splash_art , main_menu );  }, 10000);
+
+
+  item.forEach(mostrar_imagenes_en_preloader);
+    
+    function mostrar_imagenes_en_preloader(item, index){
+      document.getElementById("precarga_img_splash-art").innerHTML +=    '<img  id="preloaded_element_'+ index +'" src="img/'+ item +'" >' ;
+      }
+
+      var imagenes_en_preloader = $('#precarga_img_splash-art').children('img').map(function(){   return $(this).attr('id'); }).get()
+ 
+
+  imagenes_en_preloader.forEach(precargar_imagenes);
+
+
+
+  function precargar_imagenes(item, index){
+    item ="#"+ item;
+    $(item).on('load', function() {
+      imagenes_cargadas++;
+      console.log(   "cargada imagen: "+ imagenes_cargadas +" de "+ numero_total );
+      // ------------- calcular y mostrar el porcentaje -----------------
+      porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
+      porcentaje = porcentaje.toFixed() //convertir en numero entero
+      porcentaje =  porcentaje + "%" ;
+      //document.getElementById("porcentaje").innerHTML = porcentaje;
+      //document.getElementById("barra").style.width = porcentaje;
+      // ------------- terminado -----------------
+      if( imagenes_cargadas == numero_total){
+      console.log(" ");
+      console.log("//carga completada//"); 
+      console.log(" ");
+      //document.getElementById("terminado").innerHTML = "//carga completada//";
+      setTimeout(function(){  fadediv(splash,splash_art);  }, 2000);
+    }
+  })// load function
+}//precargar_imagenes
+ 
+
+
+
+ }
+
+
 
 </script>  
 </html>

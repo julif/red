@@ -18,10 +18,13 @@ p{ color:white; }
   opacity: 0;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
-.preloader {
+ .preloader {
   margin-left: 15000px;
   position: fixed;
-}
+} 
+/* .preloader img{
+  width: 150px!important;
+}  */
 section {
   background-color: var(--main-bg-color);
   display: flex;
@@ -39,6 +42,9 @@ section {
   height: 40%;
   width: auto;
 }
+.preloader img{
+  width: 150px!important;
+} 
 /* ----------------------- splash-art ----------------------- */
 #splash_art {
 background-image: url(img/splash-art-backgorund.png);
@@ -53,4 +59,9 @@ justify-content: center;
     background-size: contain;
     background-repeat: no-repeat; */
 
+}
+/* ----------------------- main menu ----------------------- */
+#main_menu{
+ color: black;
+ background-color: white;
 }
