@@ -60,6 +60,31 @@ justify-content: center;
     background-repeat: no-repeat; */
 
 }
+#preloader_container{
+  /* background-color: red; */
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+#preloader_bar_background{
+  background-color: black;
+  height: 5px;
+  width: 300px;
+  overflow: hidden;
+}
+#preloader_bar{
+  background-color: #f7b12a;
+  background-color: white;
+  height: 150px;
+  width: 0%; 
+}
+@media only screen and (max-width: 800px) {
+  img{ width: 35%!important; }
+  
+}
+
 /* ----------------------- main menu ----------------------- */
 #main_menu{
  color: black;

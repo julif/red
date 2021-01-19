@@ -71,49 +71,21 @@
   </portrait>
   <landscape id="landscape"> 
     <section id="splash">
-      <!-- <div class="loader">Loading...</div>  -->
       <img src="julif.svg">
-       <!-- precargar imagen de splash_art -->
-      <div  id="precarga_img_splash-art" class="preloader">
-        <!-- <img  src="img/splash-art-backgorund.png" width="100px"> -->
-      </div>
+      <!-- precargar imagen de splash_art -->
+      <div  id="precarga_img_splash-art" class="preloader"><!-- contenido del preloader --></div>
     </section>
     <section id="splash_art"  style="display: none;">
-    <!-- <p> Seccion 2 : "Splash art"</p> -->
-    <!-- <img src="img/vfvf.png" style="width: 10%;height: auto;position: absolute;"> -->
-    <!-- <img src="img/vfvf.png" style="width: 10%;height: auto;position: absolute;bottom: 5%;left: 5%;"> -->
-
-    <!-- <img src="img/logo.png" style="width: 25%;height: auto;position: absolute;bottom: 5%;left: 5%;"> -->
-    <div style="text-align: center;">
-      <img src="img/logo4.png" style="width: 45%;height: auto;">
-<div style="    
-/* background-color: red; */
-width: 100%;
-justify-content: center;
-    display: flex;
-    align-items: center;
-height: 50px;">
-
-
-<div style="
-    background-color: black;
-    height: 5px;
-    width: 300px;
-    overflow: hidden;
-">
-<div id="preloader_bar" style="
-background-color: #f7b12a;
-background-color: white;
-height: 150px;
-width: 65%; 
-"></div>
-</div>
-
-
-
-</div>
+      <div style="text-align: center;">
+        <img src="img/logo4.png" style="width: 45%;height: auto;">
+    <div id="preloader_container">
+      <div id="preloader_bar_background">
+        <div id="preloader_bar"></div>
+      </div>
+    </div>
     </div>
     </section>
+    <div  id="precarga_main_menu" class="preloader"><!-- contenido del preloader --></div>
     <section id="main_menu"  style="display: none;"> main menu </section>
   </landscape>
   <!--  ad2hs prompt  -->
@@ -174,53 +146,104 @@ if (window.matchMedia('(display-mode: fullscreen)').matches) {
 
 
 
-var imagenes_cargadas = 0;
-var numero_total;
-var imagenes_a_cargar = [
+var splash_art_imagenes_cargadas = 0;
+var splash_art_numero_total;
+var splash_art_imagenes_a_cargar = [
      "splash-art-backgorund.png", 
      "logo4.png"
   ];
+  
+var main_menu_imagenes_cargadas = 0;
+var main_menu_numero_total;
+  var main_menu_imagenes_a_cargar = [
+     "logo2.png", 
+     "logo3.png"
+  ];
 
+ precarga_splash_art( splash_art_imagenes_a_cargar );
 
- precarga( imagenes_a_cargar );
+ function precarga_splash_art(item){ 
 
- function precarga(item){ 
-
-  numero_total =  item.length;
+  splash_art_numero_total =  item.length;
   // setTimeout(function(){  fadediv(splash_art , main_menu );  }, 10000);
 
 
-  item.forEach(mostrar_imagenes_en_preloader);
+  item.forEach(splash_art_mostrar_imagenes_en_preloader);
     
-    function mostrar_imagenes_en_preloader(item, index){
+    function splash_art_mostrar_imagenes_en_preloader(item, index){
       document.getElementById("precarga_img_splash-art").innerHTML +=    '<img  id="preloaded_element_'+ index +'" src="img/'+ item +'" >' ;
       }
 
-      var imagenes_en_preloader = $('#precarga_img_splash-art').children('img').map(function(){   return $(this).attr('id'); }).get()
+      var splash_art_imagenes_en_preloader = $('#precarga_img_splash-art').children('img').map(function(){   return $(this).attr('id'); }).get()
  
 
-  imagenes_en_preloader.forEach(precargar_imagenes);
+      splash_art_imagenes_en_preloader.forEach( splash_art_precargar_imagenes );
 
 
 
-  function precargar_imagenes(item, index){
+  function splash_art_precargar_imagenes(item, index){
     item ="#"+ item;
     $(item).on('load', function() {
-      imagenes_cargadas++;
-      console.log(   "cargada imagen: "+ imagenes_cargadas +" de "+ numero_total );
+      splash_art_imagenes_cargadas++;
+      console.log(   "cargada imagen: "+ splash_art_imagenes_cargadas +" de "+ splash_art_numero_total );
       // ------------- calcular y mostrar el porcentaje -----------------
-      porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
-      porcentaje = porcentaje.toFixed() //convertir en numero entero
-      porcentaje =  porcentaje + "%" ;
+      splash_art_porcentaje = splash_art_imagenes_cargadas* 100/  splash_art_numero_total;   // saco el porcentaje de las imagenes cargadas
+      splash_art_porcentaje = splash_art_porcentaje.toFixed() //convertir en numero entero
+      splash_art_porcentaje =  splash_art_porcentaje + "%" ;
       //document.getElementById("porcentaje").innerHTML = porcentaje;
       //document.getElementById("barra").style.width = porcentaje;
       // ------------- terminado -----------------
-      if( imagenes_cargadas == numero_total){
+      if( splash_art_imagenes_cargadas == splash_art_numero_total){
       console.log(" ");
       console.log("//carga completada//"); 
       console.log(" ");
       //document.getElementById("terminado").innerHTML = "//carga completada//";
-      setTimeout(function(){  fadediv(splash,splash_art);  }, 2000);
+      setTimeout(function(){ 
+         fadediv(splash,splash_art); 
+
+         main_menu_imagenes_a_cargar.forEach(main_menu_mostrar_imagenes_en_preloader);
+         main_menu_numero_total  =  main_menu_imagenes_a_cargar.length;
+    function main_menu_mostrar_imagenes_en_preloader(item, index){
+      document.getElementById("precarga_main_menu").innerHTML +=    '<img  id="preloaded_element_main_menu'+ index +'" src="img/'+ item +'" >' ;
+      }
+      var main_menu_imagenes_en_preloader = $('#precarga_main_menu').children('img').map(function(){   return $(this).attr('id'); }).get()
+        //  console.log( main_menu_imagenes_a_cargar );
+        main_menu_imagenes_en_preloader.forEach( main_menu_precargar_imagenes );
+        function main_menu_precargar_imagenes(item, index){
+          item ="#"+ item;
+          
+          $(item).on('load', function() {  
+            main_menu_imagenes_cargadas++;
+           main_menu_porcentaje =  main_menu_imagenes_cargadas* 100/   main_menu_numero_total;   // saco el porcentaje de las imagenes cargadas
+           main_menu_porcentaje =  main_menu_porcentaje.toFixed() //convertir en numero entero
+           main_menu_porcentaje =   main_menu_porcentaje + "%" ;
+           document.getElementById("preloader_bar").style.width =  main_menu_porcentaje;
+           //console.log(   main_menu_porcentaje ); 
+
+
+           console.log(   main_menu_imagenes_cargadas ); 
+           console.log(   main_menu_numero_total ); 
+
+             // ------------- terminado -----------------
+      if(  main_menu_imagenes_cargadas ==  main_menu_numero_total){
+      console.log(" ");
+      console.log("//carga completada//"); 
+      console.log(" ");
+
+      setTimeout(function(){  fadediv(splash_art , main_menu );  }, 1000);
+    }
+          
+           //
+      //document.getElementById("porcentaje").innerHTML = porcentaje;
+      //
+
+            
+          })
+        }
+         
+        
+        }, 2000);
+      
     }
   })// load function
 }//precargar_imagenes
@@ -229,6 +252,11 @@ var imagenes_a_cargar = [
 
 
  }
+
+
+
+
+
 
 
 

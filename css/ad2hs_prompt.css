@@ -10,6 +10,7 @@
   right: 10px;
   z-index: 5000000000;
   animation-duration: 0.7s; 
+  display: none;
 }
 #ad2hs-prompt-container-content{ display: flex; position: relative;}
 #ad2hs-close{ 
