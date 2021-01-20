@@ -98,20 +98,17 @@
         <p id="ad2hs_web_name" style="color: #b7b6b6;font-size: 15px;"> Julif.github.com </p>
       </div> 
     </div> 
-    <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button">Add to home screen</button> </div>
+    <!-- <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button">Add to home screen</button> </div> -->
+    <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button"> Instalar Webapp </button> </div>
   </div> 
-  <p id="version" style="
-  position: absolute;
-  position: fixed;
-  z-index: 1000000;
-  right: 20px;
-  color: #bbbbbb;
-  bottom: 1px;"> v 0.1 </p>
+  <p id="version" >version de la app </p>
 </body> 
 <script type="text/javascript" src="js/ad2hs_prompt.js"></script>
 <script type="text/javascript" src="js/fade_div.js"></script>
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="app_info.js"></script>
+<script type="text/javascript" src="js/precargas_splashart_mainmenu.js"></script>
+
 <script> 
   document.title = app_name;
   document.querySelector('#ad2hs_app_name').innerHTML =  app_name;
@@ -122,11 +119,6 @@
 <script>/* extra js */
 // setTimeout(function(){  fadediv(splash,splash_art);  }, 4000);
 
-
-
-
-
-
 // esconder el boton fullwiev si la pantalla ya esta en maximisada
 if (window.matchMedia('(display-mode: fullscreen)').matches) {  
     // do things here  
@@ -136,124 +128,6 @@ if (window.matchMedia('(display-mode: fullscreen)').matches) {
     //  iniciar_splash();
 
 } 
-
-
-
-
-
-
-
-var splash_art_imagenes_cargadas = 0;
-var splash_art_numero_total;
-var splash_art_imagenes_a_cargar = [
-  "splash-art-backgorund.png", 
-  "logo4.png"
-];
-  
-var main_menu_imagenes_cargadas = 0;
-var main_menu_numero_total;
-var main_menu_imagenes_a_cargar = [
-  "splash-art-backgorund2.png", 
-  "splash-art-backgorund4.png"
-];
-
-precarga_splash_art( splash_art_imagenes_a_cargar );
-
-function precarga_splash_art(item){ 
-  splash_art_numero_total =  item.length;
-  item.forEach(splash_art_mostrar_imagenes_en_preloader);
-  
-  function splash_art_mostrar_imagenes_en_preloader(item, index){
-    document.getElementById("precarga_img_splash-art").innerHTML +=    '<img  id="preloaded_element_'+ index +'" src="img/'+ item +'" >' ;
-  }
-  var splash_art_imagenes_en_preloader = $('#precarga_img_splash-art').children('img').map(function(){   return $(this).attr('id'); }).get()
-  splash_art_imagenes_en_preloader.forEach( splash_art_precargar_imagenes );
-  
-  function splash_art_precargar_imagenes(item, index){
-    item ="#"+ item;
-    $(item).on('load', function() {
-      splash_art_imagenes_cargadas++;
-      // console.log(   "cargada imagen: "+ splash_art_imagenes_cargadas +" de "+ splash_art_numero_total );
-      // ------------- calcular y mostrar el porcentaje -----------------
-      splash_art_porcentaje = splash_art_imagenes_cargadas* 100/  splash_art_numero_total;   // saco el porcentaje de las imagenes cargadas
-      splash_art_porcentaje = splash_art_porcentaje.toFixed() //convertir en numero entero
-      splash_art_porcentaje =  splash_art_porcentaje + "%" ;
-      //document.getElementById("porcentaje").innerHTML = porcentaje;
-      //document.getElementById("barra").style.width = porcentaje;
-      // ------------- terminado -----------------
-      if( splash_art_imagenes_cargadas == splash_art_numero_total){
-        console.log("// precarga de las imagenes de splash-art completada con exito!//"); 
-      /* console.log(" ");
-      console.log("//carga completada//"); 
-      console.log(" "); */
-      //document.getElementById("terminado").innerHTML = "//carga completada//";
-
-       // --------------------------------------------------------------------------------------------------------------------------
-       // ------------- pre-carga main menu ----------------------------------------------------------------------------------------
-       // --------------------------------------------------------------------------------------------------------------------------
-
-      setTimeout(function(){ 
-        fadediv(splash,splash_art); 
-        main_menu_imagenes_a_cargar.forEach(main_menu_mostrar_imagenes_en_preloader);
-        main_menu_numero_total  =  main_menu_imagenes_a_cargar.length;
-        function main_menu_mostrar_imagenes_en_preloader(item, index){
-          document.getElementById("precarga_main_menu").innerHTML +=    '<img  id="preloaded_element_main_menu'+ index +'" src="img/'+ item +'" >' ;
-        }
-        var main_menu_imagenes_en_preloader = $('#precarga_main_menu').children('img').map(function(){   return $(this).attr('id'); }).get()
-        main_menu_imagenes_en_preloader.forEach( main_menu_precargar_imagenes );
-
-        function main_menu_precargar_imagenes(item, index){
-          item ="#"+ item;
-        
-          $(item).on('load', function() {  
-          main_menu_imagenes_cargadas++;
-           main_menu_porcentaje =  main_menu_imagenes_cargadas* 100/   main_menu_numero_total;   // saco el porcentaje de las imagenes cargadas
-           main_menu_porcentaje =  main_menu_porcentaje.toFixed() //convertir en numero entero
-           main_menu_porcentaje =   main_menu_porcentaje + "%" ;
-           document.getElementById("preloader_bar").style.width =  main_menu_porcentaje;
-           //console.log(   main_menu_porcentaje ); 
-
-
-          // console.log( { main_menu_imagenes_cargadas , main_menu_numero_total}   ); 
-           //console.table( { main_menu_imagenes_cargadas , main_menu_numero_total}   ); 
-         
-
-             // ------------- terminado -----------------
-      if(  main_menu_imagenes_cargadas ==  main_menu_numero_total){
-        console.log("// precarga de las imagenes de main-menu completada con exito!//"); 
-      /* console.log(" ");
-      console.log("//carga completada//"); 
-      console.log(" ");
- */
-      setTimeout(function(){  fadediv(splash_art , main_menu );  }, 1000);
-    }
-          
-           //
-      //document.getElementById("porcentaje").innerHTML = porcentaje;
-      //
-
-            
-          })
-        }
-         
-        
-        }, 2000);
-      
-    }
-  })// load function
-}//precargar_imagenes
- 
-
-
-
- }
-
-
-
-
-
-
-
 
 </script>  
 </html>
