@@ -53,7 +53,9 @@ section {
 } 
 /* ----------------------- splash-art ----------------------- */
 #splash_art {
-background-image: url(img/splash-art-backgorund.png);
+/* background-image: url(img/splash-art-backgorund.png); */
+background-image: url(img/fondo_figurageometrica1.png);
+
 background-size: cover;
 background-position: center;
 justify-content: center;
@@ -94,5 +96,5 @@ justify-content: center;
 /* ----------------------- main menu ----------------------- */
 #main_menu{
  color: black;
- background-color: white;
+ background-color: #dcdcdc;
 }

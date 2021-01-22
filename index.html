@@ -50,6 +50,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!--  animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- popper.js -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
   <!-- css -->
   <link rel="stylesheet" href="style.css"> 
   <link rel="stylesheet" href="css/portrait.css"> 
@@ -60,6 +62,10 @@
 </head>
 <body id="contenedor">
   <div id="full">
+    <div id="tooltip"  role="tooltip">
+      <i class="fas fa-info-circle"></i><span id="tooltip_message" >  se recomienda pantalla completa </span>
+      <div id="arrow" data-popper-arrow></div>
+    </div>
     <button id="fullwiev" onclick="lock('landscape')">
       <i class="fa fa-expand"></i>
     </button>
@@ -108,6 +114,8 @@
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="app_info.js"></script>
 <script type="text/javascript" src="js/precargas_splashart_mainmenu.js"></script>
+ <!-- tooltip -->
+ <script src='js/tooltip.js' type='text/javascript'></script>
 
 <script> 
   document.title = app_name;
@@ -126,7 +134,6 @@ if (window.matchMedia('(display-mode: fullscreen)').matches) {
     // e.g. call Google Analytics to track standalone use 
     document.getElementById("full").style.display= "none";
     //  iniciar_splash();
-
 } 
 
 </script>  
