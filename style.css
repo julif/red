@@ -87,6 +87,11 @@ justify-content: center;
   background-color: white;
   height: 150px;
   width: 0%; 
+
+  -webkit-transition : width 1s ease;
+   -moz-transition : width 1s ease;
+     -o-transition : width 1s ease;
+        transition : width 1s ease;
 }
 @media only screen and (max-width: 800px) {
   #splash_art img{ width: 35%!important; }
