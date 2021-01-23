@@ -13,15 +13,7 @@ body{
    
   }
 p{ color:white; }
-button{
-  height: 40px;
-  width: 100%;
-  border: none;
-  background-color: #7295d0;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-}
+
 #version{ position: absolute;
   position: fixed;
   z-index: 1000000;
@@ -123,4 +115,13 @@ justify-content: center;
 #main_menu{
  color: black;
  background-color: #dcdcdc;
+}
+#main_menu button{
+  height: 40px;
+  width: 100%;
+  border: none;
+  background-color: #7295d0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
 }
