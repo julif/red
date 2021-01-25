@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- --> 
+     <!-- css -->
+    <link rel="stylesheet" href="../style.css"> 
+    <style>
+      /* ----------------------- splash-art ----------------------- */
+      #splash_art {
+        /* background-image: url(img/splash-art-backgorund.png); */
+        background-image: url(../img/fondo_figurageometrica1.png);
+        
+        background-size: cover;
+        background-position: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* 
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat; 
+        */
+      }
+#preloader_container{
+  /* background-color: red; */
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+#splash_art img{     margin-bottom: 20px;}
+#preloader_bar_background{
+  background-color: #00000078;
+    height: 17px;
+    width: 300px;
+    border-radius: 17px;
+    overflow: hidden;
+}
+#preloader_bar{
+  /* background-color: #f7b12a; */
+  background-color: white;
+   height: 150px; 
+  
+  /* border-radius: 17px; */
+  width: 0%; 
+
+ 
+
+  -webkit-transition : width 1s ease;
+   -moz-transition : width 1s ease;
+     -o-transition : width 1s ease;
+        transition : width 1s ease;
+}
+@media only screen and (max-width: 800px) {
+  #splash_art img{ width: 35%!important;  margin-bottom: 0px;}
+
+  #splash_art {
+    background-size: auto;
+    background-position: inherit;
+    background-blend-mode: exclusion;
+}
+#preloader_bar_background {width: 200px;}
+
+}
+
+    
+    </style>
+  </head>
+<body >
+  <section id="splash_art">
+    <div style="text-align: center;">
+      <img src="../img/logo4.png" style="width: 45%;height: auto;">
+      <div id="preloader_container">
+        <div id="preloader_bar_background"> <div id="preloader_bar" style=" width: 62%;"></div> </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script></script> 
+</html>

@@ -94,6 +94,10 @@ justify-content: center;
   height: 150px;
   width: 0%; 
 
+      /* border: 5px solid #b7ceff;
+    box-shadow: 0 0 15px #517bff; */
+    /* transition: all 0.5s ease; */
+
   -webkit-transition : width 1s ease;
    -moz-transition : width 1s ease;
      -o-transition : width 1s ease;
@@ -107,7 +111,7 @@ justify-content: center;
     background-position: inherit;
     background-blend-mode: exclusion;
 }
-
+#preloader_bar_background {width: 200px;}
   
 }
 

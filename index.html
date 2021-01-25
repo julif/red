@@ -96,9 +96,14 @@
       <div>
       <h1> Main menu </h1>
     
-        <button> Jugar </button>
+        <button onclick="go_to_seleecion_de_enemigos()" > Jugar </button>
       </div>
     
+    </section>
+    <section id="stage"  style="display: none;     background-color: #3d3c44;"> 
+      <div>
+      <h1> Stage </h1>
+      </div>
     </section>
   </landscape>
   <!--  ad2hs prompt  -->
@@ -143,5 +148,19 @@ if (window.matchMedia('(display-mode: fullscreen)').matches) {
     //  iniciar_splash();
 } 
 
+
+
+
+
+
+
+function go_to_seleecion_de_enemigos(){
+
+document.getElementById("main_menu").style.display="none";
+document.getElementById("stage").style.display="inherit";
+
+
+
+}
 </script>  
 </html>
