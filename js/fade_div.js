@@ -7,5 +7,15 @@ function fadediv(p1, p2){
    
   var myVar = setTimeout(ocultardiv, 500);// 6- after fade
   function ocultardiv() { p1.style.display="none";}
- 
+}
+
+function go_to_section(a,b,c){
+  if( c =="flex"){
+    document.getElementById(a).style.display="none";
+    document.getElementById(b).style.display="flex";
+  }
+  else{ 
+    document.getElementById(a).style.display="none";
+    document.getElementById(b).style.display="inherit";
+  }
 }

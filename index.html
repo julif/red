@@ -59,8 +59,7 @@
   <link rel="stylesheet" href="css/full.css"> 
   <link rel="stylesheet" href="css/animations.css"> 
   <style>/* extra css */
-  
-  carta{
+carta{
     display: inline-block;
     background-color: #9a9696;
     padding: 14px;
@@ -75,7 +74,34 @@
   margin: 5px;
   cursor: pointer;
 } 
-
+.modal{
+background-color: #0e0e0eb0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    display: none;
+    z-index: 2;
+    top: 0;
+  } 
+  #zona_cartas{
+    position: relative;
+}
+  #tapar_mano{
+  background-color: #3126264d;
+  background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    display: none;
+  } 
+  #mano{
+  min-height: 56px;
+  } 
   </style>
 </head>
 <body id="contenedor">
@@ -119,6 +145,10 @@
     
     </section>
     <section id="stage"  style="display: none;     background-color: #3d3c44;"> 
+
+
+      <div id="turno_enemigo_modal" class="modal"> turno enemigo </div>
+      <div id="turno_jugador_modal" class="modal"> tu turno </div>
       <div id="vidas" style="display: flex;">
         <div style="padding: 15px;">
           <p> aliado </p>
@@ -129,11 +159,12 @@
         <div id="vida_enemiga" style="margin-left: 10px;">100</div>
         </div>
       </div>
-     
-      <div id="mano"></div>
+    <div id="zona_cartas"> 
+      <div id="tapar_mano"></div>
+    <div id="mano"></div>
     <button  id="terminar_turno_btn" onclick="terminar_turno()">Terminar turno</button>
-    <button  id="robar_btn" onclick="robar()">Robar</button>
-    
+    </div>
+    <div id="victoria_modal" class="modal"> victoria!! </div>
     
     </section>
   </landscape>
@@ -187,30 +218,38 @@ if (window.matchMedia('(display-mode: fullscreen)').matches) {
 
 function go_to_seleecion_de_enemigos(){
 
-document.getElementById("main_menu").style.display="none";
-document.getElementById("stage").style.display="inherit";
+// document.getElementById("main_menu").style.display="none";
+// document.getElementById("stage").style.display="inherit";
 
-
+go_to_section( 'main_menu','stage');
 
 }
 </script>  
 <script>
-  var cartas = [
+var base_de_datos_de_cartas = [
   { 
-    nombre: 'carta 1'  ,
-    id: 'carta_001'
+    ID_carta: 'a1',
+    nombre: 'ataque normal',
+    tipo: 'ataque',
+    area_de_efecto: 'enemigo',
+    coste: 1,
+    rareza: 'normal',
+    es_recompenza: true,
+    valor: 10,
+    imagen: 'img/1.png',
+    rareza: 'normal'
   },
   { 
-    nombre: 'carta 2',
-    id: 'carta_002'
-  },
-  { 
-    nombre: 'carta 3',
-    id: 'carta_003'
-  },
-  { 
-    nombre: 'carta 4',
-    id: 'carta_004'
+    ID_carta: 'a2',
+    nombre: 'ataque pesado',
+    tipo: 'ataque',
+    area_de_efecto: 'enemigo',
+    coste: 2,
+    rareza: 'normal',
+    es_recompenza: true,
+    valor: 40,
+    imagen: 'img/2.png',
+    rareza: 'raro'
   }
 ]; 
 </script>
@@ -232,98 +271,212 @@ document.getElementById("stage").style.display="inherit";
     vida: 80
   }
 ]; 
+
+
+
+
+
+cartas_iniciales = [
+  "a1", /* ataque normal */
+  "a1", /* ataque normal */
+  "a1", /* ataque normal */
+  "a1", /* ataque normal */
+  "a1", /* ataque normal */
+  "a2"  /* ataque pesado */
+];
 </script>
+
 <script>
 
-  // crear el array  de mazo y usados ------------------
-  var mazo = [];
-  var usados = [];
   
-  
-  var mazo = cartas.slice();
-  //console.log(mazo_jugador);
-  
-  //personaje
-  var puntos_vida = 100;
-  document.getElementById("vida").innerHTML = puntos_vida;
-  
-  
-  // numero random para enemigos aleatorios ------------------
-  var random  =  Math.floor(Math.random() *  enemigos.length);
-  //enemigo
-  var puntos_vida_enemigo = enemigos[random].vida;
-  var atk_enemigo=  enemigos[random].ataque;
-  document.getElementById("nombre_enemigo").innerHTML = enemigos[random].nombre;
+ //funciones re-utilizables
+function console_log_array(item, index) {
+  console.log(item)
+} 
+function mezclar(array) {
+  array.sort(function() {return Math.random() - 0.5})
+}
+// crear el array  de mazo y usados ------------------
+var mazo = [];
+var usados = [];
+
+///crear mazo_inicial
+cartas_iniciales.forEach(crear_mazo_inicial);
+
+function crear_mazo_inicial(item, index, arr) {
+  uid = index +1; /* ID unico */
+  var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === item);
+  mazo.push( { nombre:  filter_results.nombre , ID_carta:   filter_results.ID_carta , unique_ID: uid});
+}
+
+//var mazo = cartas_iniciales.slice();
+mezclar(mazo); //mezclar
+console_log_array(mazo);
+//console.log(mazo_jugador);
+
+
+
+
+//personaje
+var puntos_vida = 100;
+document.getElementById("vida").innerHTML = puntos_vida;
+
+
+// numero random para enemigos aleatorios ------------------
+var random  =  Math.floor(Math.random() *  enemigos.length);
+//enemigo
+var puntos_vida_enemigo = enemigos[random].vida;
+var atk_enemigo=  enemigos[random].ataque;
+document.getElementById("nombre_enemigo").innerHTML = enemigos[random].nombre;
+document.getElementById("vida_enemiga").innerHTML = puntos_vida_enemigo;
+
+function robar(){
+  var mazolength = mazo.length;
+  var usadoslength = usados.length;
+  if (mazolength >= 1) {
+    var ID_carta = mazo[0].ID_carta;
+    var nombre = mazo[0].nombre;
+    var unique_ID = mazo[0].unique_ID;
+    /* var value = mazo[0].value; */
+    document.getElementById("mano").innerHTML += '<carta id="'+unique_ID+'" ID_carta="'+ ID_carta +'" onclick="ataque(this)" >' + nombre + ' </br> UID:'+ unique_ID +'</carta>';
+
+    mazo.shift();//quita el primer elemento de mazo
+  }
+  else if ( mazolength == 0) { 
+    //var usadoslength= $("#usados").find("li").length ;
+
+    if ( usadoslength >= 1) { 
+      console.log('re-mezclar');
+      mazo = mazo.concat(usados);
+      usados = [];
+      mezclar(mazo); //mezclar
+      robar();
+    }//  if ( usadoslength >= 1) 
+    else if ( usadoslength == 0) {  alert(" no hay cartas para robar ");}
+  }//else if ( mazolength == 0)
+}//robar
+/*  robar();
+ robar();
+ robar(); */
+// robar_cartas_automaticamente();
+document.getElementById("tapar_mano").style.display="inherit";
+ mostrar_turno_jugador_modal()
+
+ function mostrar_turno_jugador_modal(){setTimeout(function(){
+    document.getElementById("turno_jugador_modal").style.display="flex";
+    ocultar_turno_jugador_modal();
+  }, 1000);}//mostrar_turno_jugador_modal()
+
+  function ocultar_turno_jugador_modal(){setTimeout(function(){     
+      document.getElementById("turno_jugador_modal").style.display="none";
+      robar_cartas_automaticamente(); 
+  }, 1100);}//ocultar_turno_jugador_modal()
+
+//ataque
+function ataque(e) {
+  //document.getElementById("usados").innerHTML += "<li id='"+ +"'>"+  +"</li>";
+  var nombre = e.innerHTML;
+  var id = e.id;
+  var ID_carta = e.getAttribute("ID_carta");
+  usados.push( {nombre:  nombre  ,id:  id, ID_carta: ID_carta });
+
+
+   // toma los datos de la carta por su id
+   var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === ID_carta);
+  //  console.log( filter_results );
+
+ 
+
+
+  console.log(e.id + " ID_carta: "+ ID_carta);
+  $("#"+id).remove();
+  puntos_vida_enemigo = puntos_vida_enemigo -  filter_results.valor;
   document.getElementById("vida_enemiga").innerHTML = puntos_vida_enemigo;
-  
-  function robar(){
-    var mazolength = mazo.length;
-    var usadoslength = usados.length;
-    if (mazolength >= 1) {
-      var id = mazo[0].id;
-      var nombre = mazo[0].nombre;
-  
-      document.getElementById("mano").innerHTML += '<carta id="'+ id +'" onclick="ataque(this)" >' + nombre + '</carta>';
-  
-      mazo.shift();//quita el primer elemento de mazo
-    }
-    else if ( mazolength == 0) { 
-      //var usadoslength= $("#usados").find("li").length ;
-  
-      if ( usadoslength >= 1) { 
-        //alert('re-mezclar');
-        console.log('re-mezclar');
-        mazo = mazo.concat(usados);
-        robar();
-      }//  if ( usadoslength >= 1) 
-      else if ( usadoslength == 0) {  alert(" no hay cartas para robar ");}
-    }//else if ( mazolength == 0)
-  }//robar
-   robar();
-   robar();
-   robar();
-  //ataque
-  function ataque(e) {
-    //document.getElementById("usados").innerHTML += "<li id='"+ +"'>"+  +"</li>";
-    var nombre = e.innerHTML;
-    var id = e.id;
-    usados.push( {nombre:  nombre  , id:  id });
-  
-    $("#"+e.id).remove();
-  
-    console.log(e.id)
-    puntos_vida_enemigo = puntos_vida_enemigo - 10;
-    document.getElementById("vida_enemiga").innerHTML = puntos_vida_enemigo;
-  
-    //chequea si el enemigo esta muerto
-    if (puntos_vida_enemigo <= 0) {
-      setTimeout(victoria, 200);
-      function victoria() {
-        alert('Victoria');
-      }//victoria()
-    }//if (puntos_vida_enemigo <= 0)
-  }//atque()
-  function terminar_turno() {
-    alert("turno terminado");
-  
-  
+
+  //chequea si el enemigo esta muerto
+  if (puntos_vida_enemigo <= 0) {
+    setTimeout(victoria, 200);
+    function victoria() {
+      //alert('Victoria');
+      document.getElementById("victoria_modal").style.display="flex"; 
+    }//victoria()
+  }//if (puntos_vida_enemigo <= 0)
+}//atque()
+
+
+function terminar_turno() {
+  document.getElementById("tapar_mano").style.display="inherit";
+
+
+  mostrar_turno_enemigo_modal();
+  function mostrar_turno_enemigo_modal(){setTimeout(function(){     
+    document.getElementById("turno_enemigo_modal").style.display="flex"; 
+    ocultar_turno_enemigo_modal();
+  }, 500);}//mostrar_turno_enemigo_modal()
+
+  function ocultar_turno_enemigo_modal(){setTimeout(function(){     
+    document.getElementById("turno_enemigo_modal").style.display="none";
+    ataques_enemigos()
+  }, 1100);}//ocultar_turno_enemigo_modal()
+
+  function ataques_enemigos(){setTimeout(function(){
     puntos_vida = puntos_vida - atk_enemigo;
+    //mostrar cambio
     document.getElementById("vida").innerHTML = puntos_vida;
+      
+
+  if (puntos_vida <= 0) {
+    setTimeout(derrota, 200);
+    function derrota() {
+      alert('derrota');
+    }//victoria()
+ }//if (puntos_vida <= 0)
+
+    //llamar al modal
+    mostrar_turno_jugador_modal();
+  }, 800);}//ataques_enemigos()
+
+
+
+  $('#mano carta').each(function(){ 
+    var id = $('#mano carta:first-child').attr('id'); // id de el primer li
+    var nombre = $('#mano carta:first-child').text(); // id de el primer li
+
+    $('#mano carta:first-child').remove();//quita el primer elemento de mano
+    usados.push( {nombre:  nombre  , id:  id });
+  });
+
+
+
+ // setTimeout(function(){   robar(); robar(); robar() }, 800);
+
+
+
+
+
+
+
   
-    if (puntos_vida <= 0) {
-      setTimeout(derrota, 200);
-      function derrota() {
-        alert('derrota');
-      }//victoria()
-   }//if (puntos_vida <= 0)
-  
-    $('#mano carta').each(function(){ 
-      var id = $('#mano carta:first-child').attr('id'); // id de el primer li
-      var nombre = $('#mano carta:first-child').text(); // id de el primer li
-  
-      $('#mano carta:first-child').remove();//quita el primer elemento de mano
-      usados.push( {nombre:  nombre  , id:  id });
-    });
-  }; //terminar_turno()
-  </script>
+
+
+
+}; //terminar_turno() 
+function robar_cartas_automaticamente() {
+     setTimeout(function(){  
+      var max_hand_Size = 3; 
+      robo_automatico();
+      function robo_automatico() {
+        var i = 0;
+        var intervalo_entre_robo = setInterval(myTimer, 300);
+        function myTimer() {
+          robar(); 
+          i++;
+          if (i== max_hand_Size) { StopDraw();}
+        }
+        function StopDraw() { clearInterval(intervalo_entre_robo); i = 0; document.getElementById("tapar_mano").style.display="none";}
+      } 
+    }, 600); 
+  }
+
+</script>
 </html>
