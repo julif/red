@@ -101,7 +101,8 @@
 
 
 
-
+#enemy_selection, #stage{ background-color: white; color: black;}
+#stage p{ color: black;}
  carta{
         display: inline-block;
     background-color: #9a9696;
@@ -259,19 +260,19 @@ min-height: min-content;  */
       </div>
     
     </section>
-    <section id="stage"  style="display: none;     background-color: #3d3c44;"> 
 
 
-      <section id="enemy_selection"> enemy selection 
 
-        <div id="enemy_buttons" >
-          <button id="enemy_1"  onclick="enemy_selection(0)" > enemigo 1</button>
-          <button id="enemy_2"  onclick="enemy_selection(1)"> enemigo 2</button>
-          <button id="enemy_3"  onclick="enemy_selection(2)"> enemigo 3</button>
-          <button id="enemy_4"  onclick="enemy_selection(3)"> enemigo 4</button>
-        </div>
-        
-        </section>
+    <section id="enemy_selection" style="display:none"> enemy selection 
+
+      <div id="enemy_buttons" >
+        <button id="enemy_1"  onclick="enemy_selection(0)" > enemigo 1</button>
+        <button id="enemy_2"  onclick="enemy_selection(1)"> enemigo 2</button>
+        <button id="enemy_3"  onclick="enemy_selection(2)"> enemigo 3</button>
+        <button id="enemy_4"  onclick="enemy_selection(3)"> enemigo 4</button>
+      </div>
+      
+      </section>
           <section id="stage" style="display:none" >
           <div id="turno_enemigo_modal" class="modal"> <p class="animate__animated  animate__fadeInLeft"> <b>TURNO ENEMIGO</b> </p>  </div>
           <div id="turno_jugador_modal" class="modal "> <p class="animate__animated  animate__fadeInLeft"> <b>TU TURNO</b> </p></div>
@@ -313,7 +314,7 @@ min-height: min-content;  */
 
 
     
-    </section>
+
   </landscape>
   <!--  ad2hs prompt  -->
   <div id="ad2hs-prompt-container"  class="animate__slideInUp">
@@ -368,7 +369,7 @@ function go_to_seleecion_de_enemigos(){
 // document.getElementById("main_menu").style.display="none";
 // document.getElementById("stage").style.display="inherit";
 
-go_to_section( 'main_menu','stage');
+go_to_section( 'main_menu','enemy_selection');
 
 }
 </script>  
