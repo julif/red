@@ -1,948 +1,104 @@
-<!doctype html>
 <html>
-<head>
-  <title>Webapp</title>
-  <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta charset="utf-8"/>
-  <link rel="manifest" href="manifest.json">  
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-
-
-  <!-- <meta name="application-name" content="web-app "> -->
-  <!-- <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="web-app ">
-  <meta name="apple-mobile-web-app-title" content="web-app ">
-  <meta name="msapplication-starturl" content="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/apple-touch-icon-60x60.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
-  <link rel="icon" type="image/png" href="img/favicon-196x196.png" sizes="196x196" />
-  <link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
-  <link rel="icon" type="image/png" href="img/favicon-128.png" sizes="128x128" />
-  <meta name="application-name" content="&nbsp;"/>
-  <meta name="msapplication-TileColor" content="#FFFFFF" />
-  <meta name="msapplication-TileImage" content="img/mstile-144x144.png" />
-  <meta name="msapplication-square70x70logo" content="img/mstile-70x70.png" />
-  <meta name="msapplication-square150x150logo" content="img/mstile-150x150.png" />
-  <meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png" />
-  <meta name="msapplication-square310x310logo" content="img/mstile-310x310.png" />
-  <script type="text/javascript">
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register('sw.js').then(function(registration) {
-        console.log('ServiceWorker registration successful with scope:',  registration.scope);
-      }).catch(function(error) {
-        console.log('ServiceWorker registration failed:', errror);
-      });
-    }
-  </script>
-  <!--  font awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <!--  animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <!-- popper.js -->
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
-  <!-- css -->
-  <link rel="stylesheet" href="style.css"> 
-  <link rel="stylesheet" href="css/portrait.css"> 
-  <link rel="stylesheet" href="css/ad2hs_prompt.css"> 
-  <link rel="stylesheet" href="css/full.css"> 
-  <link rel="stylesheet" href="css/animations.css"> 
-  <style>/* extra css */
-
-
-@keyframes slidein {
-  from {
-    width: 0px;
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    /* width: 50px; This will change for each element */
-    width: 120px;
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-
-  .fade-in {
-	opacity: 0;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.5s;
-}
-
-@keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-  }
-  40% {
-		opacity: 1;
-  }
-  50% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-}
-
-
-
-#enemy_selection, #stage{ background-color: white; color: black;}
-#stage p{ color: black;}
- carta{
-        display: inline-block;
-    background-color: #9a9696;
-    padding: 14px;
-    margin: 5px;
-    cursor: pointer;
-    border: 3px solid black;
-    width: 132px;
-    max-height: 18px;
-    text-align: center;
-    position: relative;
-    /* animation: slidein 0.5s forwards; */
-    margin: 5px;
-    animation: slidein 0.7s forwards;
-    overflow: hidden;
-  }
-  carta .coste{
-    position: absolute;
-    top: 0;
-    left: 0px;
-    background-color: black;
-    color: white;
-    padding: 3px;
-    padding-right: 6px;
-  }
-#terminar_turno_btn{
-  border: none;
-  background-color: black;
-  color: white;
-  padding: 16px;
-  margin: 5px;
-  cursor: pointer;
-} 
-.modal{
-background-color: #0e0e0eb0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    display: none;
-    z-index: 2;
-    top: 0;
-
-
-
-     /* opacity:0;  */
-  /*   transition: all 0.5s;
-   -webkit-transition: all 0.5s; */
-  } 
-  #zona_cartas{
-    position: relative;
-}
-  #tapar_mano{
-  background-color: #3126264d;
-  background-color: transparent;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    
-    display: none;
-  } 
-
-  #mano_container2{
-    overflow-y: hidden;
-    width: 100%;
-    /* border: 2px solid #d6d6d6; */
-    display: flex;
-    text-align: center;
-    align-items: center;
-  }
-  #mano_container{
-    min-height: 70px;
-    overflow-x: auto;
-    background-color: white;
-    height: 10px;
-    overflow-y: hidden;
-    width:99%;
-    border: 2px solid #d6d6d6;
-
-    display: flex;
-    text-align: center;
-
-    align-items: center;
-    justify-content: center; 
-    min-width: min-content;  
-
- 
-/* 
-  min-height: -moz-min-content;  
-min-height: -webkit-min-content; 
-min-height: min-content;  */
-
-    
-   justify-content: center; 
-  } 
- 
-  #mano{
-  min-height: 56px;
-  /* width: 150%; */
-  display: flex;
-  justify-content: center;
-  margin: auto;
-
-  align-self: safe center;
- 
-  /* flex-direction: row-reverse; */
-  } 
-
-
-  .ataque{ background-color: red;} 
-  .efecto{ background-color: yellow;} 
-  .curacion{ background-color: green;} 
-  </style>
-</head>
-<body id="contenedor">
-  <div id="full">
-    <div id="tooltip"  role="tooltip">
-      <i class="fas fa-info-circle"></i><span id="tooltip_message" >  se recomienda pantalla completa </span>
-      <div id="arrow" data-popper-arrow></div>
-    </div>
-    <button id="fullwiev" onclick="lock('landscape')">
-      <i class="fa fa-expand"></i>
-    </button>
-  </div>
-  <portrait id="portrait"> 
-    <section> 
-    <img src="img/portrait_roja.png"> 
-    </section> 
-  </portrait>
-  <landscape id="landscape"> 
-    <section id="splash">
-      <img src="julif.svg">
-      <!-- precargar imagen de splash_art -->
-      <div  id="precarga_img_splash-art" class="preloader"><!-- contenido del preloader --></div>
-    </section>
-    <section id="splash_art"  style="display: none;">
-      <div style="text-align: center;">
-        <img src="img/logo4.png" style="width: 45%;height: auto;">
-    <div id="preloader_container">
-      <div id="preloader_bar_background">
-        <div id="preloader_bar"></div>
-      </div>
-    </div>
-    </div>
-    </section>
-    <div  id="precarga_main_menu" class="preloader"><!-- contenido del preloader --></div>
-    <section id="main_menu"  style="display: none;"> 
-      <div>
-      <h1> Main menu </h1>
-    
-        <button onclick="go_to_seleecion_de_enemigos()" > Jugar </button>
-      </div>
-    
-    </section>
-
-
-
-    <section id="enemy_selection" style="display:none"> enemy selection 
-
-      <div id="enemy_buttons" >
-        <button id="enemy_1"  onclick="enemy_selection(0)" > enemigo 1</button>
-        <button id="enemy_2"  onclick="enemy_selection(1)"> enemigo 2</button>
-        <button id="enemy_3"  onclick="enemy_selection(2)"> enemigo 3</button>
-        <button id="enemy_4"  onclick="enemy_selection(3)"> enemigo 4</button>
-      </div>
-      
-      </section>
-          <section id="stage" style="display:none" >
-          <div id="turno_enemigo_modal" class="modal"> <p class="animate__animated  animate__fadeInLeft"> <b>TURNO ENEMIGO</b> </p>  </div>
-          <div id="turno_jugador_modal" class="modal "> <p class="animate__animated  animate__fadeInLeft"> <b>TU TURNO</b> </p></div>
-          <div id="vidas" style="display: flex;">
-            <div style="padding: 15px;">
-              <p> aliado </p>
-              <div id="vida">100</div>
-            </div>
-            <div  style="padding: 15px;">
-            <p id="nombre_enemigo"> enemigo </p>
-            <div id="vida_enemiga" style="margin-left: 10px;">100</div>
-            </div>
-          </div>
-          <div> <p>mazo: <span id="mazo_length_show">10</span></p> <p>usados: <span id="descarte_length_show">0</span></p></div>
-          <p>puntos de accion <span id="pa_show">10</span>  remezclado counter <span id="re_counter">10</span></p> 
-        <div id="zona_cartas"> 
-          <div id="tapar_mano"></div>
-          <div id="mano_container2">
-          <div id="mano_container"><div id="mano"></div></div>
-        </div>
-        <button  id="terminar_turno_btn" onclick="terminar_turno()">Terminar turno</button>
-        </div>
-        <div id="victoria_modal" class="modal">
-          <div class="animate__animated  animate__fadeInUp" style="text-align: center;">  
-            <p class="animate__animated  animate__fadeInUp"> <b>VICTORIA!!</b> </p>
-          </br>
-            <button onclick="continuar()"> continuar </button>
-           </div>
-         
-          
-          </div>
-        <div id="derrota_modal" class="modal"> <div class="animate__animated  animate__fadeInDown" style="text-align: center;"><p class="animate__animated  animate__fadeInDown"> <b>DERROTA</b> </p> </br>
-          <button onclick="re_start()"> voler a empezar </button></div> </div>
-        </section>
-
-
-
-
-
-
-    
-
-  </landscape>
-  <!--  ad2hs prompt  -->
-  <div id="ad2hs-prompt-container"  class="animate__slideInUp">
-    <div id="ad2hs-prompt-container-content"> 
-      <div id="ad2hs-logo-container"> <img src="img/apple-touch-icon-60x60.png"> </div> 
-      <div id="ad2hs-name-description-container"> 
-        <div id="ad2hs-close"> <i  style="color: #b7b6b6" class="fas fa-times"></i> </div>
-        <b><p id="ad2hs_app_name"  style="color: black;font-size: 20px;"> Webapp </p></b>
-        <p id="ad2hs_web_name" style="color: #b7b6b6;font-size: 15px;"> Julif.github.com </p>
-      </div> 
-    </div> 
-    <!-- <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button">Add to home screen</button> </div> -->
-    <div id="ad2hs-prompt-container-footer"> <button id="ad2hs-button"> Instalar Webapp </button> </div>
-  </div> 
-  <p id="version" >version de la app </p>
-</body> 
-<script type="text/javascript" src="js/ad2hs_prompt.js"></script>
-<script type="text/javascript" src="js/fade_div.js"></script>
-<script type="text/javascript" src="js/fullscreen.js"></script>
-<script type="text/javascript" src="app_info.js"></script>
-<script type="text/javascript" src="js/precargas_splashart_mainmenu.js"></script>
- <!-- tooltip -->
- <script src='js/tooltip.js' type='text/javascript'></script>
-
-<script> 
-  document.title = app_name;
-  document.querySelector('#ad2hs_app_name').innerHTML =  app_name;
-  document.querySelector('#ad2hs_web_name').innerHTML =  app_web;
-  document.querySelector('#version').innerHTML =  app_version;
-  // $('meta[name=application-name]').attr('content',  app_name );
-</script>  
-<script>/* extra js */
-// setTimeout(function(){  fadediv(splash,splash_art);  }, 4000);
-
-// esconder el boton fullwiev si la pantalla ya esta en maximisada
-if (window.matchMedia('(display-mode: fullscreen)').matches) {  
-    // do things here  
-    // set a variable to be used when calling something  
-    // e.g. call Google Analytics to track standalone use 
-    document.getElementById("full").style.display= "none";
-    //  iniciar_splash();
-} 
-
-
-
-
-
-
-
-function go_to_seleecion_de_enemigos(){
-
-// document.getElementById("main_menu").style.display="none";
-// document.getElementById("stage").style.display="inherit";
-
-go_to_section( 'main_menu','enemy_selection');
-
-}
-</script>  
-<script>
-var base_de_datos_de_cartas = [
-  { 
-    ID_carta: 'a1',
-    nombre: 'ataque normal',
-    tipo: 'ataque',
-    area_de_efecto: 'enemigo',
-    coste: 1,
-    es_recompenza: true,
-    valor: 10,
-    imagen: 'img/1.png',
-    rareza: 'normal'
-  },
-  { 
-    ID_carta: 'a2',
-    nombre: 'ataque pesado',
-    tipo: 'ataque',
-    area_de_efecto: 'enemigo',
-    coste: 2,
-    es_recompenza: true,
-    valor: 40,
-    imagen: 'img/2.png',
-    rareza: 'raro'
-  },
-  { 
-    ID_carta: 'a3',
-    nombre: 'robar',
-    tipo: 'efecto',
-    area_de_efecto: 'general',
-    coste: 1,
-    es_recompenza: true,
-    valor: 2,
-    imagen: 'img/3.png',
-    rareza: 'super_raro'
-  },
-  { 
-    ID_carta: 'a4',
-    nombre: 'curacion',
-    tipo: 'curacion',
-    area_de_efecto: 'jugador',
-    coste: 1,
-    es_recompenza: true,
-    valor: 20,
-    imagen: 'img/4.png',
-    rareza: 'super_raro'
-  }
-]; 
-</script>
-<script>
-   var enemigos = [
-  { 
-    nombre: 'enemigo 1',
-    ataque: 10,
-    vida: 40
-  },
-  { 
-    nombre: 'enemigo 2',
-    ataque: 20,
-    vida: 60
-  },
-  { 
-    nombre: 'enemigo 3',
-    ataque: 30,
-    vida: 80
-  },
-  { 
-    nombre: 'enemigo 4',
-    ataque: 50,
-    vida: 100
-  }
-]; 
-
-
-
-
-
-
-cartas_iniciales = [
-  "a1", /* ataque normal */
-  "a1", /* ataque normal */
-  "a1", /* ataque normal */
-  "a1", /* ataque normal */
-  "a2",  /* ataque pesado */
-  "a3",  /* robar */
-  "a4"  /* curacion */
-];
-</script>
-
-<script>
-
-var enemy_number = 0;
-  //variables globales
-  var enemy_id;
-  var puntos_vida_enemigo;
-  var atk_enemigo; 
-  var puntos_accion = 0;
-  
-
-  $('#enemy_buttons :button').prop('disabled', true); // Disable all the buttons
-  document.getElementById("enemy_1").disabled = false;
-
-
-  function re_start() {
-    
-  //--resetear cammpo
-  document.getElementById("victoria_modal").style.display="none";
-  document.getElementById("mano").innerHTML = " ";
-  remezclado_counter = 0;
-  document.getElementById("re_counter").innerHTML =  remezclado_counter;
-   // resetear enemigos
-   enemy_number = 0;
-
-   document.getElementById("enemy_selection").style.display="inherit";
-  document.getElementById("derrota_modal").style.display="none";
-  document.getElementById("stage").style.display="none";
-
-
-//   $(".mbox").map(function() {
-//     return this.innerHTML;
-// }).
-/* var all_enemys = document.getElementsByClassName("enemy_button");
-for (var i = 0; i < slides.length; i++) {
-  document.getElementById("enemy_"+i+1 ).disabled = true;
-} */
-$('#enemy_buttons :button').prop('disabled', true); // Disable all the buttons
-  document.getElementById("enemy_1").disabled = false;
-
-
-  usados = [];
-  mazo = [];
-   puntos_vida = max_puntos_vida;
-
-document.getElementById("vida").innerHTML = puntos_vida;
-
-///crear mazo_inicial
-cartas_iniciales.forEach(crear_mazo_inicial);
-
-function crear_mazo_inicial(item, index, arr) {
-  uid = index +1; /* ID unico */
-  var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === item);
-  mazo.push( { nombre:  filter_results.nombre , ID_carta:   filter_results.ID_carta , unique_ID: uid});
-}
-
-//var mazo = cartas_iniciales.slice();
-mezclar(mazo); //mezclar
-//console_log_array(mazo);
-//console.log(mazo_jugador);
-// document.getElementById("mazo").innerHTML = " ";
-
-actualizar_mazo_y_descarte(); 
-remezclado_counter = 0;
-  document.getElementById("re_counter").innerHTML =  remezclado_counter;
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  }
-  function continuar() {
-    if (enemy_id == 3) {
-      alert("ganaste");
-    } else {
-      document.getElementById("enemy_selection").style.display="inherit";
-      document.getElementById("stage").style.display="none";
-
-      if (enemy_number == 0) {
-        
-        document.getElementById("enemy_1").disabled = true;
-        document.getElementById("enemy_1").style.backgroundColor = "5f5e5e!important";
-        document.getElementById("enemy_2").disabled = false;
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      body{
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+        background-color: #efefef;
+        /* background-color: #2c3042; */
+    font-family: "proxima-nova",sans-serif;
       }
-      if (enemy_number == 1) {
-        document.getElementById("enemy_2").style.backgroundColor = "5f5e5e";
-        document.getElementById("enemy_2").disabled = true;
-        document.getElementById("enemy_3").disabled = false;
+      #content a{
+        display: block;
+        color: black;
+    margin: 10px;
       }
-      if (enemy_number == 2) {
-        document.getElementById("enemy_3").style.backgroundColor = "5f5e5e";
-        document.getElementById("enemy_3").disabled = true;
-        document.getElementById("enemy_4").disabled = false;
-      }
-      
-      enemy_number++; 
+    </style>
+  </head>
+<body >
+  <!-- <a href="blog.html"> blog </a> -->
+ <div id="content"></div>
+</body>
+<script>
+  // leer todas las imagenes dentro de una carpeta
+  var array= [];
+  var obj;
+  $.ajax({
+  url: "posts",
+  success: function(data){
+     $(data).find("a:contains(.html)").each(function(){
+        // will loop through 
+       // var images = $(this).attr("href");
+        var images2 = $(this);
+        obj = $(this)[0].innerText;
+
+
+        //console.log( obj );
+        //array.push(obj);
+
+ 
+        // mazo.push( { nombre:  filter_results.nombre , ID_carta:   filter_results.ID_carta , unique_ID: uid});
+
+        //$('<a href="blog.html?'+ obj +'"></a>').html(obj).appendTo('#content')
+        document.getElementById("content").innerHTML +=    '<a href="blog.html?'+ obj +'" > '+ obj +'</a>' ;
+
+
+        $.ajax({
+    url: 'posts/'+ obj,
+    success: function(data) {
+
+
+       //create jquery object from the response html
+   var $response=$(data);
+
+   var titulo = $response.filter('#meta_titulo').text();
+   var imagen = $response.filter('#meta_imagen').text();
+
+        //console.log("titulo: "+ titulo );
+        //console.log("imagen: "+ imagen );
+
+        array.push( { titulo:  titulo ,imagen:  imagen, href: obj });
     }
+});
+
+
+     });
+  }
+});
+
+
+
+// setTimeout(function(){   console.log(array)  }, 1000);
+//console.log(array)
+
+
   
 
 
-  //--resetear cammpo
-  document.getElementById("victoria_modal").style.display="none";
-  document.getElementById("mano").innerHTML = " ";
-  remezclado_counter = 0;
-  document.getElementById("re_counter").innerHTML =  remezclado_counter;
+/*  var arrayLength = array.length;
+for (var i = 0; i < arrayLength; i++) {
+    console.log(array[i]);
 
-
-  // crear el array  de mazo y usados ------------------
- mazo = [ ];
- usados = [ ];
-
-
-
-///crear mazo_inicial
-cartas_iniciales.forEach(crear_mazo_inicial);
-
-function crear_mazo_inicial(item, index, arr) {
-  uid = index +1; /* ID unico */
-  var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === item);
-  mazo.push( { nombre:  filter_results.nombre , ID_carta:   filter_results.ID_carta , unique_ID: uid});
 }
 
-//var mazo = cartas_iniciales.slice();
-mezclar(mazo); //mezclar
-//console_log_array(mazo);
-//console.log(mazo_jugador);
+ }, 100); */
 
+// var myStringArray = ["Hello","World"];
 
-actualizar_mazo_y_descarte(); 
+//document.getElementById("content").innerHTML +=    '<a href="blog.html?'+ obj +'" > '+ obj +'</a>' ;
 
 
-
-  }
-function enemy_selection(e) {
-   enemy_id = e;
-  document.getElementById("enemy_selection").style.display="none";
-  document.getElementById("stage").style.display="inherit";
-
-
-
-
-
-  //... iniciar juego
- puntos_vida_enemigo = enemigos[enemy_id].vida;
- atk_enemigo =  enemigos[enemy_id].ataque;
- document.getElementById("nombre_enemigo").innerHTML = enemigos[enemy_id].nombre;
-document.getElementById("vida_enemiga").innerHTML = puntos_vida_enemigo;
-
-document.getElementById("tapar_mano").style.display="inherit";
- mostrar_turno_jugador_modal()
-
-
-
-
-
-}
-var body_width = $("body").width()
-// alert("Width of div: " + body_width);
-
-//funciones re-utilizables
-function console_log_array(item, index) {
-  console.log(item)
-} 
-function mezclar(array) {
-  array.sort(function() {return Math.random() - 0.5})
-}
-
-
-// crear el array  de mazo y usados ------------------
-var mazo = [];
-var usados = [];
-
-///crear mazo_inicial
-cartas_iniciales.forEach(crear_mazo_inicial);
-
-function crear_mazo_inicial(item, index, arr) {
-  uid = index +1; /* ID unico */
-  var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === item);
-  mazo.push( { nombre:  filter_results.nombre , ID_carta:   filter_results.ID_carta , unique_ID: uid});
-}
-
-//var mazo = cartas_iniciales.slice();
-mezclar(mazo); //mezclar
-//console_log_array(mazo);
-//console.log(mazo_jugador);
-
-
-actualizar_mazo_y_descarte(); 
-
-//personaje
-var max_puntos_vida = 100;
-var puntos_vida = max_puntos_vida;
-var puntos_accion = 3;
-document.getElementById("vida").innerHTML = puntos_vida;
-var max_hand_Size = 4;
-var max_life = 100;
-
-
-// numero random para enemigos aleatorios ------------------
-//var random  =  Math.floor(Math.random() *  enemigos.length);
-//var enemy_id = 0;
-//enemigo
-// var puntos_vida_enemigo = enemigos[random].vida;
-// var atk_enemigo=  enemigos[random].ataque;
-// document.getElementById("nombre_enemigo").innerHTML = enemigos[random].nombre;
-
-
-var remezclado_counter = 0;
-document.getElementById("re_counter").innerHTML  = remezclado_counter;
-
-function actualizar_mazo_y_descarte() {
-  document.getElementById("mazo_length_show").innerHTML  = mazo.length
-  document.getElementById("descarte_length_show").innerHTML  = usados.length
-
-  document.getElementById("pa_show").innerHTML  = puntos_accion
-} 
-
-
-
-function robar(){
-  var mazolength = mazo.length;
-  var usadoslength = usados.length;
-  if (mazolength >= 1) {
-    var ID_carta = mazo[0].ID_carta;
-    var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === ID_carta);
-    var tipo = filter_results.tipo;
-    var coste = filter_results.coste;
-  //var nombre = filter_results.nombre;
-    var nombre = mazo[0].nombre;
-    var unique_ID = mazo[0].unique_ID;
-    /* var value = mazo[0].value; */
-   // document.getElementById("mano").innerHTML += '<carta id="'+unique_ID+'" ID_carta="'+ ID_carta +'"  class="'+tipo+'" coste="'+coste+'" onclick="usar_carta(this)" ><div class="coste">'+ coste +'</div>'+ nombre + '</carta>';
-    let newElem = '<carta id="'+unique_ID+'" ID_carta="'+ ID_carta +'"  class="'+tipo+'" coste="'+coste+'" onclick="usar_carta(this)" ><div class="coste">'+ coste +'</div>'+ nombre + '</carta>';
-    document.getElementById("mano").insertAdjacentHTML("beforeend", newElem);
-
- 
-    
-    // document.getElementById("mano").style.Width = body_width+"px";
-    //document.getElementById("mano").style.width=500pc;
-
-
-
-    // var childern_count = $("#mano").children().length;
-    // var with_of_cards = 145 * childern_count ; 
-    // document.getElementById('mano').setAttribute("style", "width:" +  with_of_cards+ "px");
-
-
-
-
-      // document.getElementById("mano").style.backgroundColor ="red";
-
-   /*  if (childern_count > 4) {
-      var with_of_cards = 140 * childern_count ;
-      // with_of_cards = with_of_cards/2
-      // var c = body_width + with_of_cards;
-      document.getElementById('mano').setAttribute("style", "width:" + c+ "px");
-    }
-    else{
-      document.getElementById('mano').setAttribute("style",body_width);
-      document.getElementById("mano").style.backgroundColor ="red";
-    } */
-  
- 
-  /*   
-    var with_of_cards = 140;
-
-    var c=  with_of_cards * childern_count;
-    document.getElementById("mano").style.minWidth = "100 + " +c+"px"; */
-   
-    mazo.shift();//quita el primer elemento de mazo
-  }
-  else if ( mazolength == 0) { 
-    //var usadoslength= $("#usados").find("li").length ;
-
-    if ( usadoslength >= 1) { 
-      console.log('re-mezclar');
-      remezclado_counter =  remezclado_counter +1;
-      document.getElementById("re_counter").innerHTML  = remezclado_counter;
-      mazo = mazo.concat(usados);
-      usados = [];
-      mezclar(mazo); //mezclar
-      robar();
-    }//  if ( usadoslength >= 1) 
-    else if ( usadoslength == 0) {  alert(" no hay cartas para robar "); actualizar_mazo_y_descarte(); }
-   
-
-  }//else if ( mazolength == 0)
-  actualizar_mazo_y_descarte(); 
-}//robar
-/*  robar();
- robar();
- robar(); */
-// robar_cartas_automaticamente();
-
-
- function mostrar_turno_jugador_modal(){setTimeout(function(){
-    document.getElementById("turno_jugador_modal").style.display="flex";
-    // document.getElementById("turno_jugador_modal").classList.add("fade-in");
-   // document.getElementById("turno_jugador_modal").classList.add("animate__animated animate__fadeIn");// 5- fade effect
-    ocultar_turno_jugador_modal();
-    puntos_accion = 3;
-  }, 1000);}//mostrar_turno_jugador_modal()
-
-  function ocultar_turno_jugador_modal(){setTimeout(function(){     
-   // document.getElementById("turno_jugador_modal").classList.add("animate__animated animate__fadeOut");// 5- fade effect
-      document.getElementById("turno_jugador_modal").style.display="none";
-      robar_cartas_automaticamente(); 
-  }, 1100);}//ocultar_turno_jugador_modal()
-
-//ataque
-function usar_carta(e) {
-
-  
-  var ID_carta = e.getAttribute("ID_carta");
-  var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === ID_carta);
-  var nombre = filter_results.nombre;
-  var tipo = filter_results.tipo;
-  var unique_ID = e.id;
-  var coste =filter_results.coste;
-  
-
-  if (puntos_accion >= coste) {
-
-    usados.push( {nombre:  nombre  , ID_carta: ID_carta, unique_ID: unique_ID });
-
-console.log(e.id + " ID_carta: "+ ID_carta);
-$("#"+unique_ID).remove();
-
-
- // chequear tipo de carta
- if (tipo == "ataque") {
-  puntos_vida_enemigo = puntos_vida_enemigo -  filter_results.valor;
-
-
-
-
-
-
- } 
- if (tipo == "efecto")  {
-  document.getElementById("tapar_mano").style.display="inherit";
-  setTimeout(function(){   robar() }, 500);
-  setTimeout(function(){   robar(); document.getElementById("tapar_mano").style.display="none"; }, 1000);
-
-
-
-
- }
- if (tipo == "curacion") {
-  puntos_vida= puntos_vida +  filter_results.valor;
-  if ( puntos_vida > max_life) { puntos_vida = max_life }
- } 
-
-  puntos_accion = parseInt(puntos_accion);
- 
-  coste = parseInt(coste);
-
- puntos_accion = puntos_accion - coste;
- 
-
-
-document.getElementById("vida_enemiga").innerHTML = puntos_vida_enemigo;
-document.getElementById("vida").innerHTML = puntos_vida;
-//chequea si el enemigo esta muerto
-if (puntos_vida_enemigo <= 0) {
-  document.getElementById("vida_enemiga").innerHTML ="0";
-  setTimeout(victoria, 200);
-  function victoria() {
-    //alert('Victoria');
-    document.getElementById("victoria_modal").style.display="flex"; 
-  }//victoria()
-}//if (puntos_vida_enemigo <= 0)
-actualizar_mazo_y_descarte(); 
-    
-  } else if(puntos_accion < coste) {
-     // nada
-  }
- 
-}//usar carta()
-
-
-function terminar_turno() {
-  document.getElementById("tapar_mano").style.display="inherit";
-
-
-  mostrar_turno_enemigo_modal();
-  function mostrar_turno_enemigo_modal(){setTimeout(function(){     
-    document.getElementById("turno_enemigo_modal").style.display="flex"; 
-    ocultar_turno_enemigo_modal();
-  }, 500);}//mostrar_turno_enemigo_modal()
-
-  function ocultar_turno_enemigo_modal(){setTimeout(function(){     
-    document.getElementById("turno_enemigo_modal").style.display="none";
-    ataques_enemigos()
-  }, 1100);}//ocultar_turno_enemigo_modal()
-
-  function ataques_enemigos(){setTimeout(function(){
-    puntos_vida = puntos_vida - atk_enemigo;
-    //mostrar cambio
-    document.getElementById("vida").innerHTML = puntos_vida;
-      
-
-  if (puntos_vida <= 0) {
-    puntos_vida = 0;
-    document.getElementById("vida").innerHTML = puntos_vida;
-    setTimeout(derrota, 200);
-    function derrota() {
-      //alert('derrota');
-      document.getElementById("derrota_modal").style.display="flex"; 
-      actualizar_mazo_y_descarte(); 
-    }//victoria()
- }//if (puntos_vida <= 0)
-else{ actualizar_mazo_y_descarte(); 
-    mostrar_turno_jugador_modal(); }
-    //llamar al modal
-    
-  }, 800);}//ataques_enemigos()
-
-
-
-  $('#mano carta').each(function(){ 
-    var ID_carta =  $('#mano carta:first-child').attr("ID_carta");
-    var filter_results = base_de_datos_de_cartas.find( elem => elem.ID_carta === ID_carta);
-    var nombre = filter_results.nombre;
-
-    var unique_ID = $('#mano carta:first-child').attr('id'); // id de el primer li
-    //var unique_ID =  $('#mano carta:first-child').attr("unique_ID");
-    // var nombre = $('#mano carta:first-child').text(); // id de el primer li
-   
-    $('#mano carta:first-child').remove();//quita el primer elemento de mano
-    // usados.push( {nombre:  nombre  , id:  id });
-    
-  usados.push( {nombre:  nombre  , ID_carta: ID_carta, unique_ID: unique_ID });
-  actualizar_mazo_y_descarte(); 
-  //console.log(usados);
-
-  });
-
-
-
- // setTimeout(function(){   robar(); robar(); robar() }, 800);
-
-
-
-
-
-
-  
-
-
-
-}; //terminar_turno() 
-function robar_cartas_automaticamente() {
-     setTimeout(function(){  
-     
-      robo_automatico();
-      function robo_automatico() {
-        var i = 0;
-        var intervalo_entre_robo = setInterval(myTimer, 500);
-        function myTimer() {
-          robar(); 
-          i++;
-          if (i== max_hand_Size) { StopDraw();}
-        }
-        function StopDraw() { clearInterval(intervalo_entre_robo); i = 0; document.getElementById("tapar_mano").style.display="none";}
-      } 
-    }, 600); 
-  }
 
 
 
 
 </script>
+
+
+
 </html>
