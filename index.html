@@ -1,104 +1,69 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!-- <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style>
-      body{
-        margin: 0px auto;
-        display: flex;
-        justify-content: center;
-        background-color: #efefef;
-        /* background-color: #2c3042; */
-    font-family: "proxima-nova",sans-serif;
-      }
-      #content a{
-        display: block;
-        color: black;
-    margin: 10px;
-      }
-    </style>
+    <title>Instascan</title>
+    <script type="text/javascript" src="instascan.min.js"></script>
   </head>
-<body >
-  <!-- <a href="blog.html"> blog </a> -->
- <div id="content"></div>
-</body>
-<script>
-  // leer todas las imagenes dentro de una carpeta
-  var array= [];
-  var obj;
-  $.ajax({
-  url: "posts",
-  success: function(data){
-     $(data).find("a:contains(.html)").each(function(){
-        // will loop through 
-       // var images = $(this).attr("href");
-        var images2 = $(this);
-        obj = $(this)[0].innerText;
-
-
-        //console.log( obj );
-        //array.push(obj);
-
- 
-        // mazo.push( { nombre:  filter_results.nombre , ID_carta:   filter_results.ID_carta , unique_ID: uid});
-
-        //$('<a href="blog.html?'+ obj +'"></a>').html(obj).appendTo('#content')
-        document.getElementById("content").innerHTML +=    '<a href="blog.html?'+ obj +'" > '+ obj +'</a>' ;
-
-
-        $.ajax({
-    url: 'posts/'+ obj,
-    success: function(data) {
-
-
-       //create jquery object from the response html
-   var $response=$(data);
-
-   var titulo = $response.filter('#meta_titulo').text();
-   var imagen = $response.filter('#meta_imagen').text();
-
-        //console.log("titulo: "+ titulo );
-        //console.log("imagen: "+ imagen );
-
-        array.push( { titulo:  titulo ,imagen:  imagen, href: obj });
-    }
-});
-
-
-     });
-  }
-});
+  <body>
+    <video id="preview"></video>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        console.log(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
 
 
 
-// setTimeout(function(){   console.log(array)  }, 1000);
-//console.log(array)
 
 
+
+
+
+
+
+
+
+
+      let opts = {
+  // Whether to scan continuously for QR codes. If false, use scanner.scan() to manually scan.
+  // If true, the scanner emits the "scan" event when a QR code is scanned. Default true.
+  continuous: true,
   
-
-
-/*  var arrayLength = array.length;
-for (var i = 0; i < arrayLength; i++) {
-    console.log(array[i]);
-
-}
-
- }, 100); */
-
-// var myStringArray = ["Hello","World"];
-
-//document.getElementById("content").innerHTML +=    '<a href="blog.html?'+ obj +'" > '+ obj +'</a>' ;
-
-
-
-
-
-
-</script>
-
-
-
+  // The HTML element to use for the camera's video preview. Must be a <video> element.
+  // When the camera is active, this element will have the "active" CSS class, otherwise,
+  // it will have the "inactive" class. By default, an invisible element will be created to
+  // host the video.
+  video: document.getElementById('preview'),
+  
+  // Whether to horizontally mirror the video preview. This is helpful when trying to
+  // scan a QR code with a user-facing camera. Default true.
+  mirror: true,
+  
+  // Whether to include the scanned image data as part of the scan result. See the "scan" event
+  // for image format details. Default false.
+  captureImage: false,
+  
+  // Only applies to continuous mode. Whether to actively scan when the tab is not active.
+  // When false, this reduces CPU usage when the tab is not active. Default true.
+  backgroundScan: true,
+  
+  // Only applies to continuous mode. The period, in milliseconds, before the same QR code
+  // will be recognized in succession. Default 5000 (5 seconds).
+  refractoryPeriod: 5000,
+  
+  // Only applies to continuous mode. The period, in rendered frames, between scans. A lower scan period
+  // increases CPU usage but makes scan response faster. Default 1 (i.e. analyze every frame).
+  scanPeriod: 1
+};
+    </script>
+  </body>
 </html>
