@@ -1,43 +1,826 @@
+<!doctype   html >
 <html>
   <head>
-    <title>Instascan &ndash; Demo</title>
-  <!--   <link rel="icon" type="image/png" href="favicon.png"> -->
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
-    <script type="text/javascript" src="instascan.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      body{
+        margin: 0px auto;
+        padding: 0px;
+        font-family: "proxima-nova",sans-serif;
+      }
+      #contenedor{
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      aspect_ratio {
+        background-color: #463636;
+        width: 100%;
+        width: 100vw;
+        height: 56.25vw;
+        max-height: 100vh;
+        max-width: 177.78vh;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: url(aspect_ratio_background.png);
+        background-position: center;
+        background-size: cover;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+      }
+
+      p{
+       
+        color: white;
+      }
+      #contenedor_superpuesto{ 
+        
+   background-color: #2c2f3c; 
+
+
+   background-image: url(fondo_1.png); 
+   /* background-image: url(1080_2.png);  */
+    background-size: cover;
+  position: absolute;
+  overflow: hidden;
+}
+      img{
+        height: 56.25vw;
+        max-height: 100%;
+     }
+     @font-face {
+        font-family: "Genshin";
+        src: url(genshin.ttf) format("truetype");
+      }
+   body{margin: auto;background-color: #ffffff;
+     font-family: "proxima-nova",sans-serif;
+        font-family: "Genshin";}
+  
+  
+  /*  .dos {
+    opacity: 0;
+
+    animation-name: updown;
+    -webkit-animation: updown 0.9s ease-in-out infinite;
+   
+    width: 400px;
+
+    text-align: center;
+
+}
+ */
+
+@keyframes updown{
+      0%, 100% {transform: translate(-0%, -0px);}
+      50%  {  transform: translate(-0%, 1%);}
+  }
+  #siguiente{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    opacity: 0.1%;
+    z-index: 3;
+  }
+  #texto{
+    /* text-align: center; */
+
+    line-height: 150%;
+  }
+
+
+  #box{
+    position: absolute;
+    bottom: 0;
+    height: 24%;
+    width: 100%;
+    /* background-color: #000000b0; */
+    display: flex;
+    justify-content: center;
+
+    background-image: url(box.png);
+        background-position: center;
+        background-size: cover;
+  }
+  #contenedor_dialogo{
+    /* background-color: #030406; */
+    width: 70%;
+  }
+  #opciones_contenedor{    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;}
+    #opciones_contenedor div{
+      margin: 4%;
+    color: white;
+    margin-left: -21%;
+    z-index: 1;
+    
+    }
+    #opciones_contenedor p{
+      /* background-color: rgb(12 12 12 / 18%); */
+    /* margin: 6%; */
+    background-color: rgb(12 12 12 / 17%);
+    /* margin: 6%;
+    color: white;
+    padding: 1%;
+    width: 100%;
+    /* margin: 10%; */
+    padding: 6%;
+    }
+    .opcion{
+      cursor: pointer;
+     
+    }
+    #uno {
+    display: none;
+    background-image: url(1.png);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    opacity: 9;
+    z-index: 2;
+  
+    transition: visibility 0s, opacity 0.5s linear;
+}
+#dos {
+    display: block;
+    background-image: url(2.png);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    /* margin-left: 1px; */
+    position: absolute;
+    animation-name: updown;
+    -webkit-animation: updown 0.9s ease-in-out infinite;
+    /* animation: updown 1s ease-in-out infinite; */
+}
+.mystyle  #uno{
+  opacity: 0;
+  height: 0px;
+  width: 0px;
+  display: none!important;
+
+} 
+#nombre{
+  color: #f7c028;
+
+  color: #f7c028;
+    width: 100%;
+    /* background-color: red; */
+    text-align: center;
+    padding: 5px;
+    padding-left: 0px;
+    border-bottom: solid #f7c028 2px;
+    padding-right: 0px;
+    padding-top: 10px;
+}
+#personaje {
+    display: block;
+    background-image: url(noelle.png);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    z-index: 0;
+}
+    </style>
   </head>
-  <body>
-    <a href="https://github.com/schmich/instascan"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
-    <div id="app">
-      <div class="sidebar">
-        <section class="cameras">
-          <h2>Cameras</h2>
-          <ul>
-            <li v-if="cameras.length === 0" class="empty">No cameras found</li>
-            <li v-for="camera in cameras">
-              <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active">{{ formatName(camera.name) }}</span>
-              <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
-                <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
-              </span>
-            </li>
-          </ul>
-        </section>
-        <section class="scans">
-          <h2>Scans</h2>
-          <ul v-if="scans.length === 0">
-            <li class="empty">No scans yet</li>
-          </ul>
-          <transition-group name="scans" tag="ul">
-            <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
-          </transition-group>
-        </section>
+  <body >
+    <div id="el_body">
+    <div id="contenedor">
+      <div id="contenedor_superpuesto">
+        <div id="personaje"></div>
+        <div id="uno"><div id="dos"></div></div>
+        
+        <div id="opciones_contenedor">  <div id="opciones"></div> </div>
+       
+        <div id="box">
+         
+          <div id="contenedor_dialogo">
+            <div id="nombre"> Noelle </div>
+            <p id="texto"></p>  
+          </div>
+          
+        </div>
+        
+      
+        <!-- <button id="siguiente" onclick="siguiente()"> Siguiente </button> -->
+        <div id="siguiente" onclick="siguiente()">  </div>
       </div>
-      <div class="preview-container">
-        <video id="preview"></video>
-      </div>
+<img id="imagen_size" src="aspect_ratio_background.png">
+      <!-- <aspect_ratio> <p>100% x 100%</p> </aspect_ratio> -->
     </div>
-    <script type="text/javascript" src="app.js"></script>
+
+  </div>
+    
   </body>
+  <script>
+    setTimeout(function(){     myFunction_set(); }, 100);
+
+    $(document).ready(function(){
+  $(window).resize(function(){
+    myFunction_set();
+  });
+});
+
+    function myFunction_set(){
+
+
+//console.log( altura_imagen +" "+ ancho_imagen  );
+//console.log( altura_mockup  );
+
+var width = document.getElementById('imagen_size').offsetWidth;
+var height = document.getElementById('imagen_size').offsetHeight;
+
+
+document.getElementById('contenedor_superpuesto').style.width= width +"px";
+document.getElementById('contenedor_superpuesto').style.height= height +"px";
+
+
+document.getElementById('texto').style.fontSize= height/40 +"px";
+document.getElementById('opciones_contenedor').style.fontSize= height/40 +"px";
+document.getElementById('nombre').style.fontSize= height/40 +"px";
+
+
+//alert( width +" "+ height);
+
+
+
+
+}
+
+  </script>
+  <script type="text/javascript">
+    //......................
+    
+    
+    
+    var dialogo;
+    
+    let siguiente_btn = document.getElementById("siguiente");
+        let texto = document.getElementById("texto");
+        let opciones = document.getElementById("opciones");
+        let dos =  document.getElementById("dos");
+
+
+        let personaje =  document.getElementById("personaje");
+    
+        siguiente_btn_show = true; 
+    
+    
+    
+    var i = 0;
+    
+        var opcion;
+        var sub_opcion;
+    siguiente();
+    
+    
+    function elegir_opcion(x){ 
+          opcion = x;
+          siguiente() ; }
+    
+          function elegir_opcion2(x){ 
+          sub_opcion = x;
+          siguiente() ; }
+    
+    
+    
+    function siguiente(){
+
+
+      document.getElementById("uno").style.display = "none";
+    
+      switch (i) {
+        case 0: dialogo = 'Al fin lo conozco. Caballero Honorario.'; break;
+/*         case 1: dialogo = 'Soy Noelle, criada de los Caballeros de Favonius.';
+        siguiente_btn_show = false; 
+        opciones.innerHTML= '<button onclick="siguiente()">¿Los caballeros de favonius tienen... </br> criadas?</button>';
+        opciones.innerHTML+= '</br><button onclick="siguiente()" >¿tu vestimenta... es de "caballera criada"?</button>';  
+        break; */
+        case 1: dialogo = 'Soy Noelle, criada de los Caballeros de Favonius.';
+        personaje.style.backgroundImage = "url('noelle_2.png')";
+        siguiente_btn_show = false; 
+        opciones.innerHTML= '<div onclick="siguiente()" class="opcion" > <p>¿Los caballeros de favonius tienen... </br> criadas? </p></div>';
+        opciones.innerHTML+= '<div onclick="siguiente()" class="opcion" ><p>¿Tu vestimenta... es de "caballera criada"?</p></div>';  
+        break;
+        case 2: 
+          dialogo = 'oh, mis discuplas...Todavia no me he unido oficialmente a los Caballeros de Favonius'; 
+          personaje.style.backgroundImage = "url('noelle_3.png')";
+          opciones.innerHTML= '';
+          siguiente_btn_show = true; 
+        break; 
+        case 3:
+          dialogo = 'como criada, y para ser merecedora de esta armadura, me estoy sometiendo al</br>entrenamiento caballeresco de los Caballeros de Favonius. ';
+          personaje.style.backgroundImage = "url('noelle.png')";
+          siguiente_btn_show = false; 
+          opciones.innerHTML= '<button onclick="siguiente()" > ¿"Entrenamiento caballeresco"?</button>';
+        break;
+        case 4:
+          dialogo = 'así es... Aunque todavia no he logrado pasar la prueba de selección, siempre pido consejo a</br>los veteranos sobre cómo convertirme en una verdadera Caballera de Favonius.'; 
+          personaje.style.backgroundImage = "url('noelle_4.png')";
+          opciones.innerHTML= '';
+          siguiente_btn_show = true;
+        break;
+        case 5:
+          dialogo = '... De Amber aprendo cómo fabricar un Barón Bunny, y cumplo con las pequeñas misiones </br>que me asigna el Capitán Kaeya...';
+          personaje.style.backgroundImage = "url('noelle.png')";
+        break;
+        case 6: 
+          dialogo = '¡Incluso le he pedido a la Caballera Chispeante que me transmita su experiencia! Aunque... </br>poco después, la Maestra Jean nos encerró.';
+          personaje.style.backgroundImage = "url('noelle_3.png')";
+        break;
+        case 7:
+          dialogo = 'En realidad...siempre he querido recibir la orientación del Caballero Honorario.';
+          opciones.innerHTML= '';
+          siguiente_btn_show = true;
+        break;
+        case 8: dialogo = 'Pero... me preocupaba que pedirlo fuera presuntuoso por mi parte.';break;
+        case 9: dialogo = 'De vez en cuando lo veo pasar por la calles de Mondstadt, pero siempre estoy demasiado  </br>ocupada como para acercarme...'; break;
+        case 10: dialogo = 'Terminé la limpieza para los Caballeros por el día de hoy, e iba en camino a entrenar  </br>cuando, de repente, me encontré con usted.'; break;
+        case 11: dialogo = 'S-si no fuera mucha molestia...¿podria guiar mi entrenamiento caballeresco, por favor?';
+        siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="elegir_opcion(\'a\')" disabled > ¿sabes?No hay nada de malo si no te </br>conviertes en una caballera </button>';
+          opciones.innerHTML += '</br><button onclick="elegir_opcion(\'b\')" > Por supuesto.¿Por dónde te gustaría empezar? </button>';
+          break;
+     
+    
+      }
+      //--------------------------------------------------------------------
+      if( opcion =="b"){
+          switch (i) {
+        case 12: 
+          dialogo = 'Yo... ¡quisiera su opinion sobre algo como caballero superior!'; 
+          opciones.innerHTML= '';
+          siguiente_btn_show = true; 
+        break;
+        case 13: dialogo = 'Creo que no me he quedado atrás en mis deberes como criada ni en mi entrenamiento </br> para convertirme en caballera'; break;
+        case 14: dialogo = 'Pero el progreso del entrenamiento va un poco lento...'; 
+        siguiente_btn_show = false;
+        opciones.innerHTML= '<button onclick="elegir_opcion2(\'criada\')" >  ¿Deberes como criada? </button>';
+        opciones.innerHTML += '</br><button onclick="elegir_opcion2(\'caballera\')" > ¿Entrenamiento para convertirte en </br>caballera? </button>';
+    
+    
+        // 
+          //
+           // 
+        break;
+        case 15: 
+        if( sub_opcion =="criada"){    dialogo = 'Sí... en realidad es solo limpiar y ordenar...';   }
+        if( sub_opcion =="caballera"){    dialogo = 'Ya sabe... Entrenamiendo común y corriente de fuerza y resistencia...';  }
+          opciones.innerHTML= '';
+          siguiente_btn_show = true; break;
+        case 16: 
+        if( sub_opcion =="criada"){    dialogo = 'Cada 2 días hago una limpieza profunda para los Caballeros de Favonius';   }
+        if( sub_opcion =="caballera"){    dialogo = 'Cien flexiones, cien abdominales,cien sentadillas... ';  }
+        break;
+        case 17: 
+        if( sub_opcion =="criada"){   dialogo = 'Desde debajo de las camas hasta los alféizares de las ventanas.Cuanto más pequeño es el </br>rincón , más fácilmente de acumula el polvo.';  }
+        if( sub_opcion =="caballera"){    dialogo = 'Tambien como ejercicio matutino diario, corro dos vueltas alrededor de </br> Mondstadt. ';   i = 18;  }
+      
+         break;
+        case 18: dialogo = 'también hay algunos pequeños quehacers diarios, como preparar el parche del Capitán</br>Kaeya o ayudar a la Srta. Lisa a ordenar las estanterías...'; break;
+        case 19: dialogo = 'Aunque todos los días esté desbordada de trabajo... siempre siento que falta algo más.'; 
+        siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="elegir_opcion(\'c\')" disabled >¡Lo que te falta es fuerza!</button>';
+          opciones.innerHTML += '<button onclick="elegir_opcion(\'d\')">¡Lo que te falta es descanso!</button>';
+          break;
+      }
+        }
+          //---------  fuerza -----------------------------------------------------------
+     if( opcion =="c"){
+      switch (i) {
+        case 20: 
+          dialogo = '¿ese es su consejo?';
+          opciones.innerHTML= ''
+          ;siguiente_btn_show = true;
+        break;
+      }
+    }
+        //----------- descanso ---------------------------------------------------------
+     if( opcion =="d"){
+      switch (i) {
+        case 20: 
+          dialogo = '¿Descanso? Es que...Todavía me queda mucho trabajo';
+          opciones.innerHTML= '';
+          siguiente_btn_show = true;
+        break;  
+        case 21: dialogo = 'Además...aún no soy suficientemente capaz. Cualquier tiempo libre que tenga deberia </br> invertirlo en entrenar'; break;
+        case 22: dialogo = 'Para convertirme en una verdadera caballera pronto, debo seguir esforzándome más que</br> los demás.'; 
+        siguiente_btn_show = false;
+        opciones.innerHTML= '<button onclick="siguiente()">Una verdadera caballera también necesita descansar adecuadamente.</button>';
+        break;
+        case 23: dialogo = 'Pero...El tiempo es oro...Si me quedo sentada...';opciones.innerHTML= '';
+          siguiente_btn_show = true; break;
+        case 24: dialogo = '... me sentiré muy culpable';  
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" >Descansar de vez en cuando también sirve </br>para poder entrenar con las energías al </br> máximo</button>';
+          opciones.innerHTML += '<button  onclick="siguiente()" >Si siempre estás atareada, no tendrás </br>tiempo para reflexionar sobre tu progreso </button>';
+          break;
+        case 25: dialogo = 'Oh... No habia tomado eso en cuenta...';opciones.innerHTML= '';
+          siguiente_btn_show = true; break;
+        case 26: dialogo = 'Descansar...por el bien del entrenamiento...'; break;
+        case 27: dialogo = 'Ah...¿Es por eso que la Srta. Lisa siempre le dedica un momento al té de las tardes en la biblioteca?¡Ahora entiendo!';  
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" > Me temo que, en el caso de Lisa, simple y </br> llanamente le gusta descansar... </button>';
+          opciones.innerHTML += '<button onclick=" i= 29, siguiente()" >Hablando de té,¿por qué no nos tomamos </br> una taza? </button>';
+          break;
+          case 28: dialogo = '¿Eh? Ahora que lo mencionas...';  
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" >No importa, ¿por qué no nos tomamos una </br> taza?</button>';
+          break;
+          case 29: dialogo = '¡E-está bien!'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+          case 30: dialogo = 'El viajero y noelle viajan a mondstadt'; break;
+          //Beatrix
+          case 31: dialogo = '¡Noelle!'; break;
+           //Noelle
+           case 31: dialogo = '¿S-señorita Bea ?'; break;
+           case 32: dialogo = '¿Pasó algo? ¿Hay algo en que la pueda ayudar?'; break;
+                //Beatrix
+           case 33: dialogo = '¡Es Quinn! Me esta ignorando otra vez...'; break;
+          //Noelle
+          case 34: dialogo = 'Tranquila, tómese su tiempo.Estoy aqui para ayudar.'; break;
+          //Beatrix
+          case 35: dialogo = '*Solloza*...Quinn estaba de mal humor... Así que le llamé para conversar y que despejara su </br> mente...'; break;
+          case 36: dialogo = 'Quizás... como una cita...'; break;
+          //Noelle
+          case 37: dialogo = 'oh... U-una cita...'; break;
+          case 38: dialogo = 'Entonces... Es ese tipo de problema... '; break;
+          //Beatrix
+          case 39: dialogo = 'Sí. Hoy ya he ido a buscarlo varias veces...'; break;
+          case 40: dialogo = 'No importa cómo le hable,¡solo le presta atencion a su puesto y me ignora completamente!'; break;
+          case 41: dialogo = 'Noelle, todos en Mondstadt dicen que eres muy tierna.'; break;
+          case 42: dialogo = 'Debes ser muy popular. ¿Podrias ayudarme?'; break;
+          //Noelle
+          case 43: dialogo = '¡Ah, c-claro!¡Es mi deber como criada ayudar a los ciudadanos de Mondstadt!'; break;
+          case 44: dialogo = 'Es solo que... no tengo nada de experiencia en este tipo de cosas...'; break;
+          //Beatrix
+          case 45: dialogo = '¿Ni siquiera tú me puedes ayudar?'; break;
+          //Noelle
+          case 46: dialogo = '¡P-por favor, no te preocupes!¡Tenemos con nosotros al Caballero Honorario!'; break;
+          case 47: dialogo = 'Caballero Honorario,¿usted puede ayudar a la Srta. Bea?';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" disabled >Creía que habiamos quedado en descansar</br> por hoy... </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" >Haré lo mejor que pueda... </button>'; 
+          break;
+          case 48: dialogo = '¡G-racias!'; opciones.innerHTML='<button onclick="siguiente()" >Primero, hay que analizar la situacion... </button>';  break;
+          case 49: dialogo = '¡Sí! La Srta. Bea dijo que el Sr. Quinn siempre parece muy ocupado e ignora todo lo que le </br> dice...'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+          case 50: dialogo = 'Pero... por lo que sé, la Srta. Bea siempre busca al Sr. Quinn para hablar de trivialidades...';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" >Quizás sea por toda esa cháchara... </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" >Eso hace que Quinn piense que Beatrix</br> nunca tiene algo importante que decir...</button>'; 
+          break;
+          case 51: dialogo = '¡Eso... es posible!'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+          case 52: dialogo = 'En otras palabras... Solo tenemos que hacer que el Sr. Quinn note que esta vez es diferente.'; break;
+          case 53: dialogo = 'Por ejemplo...¿Qué tal un obsequio? Si le lleva un obsequio,¡definitivamente va a notar la</br> diferencia!'; break;
+          case 54: dialogo = 'Pero ¿qué tipo de obsequio?...';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" disabled > No importa el regalo, la intención es lo que</br> cuenta. </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" >Los obsequios transmiten nuestras </br>emociones. Debe ser uno adecuado.</button>'; 
+          break;
+          case 55: dialogo = '¡yo opino lo mismo!'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+          case 56: dialogo = 'Cada uno tiene sus propias preferencias. Por eso, es importante elegir uno correctamente</br> si quieres causar una buena impresión.'; break;
+          case 57: dialogo = 'Si fuera para mí, me gustaría que fueran rosas...'; break;
+          case 58: dialogo = 'y para usted, Caballero Honorario... Humm...'; break;
+          case 59: dialogo = '¿No le gustarian las cosas hechas a mano?';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" > Rosas y cosas hechas a mano... ambas</br> suenan bien. </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" > Primero pensemos qué le gustaria a </br> Quinn...</button>'; 
+          break;
+          case 60: dialogo = 'Ah... Sí, solo quería pensarlo desde otra perspectiva...'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+          case 61: dialogo = 'Humm...¿Que tipo de obsequio le gustaría al Sr Quinn?'; break;
+          case 62: dialogo = 'Recuerdo que el Sr. Quinn es uno de los cuatro borrachos de Mondstadt...'; break;
+          case 63: dialogo = 'Quizás algo relacionado con el vino sea adecuado, pero ¿qué?'; break;
+          case 64: dialogo = 'Solo pensar en ello no nos está ayudando en nada...'; break;
+          case 65: dialogo = 'Mejor vamos a la tienda de la Srta. Marjorie a ver qué podemos encontrar'; break;
+        //fade to black
+        case 66: dialogo = 'El viajero y Noelle van a la tienda de Marjorie'; break;
+    //Marjorie
+    //dueña de Viento y Gloria
+        case 67: dialogo = '¡Bienvenidos a Viento y Gloria!¡Vaya, son Noelle y el caballero Honorario!'; break;
+        case 68: dialogo = '¿qué viento los trae por aquí? Pocas veces veo a Noelle paseando con alguien';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" >¿pocas veces?</button>'; 
+          break;
+          case 69: dialogo = 'Bueno, cuando Noelle está trabajando, siempre se encarga de todo por sí sola.'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+          case 70: dialogo = 'Y, una vez que termina algo, inmediatamente empieza con lo siguiente. Parece como si </br> nunca descansara.'; break;
+          case 71: dialogo = 'Noelle, ya no eres una niña, ¿sabes?'; break;
+          case 72: dialogo = 'Si no te dedicas más tiempo a ti misma te arrepentirás de ello en el futuro.'; break;
+      //noelle
+      case 73: dialogo = 'Yo...justamente hoy estoy de descanso...'; break;
+      case 74: dialogo = 'Solo que ocurrió algo inesperado...'; break;
+      //Marjorie
+      case 75: dialogo = '¿Eh?¿Hoy descansas junto al Caballero Honorario?'; break;
+      case 76: dialogo = '¡Oh!¡Maravilloso!¡Eso sí que mrerece una celebración!'; break;
+      case 77: dialogo = '¿Así que hoy viniste por un regalo para el Caballero Honorario? Elige lo que te guste.</br>¡Estoy segura de que nuestros productos serán de tu agrado!';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()"  disabled > En realidad, venimos a ayudar a alguien </br> más a elegir un regalo. </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" > En realidad, vine a comprarle un regalo a </br> Noelle.</button>'; 
+          //opcion izq
+          opciones.innerHTML += '<button onclick="siguiente()"  disabled > Incluso sin regalos, hoy es un día que debe</br> celebrarse.</button>'; 
+          break;
+          case 78: dialogo = '¡Oh! bueno, No importa de quién sea el regalo o para quién...¡No se puede dar sin recibir!'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            //noelle
+      case 79: dialogo = '¡P-pare, por favor!'; break;
+      case 80: dialogo = 'No tengo ese tipo de relación con el Caballero Honorario...'; break;
+      case 81: dialogo = 'jeje...¡Aún no!';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" > Parece que eres buena para estas cosas,</br> Marjorie... </button>'; 
+          break;
+            //Marjorie
+      case 82: dialogo = 'ah, más o menos. Después de todo, Noelle es del tipo de persona que necesitan un empujón </br> de vez en cuando...';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+      case 83: dialogo = 'Pero parece que de este tema todavia no entiende nada.'; break;
+              //noelle
+              case 84: dialogo = 'Yo..¡solo creo que estas cosas no deben distraerme de mi entrenamiento de caballera!'; break;
+              case 85: dialogo = '¡Eso es! Todavía hay muchas cosas importante que hacer...'; break;
+             //Marjorie
+              case 86: dialogo = 'Está bien, está bien, no más bromas.¿Cuál es el motivo de su visita?';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" > Esto es lo que ocurre </button>'; 
+          break;
+          case 87: dialogo = 'Asi que... están ayudando a Beatrix a escoger un regalo para Quinn...';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+          case 88: dialogo = 'En ese caso, aquí tengo un par de jugetes nuevos.Una botella congelada y una ardilla </br> tallada en madera.'; break;
+          case 89: dialogo = 'La botella congelada es un utensillo muy útil para hacer cócteles. Mantiene el vino helado y </br>fresco durante mucho tiempo.'; break;
+          case 90: dialogo = 'En cuanto a la ardilla tallada en madera... Humm... Es bonito adorno. Seguro que se verá bien en el puesto de Quinn.'; break;
+          case 91: dialogo = 'Un utensillo de coctelería o un adorno...¿cuál eligen?';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" disabled > La botella congelada. </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" > La ardilla tallada en madera.</button>';  break; // -1 de amistad
+                 //noelle
+      case 92: dialogo = 'Hummm... Me preocupa un poco que el Sr. Quinn ponga la talla de madera en cualquier lugar</br> y se olvide de ella...';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+      case 93: dialogo = 'Para estar seguros, mejor regalémosle la botella de congelación.'; break;
+      case 94: dialogo = 'Seguro le gustará al Sr.Quinn por ser uno de los cuatro borrachos.'; break;
+       //Marjorie
+       case 95: dialogo = '¿Se decidieron por la botella congelada? Perfecto, la envolveré.'; break;
+          //fade to black
+          case 96: dialogo = 'Marjorie envuelve el regalo'; break;
+          //bien el regalo ya esta envuelto
+          //¡Entreguémoslo a la Srta. Bea cuanto antes!
+    
+          //Beatrix
+          case 97: dialogo = '¿Eh? ¿Que le dé esta botella congelada a Quinn?'; break;
+          case 98: dialogo = 'Sí parece algo que le gustaría.'; break;
+          case 99: dialogo = 'Un momento...Podría usar el regalo como una carnada... Le puedo decir que, si quiere el </br> regal, debe tener una cita conmigo primero...'; break;
+          case 100: dialogo = 'Muchas gracias a los dos.¡Con este regalo, no podrá rechazar mi invitación!'; break;
+          //Noelle
+          case 101: dialogo = 'oh, ¿así es como funcionan los regalos?'; break;
+          case 102: dialogo = 'Bueno, mientras sirva de algo...'; break;
+          //Beatrix
+          case 103: dialogo = '¡Oh, no!'; break;
+          //Noelle
+          case 104: dialogo = '¿Que pasó, Srta. Bea?'; break;
+          case 105: dialogo = '¿Pasa algo con el regalo?'; break;
+          //Beatrix
+          case 106: dialogo = 'No es por el regalo...'; break;
+          case 107: dialogo = 'He estado tan concentrada en convencer a Quinn para salir conmigo...¡que no he pensado </br> en dónde llevarlo!';
+          siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" > No es posible... </button>'; 
+           break;
+           case 108: dialogo = '¡Nunca he llegado a ese punto!';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+           case 109: dialogo = 'Noelle...¿me podrías ayudar con esto también?'; break;
+           case 110: dialogo = '*Suspira*, una cita deberia estar bien planificada. ¡No hay por qué apresurarse!'; break;
+           //noelle
+           case 111: dialogo = 'D-de acuerdo,Srta. Bea. Déjemelo a mí.'; break;
+            //fade to black
+            case 112: dialogo = 'El viajero y Noelle viajan a cabo juramento , acantilado estrellado y levantaviento'; break;
+            //Beatrix
+            case 113: dialogo = '¿Oh? ¿ya regresaron!¿Encontraron algun lugar ideal?';
+            siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" disabled > El acantilado Estrellado. </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" > El cabo Juramento. </button>'; 
+          //opcion izq
+          opciones.innerHTML += '<button onclick="siguiente()" disabled > Levantaviento... </button>'; 
+            break;
+            //cabo juramento
+            case 114: dialogo = 'Esperen,¿no hay mucha gente ahí?';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            case 115: dialogo = 'No quiero ver a otras personas poniéndose cariñosas a nuestro alrededor durante la cita...'; break;
+            case 116: dialogo = 'Mejor veamos otra opción...'; break;
+            //noelle
+           case 117: dialogo = '¿C-consideraria Levantaviento?'; break;
+           case 118: dialogo = 'Que su amor sea tan libre como los dientes de león...'; break;
+            //Beatrix
+            case 119: dialogo = '¿Levantaviento? Humm... También es un buen sitio, pero...¿no te parece un poco cliché?'; break;
+            //Noelle
+            case 120: dialogo = '¿Ah? ¿C-cliché?'; break;
+             //Beatrix
+             case 121: dialogo = 'Los ancianos siempre hablaban de que era un símbolo de "no sé qué"... De pequeños íbamos </br>mucho.'; break;
+             case 122: dialogo = 'No tiene nada de especial ni novedoso ir ahí...'; break;
+             //Noelle
+            case 123: dialogo = 'Oh... Entiendo...'; break;
+             //Beatrix
+             case 124: dialogo = 'Humm...¡Optaré por el Cabo del juramento! Muchas gracias. Ahora vos a buscar a Quinn.'; break;
+             case 125: dialogo = '*Suspira*, Quinn... Me pregunto qué clase de juramento haremos...'; break;
+              //Noelle
+            case 126: dialogo = 'Oh... ';
+            case 126: dialogo = '¿Levantaviento... dejó de ser popular?';
+            case 127: dialogo = 'Pero...el libro decía que era el lugar más popular de Mondstadt...';
+            siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()" >¿Cuando escribieron ese libro? </button>'; 
+            break;
+            case 128: dialogo = 'N-no lo sé...lo encontré limpiando una esquina de la bliblioteca...';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            case 129: dialogo = 'Contaba la historia de la Srta. Vennessa y Levantaviento...';
+            case 130: dialogo = 'Pensaba que a los ciudadanos de Monstdadt todavía les gustaba ir allá...';
+            siguiente_btn_show = false;
+          opciones.innerHTML= '<button onclick="siguiente()"  disabled > No te preocupes, a mí me gusta. </button>'; 
+          opciones.innerHTML += '<button onclick="siguiente()" > ¿Te gustaría ir allá conmigo? </button>'; 
+            break;
+            //¿Te gustaría ir allá conmigo?
+            case 131: dialogo = '¿De verdad le gustaria ir a Levantaviento? ';
+            opciones.innerHTML= '<button onclick="siguiente()" > Tomémoslo como nustro último descanso </br> del día. </button>'; 
+            break;
+            case 132: dialogo = '¡M-muy bien!¡Sigame!';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            //fade to black
+            case 133: dialogo = 'El viajero y noelle van a levantaviento'; break;
+             //Noelle
+             case 134: dialogo = 'Uf...El aire de aquí te refresca al momento.'; break;
+             case 135: dialogo = 'Olvidarse del entrenamiento y el trabajo... Solo respirar y sentir el aire, nada más...';
+             siguiente_btn_show = false; 
+            opciones.innerHTML= '<button onclick="siguiente()" > Puedes venir aqui cuando quieras </button>'; 
+            break;
+            case 136: dialogo = 'jaja, cierto';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            case 137: dialogo = 'Pero todavía tengo que concentrarme en el entrenamiento y el trabajo.'; break;
+            case 138: dialogo = 'Si me descuido, no seré una criada confiable.';
+            siguiente_btn_show = false; 
+            opciones.innerHTML= '<button onclick="siguiente()" > ¿No es agotador? </button>'; 
+            opciones.innerHTML += '<button onclick="siguiente()"  disabled > ¿Así que esa es la responsabilidad que te <br>  has impuesto ? </button>'; 
+            break;
+            //¿No es agotador? 
+            case 139: dialogo = 'Sí, hasta cierto punto.Sin embargo, la Srta, Vennessa y la Maestra Jean han trabajado </br> mucho más duro que yo'; opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            case 140: dialogo = 'Se que me hace falta mucho mas para llegar a su altura. Por eso quiero convertirme en una </br> verdadera Caballera de Favonius, para ayudar a más gente.';
+            siguiente_btn_show = false; 
+            opciones.innerHTML= '<button onclick="siguiente()" > Tú ya posees las cualidades más nobles de </br> un Caballero de Favonius. </button>'; 
+            opciones.innerHTML += '<button onclick="siguiente()" disabled > Ayudar a los demás es la más noble de las </br> cualidades de un caballero. </button>'; 
+            break;
+            //tu ya posees
+            case 141: dialogo = '¿D-de verdad? Gracias';  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            case 142: dialogo = 'Si no fuese por usted, hoy no habría podido ayudar a la Srta. Bea.'; break;
+            case 143: dialogo = 'Aunque sea solo una pequeña muestra de mi aprecio, espero que la pueda aceptar'; break;
+            case 144: dialogo = 'Las rosas son mis flores favoritas, esta es una de papel que hice y misma';
+            siguiente_btn_show = false; 
+            opciones.innerHTML= '<button onclick="siguiente()" > ¿Conoces el significado de las rosas? </button>'; 
+            break;
+            case 145: dialogo = 'Por supuesto. En Mondstadt, una rosa es como decir "mis labios estan sellados como una </br> botella de vino".' ;  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            case 146: dialogo = 'He aprendido mucho a su lado en este corto tiempo.'; break;
+            case 147: dialogo = 'Se convertirá en un hermoso recuerdo que podré rememorar en el futuro...'; break;
+            case 148: dialogo = 'Quiero llevarlo en el corazon como un secreto entre los nosotros.'; break;
+            case 149: dialogo = '¿Hm? ¡Un momento! ¿Te refieres a que las rosas tienen otro significado que yo no </br> conzoco?';
+            siguiente_btn_show = false; 
+            opciones.innerHTML= '<button onclick="siguiente()" > O-olvida lo que dije </button>'; 
+            break;
+            case 150: dialogo = '*Suspira*... Voy a tener que volver a la biblioteca para investigar sobre eso...' ;  opciones.innerHTML= ''; siguiente_btn_show = true; break;
+            case 151: dialogo = 'Aun así, cualquiera sea su significado...'; break;
+            case 152: dialogo = '¡Espero que pueda llevarla en todas sus aventuras!'; break;
+            case 153: dialogo = 'Hasta que yo pueda luchar a su lado, Caballero Honorario...'; break;
+    
+    
+            
+    
+            // Susurros de la rosa de papel
+    // "El significado de las rosas reside en nuestro  corazón"
+    
+    
+        }  }
+    
+    
+    type();
+    
+    
+    
+    
+    /* type(); */
+    
+    
+    
+    var e= 0;
+    var str;
+    var isTag;
+    var text;
+    var myTimeout
+     var ir;
+    var dialogo_length = dialogo.length 
+     
+      
+     var time = dialogo_length *14;
+     console.log(time);
+     
+    
+    setTimeout(gfg, time);
+          function gfg() {
+            clearTimeout(myTimeout);
+              // document.getElementById('texto').innerHTML += ' <div class="dos">▼</div>';
+              // document.getElementById("dos").style.opacity= 100;
+              document.getElementById("uno").style.display = "inherit";
+              document.getElementById("uno").style.opacity= 100;
+            }
+        //......................
+        function type(){
+    
+       
+    
+    dialogo +=" ";
+    text = dialogo.slice(0,++e);
+    if (text === dialogo) return;
+    document.getElementById('texto').innerHTML = text;
+    var char = text.slice(-1);
+    if( char === '<' ) isTag = true;
+    if( char === '>' ) isTag = false;
+    if (isTag) return type();
+    myTimeout  =  setTimeout(type, 10 );
+     }
+    
+    
+    
+    
+       /*  if (e < dialogo.length) {
+    
+          console.log(e);
+          text = dialogo.slice(0,++e);
+           
+            document.getElementById('texto').innerHTML = text;
+          e++;
+    
+    
+          
+        } else  if (e = dialogo.length) {
+          clearTimeout(myTimeout);
+          
+        } */
+      
+    
+        //......................
+    /*     function type(){
+          if (text != dialogo){
+            dialogo +=" ";
+            text = dialogo.slice(0,++e);
+           
+            document.getElementById('texto').innerHTML = text;
+            var char = text.slice(-1);
+            if( char === '<' ) isTag = true;
+    if( char === '>' ) isTag = false;
+    if (isTag) return type();
+      myTimeout  = setTimeout(type, 15 );
+     console.log("hola");
+     clearTimeout(myTimeout);
+    
+    
+     if (text === dialogo){
+              clearTimeout(myTimeout);
+               return; }
+    
+    
+    
+    
+     }else{
+    
+      clearTimeout(myTimeout);
+     } 
+        }
+     */
+    
+     i++;
+     console.log(i);
+    
+    
+     
+    
+    
+     if (siguiente_btn_show == true) {
+            siguiente_btn.style.display= 'inherit';
+            //dos.style.background= 'red'; 
+            //document.getElementsByClassName('dos').style.opacity = '100';
+            document.getElementById('el_body').classList.remove("mystyle"); 
+          } else {
+            siguiente_btn.style.display= 'none';
+            document.getElementById('el_body').classList.add("mystyle"); 
+            //document.getElementsByClassName('dos').style.opacity = '0';
+          }
+    
+     
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    </script>
 </html>
